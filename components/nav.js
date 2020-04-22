@@ -10,11 +10,11 @@ export default function Nav() {
   return (
     <header class="navbar">
     <section class="navbar-section">
-        <a href="#" class="btn btn-link">Docs</a>
-        <a href="#" class="btn btn-link">Examples</a>
+        <Link href='/' as={ process.env.BACKEND_URL + '/'}><a class="btn btn-link">Home</a></Link>
+        <Link href='/blog' as={ process.env.BACKEND_URL + '/blog'}><a class="btn btn-link">Blog</a></Link>
     </section>
     <section class="navbar-center">
-        <a>Test</a>
+      <Link href='/' as={ process.env.BACKEND_URL + '/'}><a class="btn btn-link">Nomi's Blog</a></Link>
     </section>
     <section class="navbar-section">
         <a href="#" class="btn btn-link">Twitter</a>

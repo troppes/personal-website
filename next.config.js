@@ -9,7 +9,7 @@ module.exports = {
   exportPathMap: function () {
     return {
       "/": { page: "/" },
-      "/about": { page: "/about" },
+      "/blog": { page: "/blog" },
     }
   },
   //assetPrefix: '',
