@@ -4916,7 +4916,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
       lineNumber: 6,
       columnNumber: 5
     }
-  }), "OH LORD") //<Link href='/about' as={ process.env.BACKEND_URL + '/about'}><a>Blog</a></Link>
+  })) //<Link href='/about' as={ process.env.BACKEND_URL + '/about'}><a>Blog</a></Link>
   ;
 });
 
