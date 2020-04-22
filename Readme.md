@@ -1,2 +1,4 @@
-### Starting the Projekt
-To start the Projekt use "npm build".
+### Set up the Projekt
+Run `npm install`
+and then start up the project with: `npm run dev`
+
