@@ -1,0 +1,27 @@
+{
+  "name": "personal-website",
+  "version": "0.0.1",
+  "description": "Nomi's Website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nomi-1/personal-website.git"
+  },
+  "dependencies": {
+    "next": "9.3.5",
+    "react": "16.13.1",
+    "react-dom": "16.13.1"
+  },
+  "author": "Naomi Schoppa and Florian Reitz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nomi-1/personal-website/issues"
+  },
+  "homepage": "https://github.com/Nomi-1/personal-website#readme"
+}
