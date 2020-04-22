@@ -1,11 +1,6 @@
 
 import Link from 'next/link'
 
-const links = [
-  { href: 'https://github.com/zeit/next.js', label: 'GitHub' },
-  { href: 'https://nextjs.org/docs', label: 'Docs' },
-]
-
 export default function Nav() {
   return (
     <header class="navbar">
@@ -18,9 +13,8 @@ export default function Nav() {
     </section>
     <section class="navbar-section">
         <a href="#" class="btn btn-link">Twitter</a>
-        <a href="#" class="btn btn-link">GitHub</a>
+        <a href="https://github.com/Nomi-1/" target='_blank'class="btn btn-link">GitHub</a>
     </section>
     </header>
-
   )
 }
