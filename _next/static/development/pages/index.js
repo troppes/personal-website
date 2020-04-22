@@ -4916,13 +4916,13 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
       lineNumber: 6,
       columnNumber: 5
     }
-  })) //<Link href='/about' as={ process.env.BACKEND_URL + '/about'}><a>Blog</a></Link>
+  }), "OH LORD") //<Link href='/about' as={ process.env.BACKEND_URL + '/about'}><a>Blog</a></Link>
   ;
 });
 
 /***/ }),
 
-/***/ 2:
+/***/ 1:
 /*!****************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2F&absolutePagePath=%2Fhome%2Fflo%2FProjects%2FVSCode%2Fpersonal-website%2Fpages%2Findex.js ***!
   \****************************************************************************************************************************************/
@@ -4945,5 +4945,5 @@ module.exports = dll_2adc2403d89adc16ead0;
 
 /***/ })
 
-},[[2,"static/runtime/webpack.js"]]]);
+},[[1,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=index.js.map
