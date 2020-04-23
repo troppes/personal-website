@@ -15,7 +15,7 @@ steps:
       - eval $(ssh-agent -s)
       - bash -c 'ssh-add <(echo "$SSH_PRIVATE_KEY_GITEA")'
       - ssh-keyscan -p 2244 -H reitz.dev,46.38.234.38 >> /root/.ssh/known_hosts
-      - git remote add gitea ssh://git@reitz.dev:2244/flo/reitz-wordpress-theme.git
+      - git remote add gitea ssh://git@reitz.dev:2244/flo/personal-blog.git
       - git push gitea
 ---
 kind: pipeline
@@ -40,5 +40,6 @@ steps:
       - eval $(ssh-agent -s)
       - bash -c 'ssh-add <(echo "$SSH_PRIVATE_KEY_GITHUB")'
       - ssh-keyscan github.com >> ~/.ssh/known_hosts
+      - git config --global --add url."git@github.com:".insteadOf "https://github.com/"
       - npm install
       - npm run deploy
