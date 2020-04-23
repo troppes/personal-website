@@ -21,10 +21,10 @@ export default function Blog({ allPostsData }) {
       <div className="column col-12">
         <Nav />
       </div>
-      <div className="column col-4 col-mx-auto">
+      <div className="column col-4 mt-2 col-mx-auto">
         <ul>
-          {allPostsData.map(({ id, test, contentHtml, date, title, coverImage }) => (
-            <div className="card" key={id}>
+          {allPostsData.map(({ id, content, date, title, coverImage }) => (
+            <div className="card mt-2" key={id}>
               <div className="card-image">
                 <img src={ process.env.BACKEND_URL + coverImage}  className="img-responsive" /> 
               </div>
@@ -34,7 +34,7 @@ export default function Blog({ allPostsData }) {
                 <div className="card-subtitle text-gray"><Date dateString={date} /></div>
               </div>
               <div className="card-body">
-                {contentHtml}
+                {content}
             </div>
               <div className="card-footer">
                 <Link href="/posts/[id]" as={ process.env.BACKEND_URL +`/posts/${id}`}>
