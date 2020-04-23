@@ -7,5 +7,5 @@ Run `npm install`
 and then start up the project with: `npm run dev`
 
 ### For viewing the blog online go to:
-https://github.io/troppes/personal-website
+https://troppes.github.io/personal-website/
 
