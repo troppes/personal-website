@@ -21,13 +21,15 @@ steps:
 kind: pipeline
 type: docker
 name: deploy to Github pages
+clone:
+  disable: true
 
 trigger:
   branch:
     - master
 
 steps:
-  - name: push
+  - name: install and push
     image: alpine
     environment:
       SSH_PRIVATE_KEY_GITHUB:
@@ -40,6 +42,7 @@ steps:
       - eval $(ssh-agent -s)
       - bash -c 'ssh-add <(echo "$SSH_PRIVATE_KEY_GITHUB")'
       - ssh-keyscan github.com >> ~/.ssh/known_hosts
-      - git config --global --add url."git@github.com:".insteadOf "https://github.com/"
+      - git clone git@github.com:troppes/personal-website.git
+      - cd personal-website
       - npm install
       - npm run deploy
