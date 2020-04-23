@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export default function Nav() {
   return (
-    <header className="navbar">
+    <header className="navbar mt-2">
     <section className="navbar-section">
         <Link href='/' as={ process.env.BACKEND_URL + '/'}><a className="btn btn-link">Home</a></Link>
         <Link href='/blog' as={ process.env.BACKEND_URL + '/blog'}><a className="btn btn-link">Blog</a></Link>

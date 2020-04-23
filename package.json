@@ -21,7 +21,8 @@
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "remark": "^12.0.0",
-    "remark-html": "^11.0.1"
+    "remark-html": "^11.0.1",
+    "remark-plain-text": "^0.2.0"
   },
   "devDependencies": {
     "gh-pages": "^2.1.1",

@@ -1,6 +1,9 @@
-function Layout({ children }) {
-    return <div>{children}</div>
-  }
-  
-  export default Layout
-  
+export default function Layout({ children }) {
+  return (
+    <div className='container'>
+      <div className='columns'>
+        {children}
+      </div>
+    </div>
+  )
+}
