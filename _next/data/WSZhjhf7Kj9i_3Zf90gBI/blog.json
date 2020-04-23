@@ -1,0 +1,1 @@
+{"pageProps":{"allPostsData":[{"id":"second-post","content":"This is going to show that Markdown ist supported.","title":"This is my second post","date":"2020-04-23","coverImage":"/blogimage/p2.jpg"},{"id":"hello-world","content":"Hello World,\nthis this my first post on this Blog!","title":"Hello World!","date":"2020-04-22","coverImage":"/blogimage/p1.jpg"}]},"__N_SSG":true}
