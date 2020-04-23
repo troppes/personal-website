@@ -8,7 +8,7 @@ export default function Nav() {
         <Link href='/' as={ process.env.BACKEND_URL + '/'}><a className="btn btn-link">Home</a></Link>
         <Link href='/blog' as={ process.env.BACKEND_URL + '/blog'}><a className="btn btn-link">Blog</a></Link>
     </section>
-    <section className="navbar-center">
+    <section className="navbar-center hide-sm">
       <img src={ process.env.BACKEND_URL + '/img/logo_dark.svg'}  alt='logo'width='50px' height='50px' /> 
     </section>
     <section className="navbar-section">

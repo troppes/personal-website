@@ -31,7 +31,7 @@ export default function Post({ postData }) {
       <div className="column col-12">
         <Nav />
       </div>
-      <div className="column col-6 mt-2 col-mx-auto">
+      <div className="column col-6 col-sm-12 mt-2 col-mx-auto">
         <ul>
 
           <div className="card" key={postData.id}>

@@ -11,18 +11,18 @@ export default () => (
       </div>
       <div className="column col-12 mt-2 col-mx-auto">
         <div className="columns">
-          <div className="column col-3 mt-2 col-ml-auto">
+          <div className="column col-3 col-sm-6 mt-2 col-ml-auto">
             <h2>Florian Reitz</h2>
             <p>Hello, my name is Florian. I currently study computer science at HTW Berlin. For more information see my LinkedIn.
           </p>
           </div>
-          <div className="column col-2 mt-2 col-mr-auto">
+          <div className="column col-2 col-sm-6 mt-2 col-mr-auto">
             <img src={process.env.BACKEND_URL + '/img/me.png'} alt='logo' className='img-responsive' style={{'border-radius': 50 + '%'}}/>
           </div>
         </div>
       </div>
       <div className="column col-12 col-mx-auto">
-        <div className="column col-5 mt-2 col-mx-auto">
+        <div className="column col-5 col-sm-12 mt-2 col-mx-auto">
           <table role="table" className='table'>
             <thead>
               <tr>
