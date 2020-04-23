@@ -32,27 +32,24 @@ export default function Post({ postData }) {
         <Nav />
       </div>
       <div className="column col-6 col-md-12 mt-2 col-mx-auto">
-        <ul>
-
-          <div className="card" key={postData.id}>
-            <div className="card-image">
-              <img src={process.env.BACKEND_URL + postData.coverImage} className="img-responsive" />
-            </div>
-
-            <div className="card-header">
-              <div className="card-title h5">{postData.title}</div>
-              <div className="card-subtitle text-gray"><Date dateString={postData.date} /></div>
-            </div>
-            <div className="card-body">
-              <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
-            </div>
-            <div className="card-footer">
-              <Link href="/blog" as={process.env.BACKEND_URL + '/blog'}>
-                <button className="btn btn-primary">back to all posts</button>
-              </Link>
-            </div>
+        <div className="card" key={postData.id}>
+          <div className="card-image">
+            <img src={process.env.BACKEND_URL + postData.coverImage} className="img-responsive" />
           </div>
-        </ul>
+
+          <div className="card-header">
+            <div className="card-title h5">{postData.title}</div>
+            <div className="card-subtitle text-gray"><Date dateString={postData.date} /></div>
+          </div>
+          <div className="card-body">
+            <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+          </div>
+          <div className="card-footer">
+            <Link href="/blog" as={process.env.BACKEND_URL + '/blog'}>
+              <button className="btn btn-primary">back to all posts</button>
+            </Link>
+          </div>
+        </div>
       </div>
     </Layout>
   )
