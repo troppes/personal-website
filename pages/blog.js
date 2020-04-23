@@ -37,7 +37,7 @@ export default function Blog({ allPostsData }) {
                 {content}
             </div>
               <div className="card-footer">
-                <Link href="/posts/[id]" as={ process.env.BACKEND_URL +`/posts/${id}`}>
+                <Link href={ process.env.BACKEND_URL + '/posts/[id]'} as={ process.env.BACKEND_URL +`/posts/${id}`}>
                   <button className="btn btn-primary">see post</button>
                 </Link>
               </div>
