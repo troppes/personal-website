@@ -21,7 +21,7 @@ export default function Blog({ allPostsData }) {
       <div className="column col-12">
         <Nav />
       </div>
-      <div className="column col-4 col-sm-12 mt-2 col-mx-auto">
+      <div className="column col-4 col-md-12 mt-2 col-mx-auto">
         <ul>
           {allPostsData.map(({ id, content, date, title, coverImage }) => (
             <div className="card mt-2" key={id}>
