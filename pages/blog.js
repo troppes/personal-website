@@ -5,6 +5,7 @@ import Date from '../components/date';
 import { getSortedPostsData } from '../lib/posts'
 import Layout from '../components/layout';
 
+// Get metadata from alle posts
 export async function getStaticProps() {
   const allPostsData = await getSortedPostsData()
   return {

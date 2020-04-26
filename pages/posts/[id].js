@@ -5,6 +5,7 @@ import Head from 'next/head'
 import Nav from '../../components/nav'
 import Link from 'next/link';
 
+//Generate paths
 export async function getStaticPaths() {
   const paths = getAllPostIds()
   return {
@@ -13,6 +14,7 @@ export async function getStaticPaths() {
   }
 }
 
+//get the Post
 export async function getStaticProps({ params }) {
   const postData = await getPostData(params.id)
   return {
