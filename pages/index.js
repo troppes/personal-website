@@ -16,7 +16,7 @@ export default () => (
           </p>
         </div>
         <div className="column col-2 col-md-6 mt-2 col-mr-auto">
-          <img src={process.env.BACKEND_URL + '/img/me.png'} alt='logo' className='img-responsive' style={{ 'border-radius': 50 + '%' }} />
+          <img src={process.env.BACKEND_URL + '/img/me.png'} alt='logo' className='img-responsive' style={{ 'borderRadius': 50 + '%' }} />
         </div>
       </div>
     </div>
