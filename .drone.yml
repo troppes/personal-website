@@ -1,6 +1,6 @@
 kind: pipeline
 type: docker
-name: push to Gitea
+name: Push to Gitea
 
 steps:
   - name: push
@@ -20,7 +20,26 @@ steps:
 ---
 kind: pipeline
 type: docker
-name: deploy to Github pages
+name: Testing
+clone:
+  disable: true
+
+trigger:
+  branch:
+    - master
+steps:
+  - name: run tests
+    image: alpine
+    commands:
+      - apk add --update nodejs npm
+      - npm install
+      - npm run test
+
+---
+
+kind: pipeline
+type: docker
+name: Deploy
 clone:
   disable: true
 
@@ -28,8 +47,12 @@ trigger:
   branch:
     - master
 
+when:
+  status:
+  - success
+
 steps:
-  - name: install and push
+  - name: deploy
     image: alpine
     environment:
       SSH_PRIVATE_KEY_GITHUB:
@@ -46,3 +69,4 @@ steps:
       - cd personal-website
       - npm install
       - npm run deploy
+
