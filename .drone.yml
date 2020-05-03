@@ -17,3 +17,50 @@ steps:
       - ssh-keyscan -p 2244 -H reitz.dev,46.38.234.38 >> /root/.ssh/known_hosts
       - git remote add gitea ssh://git@reitz.dev:2244/flo/personal-blog.git
       - git push gitea
+---
+kind: pipeline
+type: docker
+name: Test
+
+steps:
+  - name: run tests
+    image: alpine
+    commands:
+      - apk add --update nodejs npm
+      - npm install
+      - npm run test
+
+---
+
+kind: pipeline
+type: docker
+name: Deploy
+clone:
+  disable: true
+
+trigger:
+  branch:
+    - master
+
+depends_on:
+  - Test
+
+steps:
+  - name: deploy
+    image: alpine
+    environment:
+      SSH_PRIVATE_KEY_GITHUB:
+        from_secret: private_key_github
+    commands:
+      - apk add git
+      - apk add --update nodejs npm
+      - apk add --update openssh-client bash
+      - mkdir -p /root/.ssh
+      - eval $(ssh-agent -s)
+      - bash -c 'ssh-add <(echo "$SSH_PRIVATE_KEY_GITHUB")'
+      - ssh-keyscan github.com >> ~/.ssh/known_hosts
+      - git clone git@github.com:troppes/personal-website.git
+      - cd personal-website
+      - npm install
+      - npm run deploy
+
