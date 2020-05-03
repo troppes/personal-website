@@ -20,43 +20,33 @@ steps:
 ---
 kind: pipeline
 type: docker
-name: Testing
+name: Test and deploy
 clone:
   disable: true
+
+environment:
+  SSH_PRIVATE_KEY_GITHUB:
+    from_secret: private_key_github
 
 trigger:
   branch:
     - master
+
 steps:
   - name: run tests
     image: alpine
     commands:
+      - apk add --update git
       - apk add --update nodejs npm
+      - git clone git@github.com:troppes/personal-website.git
+      - cd personal-website
       - npm install
       - npm run test
-
----
-
-kind: pipeline
-type: docker
-name: Deploy
-clone:
-  disable: true
-
-trigger:
-  branch:
-    - master
-
-when:
-  status:
-  - success
-
-steps:
-  - name: deploy
+  - name: deploy to gh-pages
     image: alpine
-    environment:
-      SSH_PRIVATE_KEY_GITHUB:
-        from_secret: private_key_github
+    when:
+      status:
+        - success
     commands:
       - apk add git
       - apk add --update nodejs npm
@@ -69,4 +59,5 @@ steps:
       - cd personal-website
       - npm install
       - npm run deploy
+    
 
