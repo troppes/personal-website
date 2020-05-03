@@ -6,7 +6,7 @@ describe('Pages', () => {
   describe('Index', () => {
     it('should render without throwing an error', function () {
       const wrap = mount(<IndexPage/>)
-      expect(wrap.find('h2').text()).toBe('Florrian Reitz')
+      expect(wrap.find('h2').text()).toBe('Florian Reitz')
     })
   })  
 })
