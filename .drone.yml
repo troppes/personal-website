@@ -46,7 +46,7 @@ steps:
     image: alpine
     when:
       status:
-        - success
+      - success
     commands:
       - apk add git
       - apk add --update nodejs npm
