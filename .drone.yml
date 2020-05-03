@@ -44,9 +44,6 @@ steps:
       - npm run test
   - name: deploy to gh-pages
     image: alpine
-    when:
-      status:
-      - success
     commands:
       - apk add git
       - apk add --update nodejs npm
