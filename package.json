@@ -1,6 +1,8 @@
 {
-  "name": "vue-website",
-  "version": "0.0.0",
+  "name": "personal-website",
+  "author": "Florian Reitz",
+  "version": "0.0.1",
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
@@ -10,12 +12,18 @@
     "vue": "^3.0.5"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.17.0",
+    "@typescript-eslint/parser": "^4.17.0",
     "@vitejs/plugin-vue": "^1.1.5",
     "@vue/compiler-sfc": "^3.0.5",
     "autoprefixer": "^10.2.5",
+    "eslint": "^7.22.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-vue": "^7.0.0-beta.4",
     "postcss": "^8.2.8",
     "tailwindcss": "^2.0.3",
-    "typescript": "^4.1.3",
+    "typescript": "^4.2.3",
     "vite": "^2.1.0",
     "vue-tsc": "^0.0.8"
   }
