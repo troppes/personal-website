@@ -1,19 +1,15 @@
 <template>
-  <Navbar />
-  <router-view />
-  <Footer />
+  <Notification />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import Navbar from './components/Navbar.vue';
-import Footer from './components/Footer.vue';
+import Notification from '../components/Notification.vue';
 
 export default defineComponent({
   name: 'App',
   components: {
-    Footer,
-    Navbar,
+    Notification,
   },
 });
 </script>

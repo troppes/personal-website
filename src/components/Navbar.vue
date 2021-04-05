@@ -76,14 +76,18 @@
           <div class="hidden sm:block sm:ml-6">
             <div class="flex space-x-4">
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-              <a
-                href="#"
+              <router-link
+                to="/"
                 class="text-white hover:bg-primary-hover px-3 py-2 rounded-md text-sm font-medium"
-              >Dashboard</a>
-              <a
-                href="#"
+              >
+                Home
+              </router-link>
+              <router-link
+                to="/about"
                 class="text-white hover:bg-primary-hover px-3 py-2 rounded-md text-sm font-medium"
-              >Team</a>
+              >
+                About
+              </router-link>
               <a
                 href="#"
                 class="text-white hover:bg-primary-hover px-3 py-2 rounded-md text-sm font-medium"
