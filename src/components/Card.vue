@@ -2,7 +2,7 @@
   <div
     class="flex flex-col justify-between w-72 sm:w-96 h-96 bg-white bg-center text-gray-800
      shadow-md overflow-hidden cursor-pointer rounded-xl hover:shadow-xl"
-    style="background-image:url('https://placeimg.com/480/480/any')"
+    :style="pictureKey ? 'background-image:url(https://cms.reitz.dev/assets/'+pictureKey+')' : 'background-color: #e0f5b9'"
   >
     <div class="flex justify-between items-center ml-4 pr-8">
       <div
@@ -23,7 +23,10 @@
         {{ title }}
       </h3>
       <p class="truncate text-gray-500 text-sm">
-        {{ msg }}
+        <a
+          v-if="url"
+          :href="url"
+        >Click here for more Information</a>
       </p>
     </div>
   </div>
@@ -47,6 +50,16 @@ export default {
       default: null,
     },
     textUpperRight: {
+      type: String,
+      required: false,
+      default: null,
+    },
+    url: {
+      type: String,
+      required: false,
+      default: null,
+    },
+    pictureKey: {
       type: String,
       required: false,
       default: null,
