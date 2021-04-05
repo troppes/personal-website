@@ -1,13 +1,14 @@
 <template>
   <Particles
     id="tsparticles"
+    class="w-full h-80"
     :options="{
       background: {
         color: {
-          value: '#0d47a1'
+          value: '#ff8080'
         }
       },
-      fpsLimit: 60,
+      fpsLimit: 144,
       interactivity: {
         detectsOn: 'canvas',
         events: {
@@ -40,10 +41,10 @@
       },
       particles: {
         color: {
-          value: '#ffffff'
+          value: '#e0f5b9'
         },
         links: {
-          color: '#ffffff',
+          color: '#e0f5b9',
           distance: 150,
           enable: true,
           opacity: 0.5,
