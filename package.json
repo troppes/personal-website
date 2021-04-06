@@ -5,6 +5,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "vite",
+    "tsc": "vue-tsc",
+    "lint": "eslint --ext .js,.vue src",
     "build": "vue-tsc --noEmit && vite build",
     "serve": "vite preview"
   },

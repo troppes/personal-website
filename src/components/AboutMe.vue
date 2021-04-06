@@ -4,9 +4,9 @@
       <h1>
         {{ title }}
       </h1>
-      <p
-        v-html="msg"
-      />
+      <!-- Disable ESLint since the Data is from a trusted source-->
+      <!-- eslint-disable-next-line vue/no-v-html -->
+      <p v-html="msg" />
     </div>
     <div
       class="pure-u-1-2 profile"
@@ -38,10 +38,11 @@ export default {
 
 <style scoped>
 
-.about-me{
+.about-me {
   background: black;
   color: white;
 }
+
 .profile {
   height: 50vh;
   width: 80vh;
