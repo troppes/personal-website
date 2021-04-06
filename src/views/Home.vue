@@ -26,7 +26,8 @@ import { defineComponent } from 'vue';
 import axios from 'axios';
 import Card from '../components/Card.vue';
 import Header from '../components/Header.vue';
-import { Post } from '../types/post.ts';
+import { Post } from '../types/post';
+import { Me } from '../types/me';
 import AboutMe from '../components/AboutMe.vue';
 
 export default defineComponent({
@@ -39,8 +40,8 @@ export default defineComponent({
   data() {
     return {
       section: 'home',
-      posts: [], // Todo add Post and see it crashing
-      me: [],
+      posts: [] as Post[],
+      me: {} as Me,
     };
   },
   mounted() {
