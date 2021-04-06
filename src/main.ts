@@ -3,7 +3,7 @@ import Particles from 'particles.vue3';
 import type { RouteRecordRaw } from 'vue-router';
 import { createRouter, createWebHashHistory } from 'vue-router';
 import App from './App.vue';
-import './index.css';
+import './styles/index.css';
 import Home from './views/Home.vue';
 import About from './views/About.vue';
 

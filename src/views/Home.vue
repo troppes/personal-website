@@ -5,14 +5,20 @@
     :msg="me.description"
     :picture-key="me.picture"
   />
-  <Card
-    v-for="post in posts"
-    :key="post.id"
-    :title="post.title"
-    :msg="post.description"
-    :url="post.url"
-    :picture-key="post.picture"
-  />
+  <div class="pure-g cards">
+    <Card
+      v-for="post in posts"
+      :key="post.id"
+      :title="post.title"
+      :msg="post.description"
+      :url="post.url"
+      :picture-key="post.picture"
+    />
+    <Card
+      msg="All projects can be found here"
+      title="All projects"
+    />
+  </div>
 </template>
 
 <script lang="ts">
@@ -38,13 +44,13 @@ export default defineComponent({
     };
   },
   mounted() {
-    this.fetProjects();
+    this.fetchProjects();
     this.fetchAboutMe();
   },
   methods: {
-    async fetProjects() {
+    async fetchProjects() {
       try {
-        const response = await axios.get('https://cms.reitz.dev/items/projects');
+        const response = await axios.get('https://cms.reitz.dev/items/projects?limit=3');
         const results = response.data.data;
         this.posts = results.map((post: Post) => ({
           id: post.id.toString(),
@@ -91,3 +97,11 @@ export default defineComponent({
   },
 });
 </script>
+
+<style scoped>
+
+.cards{
+  padding-top: 10vh;
+}
+
+</style>

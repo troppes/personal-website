@@ -1,0 +1,57 @@
+@import 'pure-min.css';
+@import 'grids-responsive-min.css';
+
+:root {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    --navbar-bg-color: hsl(0, 0%, 15%);
+    --navbar-text-color: hsl(0, 0%, 85%);
+    --navbar-text-color-focus: white;
+    --navbar-bg-contrast: hsl(0, 0%, 25%);
+    --main-color: #ff8080;
+
+    --base-grid: 8px;
+    --colour-background: #fff;
+    --colour-background-folded: #f5f5f5;
+    --colour-background-stripes: rgba(255,255,255,.5);
+    --colour-text: #1a1a1a;
+}
+
+body{
+    background: var(--main-color);
+    color: white;
+}
+
+.pure-g > div[class*="pure-u-"] {
+    padding: 1em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+@media (max-width: 569px) {
+    .hidden-sm {
+        display: none;
+    }
+}
+
+@media (max-width: 769px) {
+    .hidden-md {
+        display: none;
+    }
+}
+
+@media (max-width: 1024px) {
+    .hidden-lg {
+        display: none;
+    }
+}
+
+@media (max-width: 1280px) {
+    .hidden-xl {
+        display: none;
+    }
+}
+
+

@@ -1,7 +1,9 @@
 <template>
+  <div id="welcome">
+    Move Mouse Here
+  </div>
   <Particles
     id="tsparticles"
-    class="w-full h-80"
     :options="{
       background: {
         color: {
@@ -91,5 +93,15 @@ export default {
 </script>
 
 <style scoped>
+#tsparticles {
+  height: 40vh;
+}
+
+#welcome {
+  position: absolute;
+  margin-top: 20vh;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
 
 </style>

@@ -1,23 +1,17 @@
 <template>
-  <div class="flex flex-row">
-    <div>
-      <h1 class="text-8xl">
+  <div class="pure-g about-me">
+    <div class="pure-u-1-2">
+      <h1>
         {{ title }}
       </h1>
       <p
-        class="text-2xl"
         v-html="msg"
       />
     </div>
-    <div class="flex flex-wrap justify-center">
-      <div class="w-6/12 sm:w-4/12 px-4">
-        <img
-          :src="'https://cms.reitz.dev/assets/'+pictureKey"
-          alt="Me"
-          class="shadow-lg rounded-full max-w-full h-auto align-middle border-none"
-        >
-      </div>
-    </div>
+    <div
+      class="pure-u-1-2 profile"
+      :style="'background-image: url(https://cms.reitz.dev/assets/'+pictureKey+')'"
+    />
   </div>
 </template>
 
@@ -43,5 +37,16 @@ export default {
 </script>
 
 <style scoped>
+
+.about-me{
+  background: black;
+  color: white;
+}
+.profile {
+  height: 50vh;
+  width: 80vh;
+  background-repeat: no-repeat;
+  background-size: 80vh auto;
+}
 
 </style>
