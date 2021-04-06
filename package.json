@@ -7,7 +7,7 @@
     "dev": "vite",
     "tsc": "vue-tsc",
     "lint": "eslint --ext .js,.vue src",
-    "build": "vue-tsc --noEmit && vite build",
+    "build": "vite build",
     "serve": "vite preview"
   },
   "dependencies": {

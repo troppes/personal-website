@@ -1,6 +1,6 @@
 kind: pipeline
 type: docker
-name: Test
+name: test
 
 steps:
   - name: run tests
@@ -14,12 +14,39 @@ steps:
 ---
 
 kind: pipeline
+type: docker
+name: build
+depends_on:
+  - test
+
+trigger:
+  branch:
+    - main
+
+steps:
+  - name: docker
+    image: plugins/docker
+    settings:
+      username:
+        from_secret: docker_user
+      password:
+        from_secret: docker_pw
+      repo: floreitz/website
+      tags: latest
+
+---
+
+kind: pipeline
 type: ssh
 name: deploy
 
 trigger:
   branch:
     - main
+
+depends_on:
+  - test
+  - build
 
 server:
   host:
@@ -32,4 +59,3 @@ steps:
   - name: deploy
     commands:
       - cd /srv/docker/
-      - docker-compose up -d
