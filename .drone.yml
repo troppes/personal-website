@@ -6,7 +6,7 @@ steps:
   - name: run tests
     image: alpine
     commands:
-      - apk add --update nodejs npm yarn
+      - apk add --update nodejs yarn
       - yarn install
       - yarn run tsc
       - yarn run eslint
@@ -24,7 +24,14 @@ trigger:
     - main
 
 steps:
-  - name: docker
+  - name: build project
+    image: alpine
+    commands:
+      - apk add --update nodejs yarn
+      - yarn install
+      - yarn run build
+
+  - name: build container
     image: plugins/docker
     settings:
       username:
