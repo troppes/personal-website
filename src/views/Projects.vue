@@ -14,8 +14,8 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import axios from 'axios';
-import Card from '../components/Card.vue';
-import { Post } from '../types/Post';
+import Card from '../components/Project.vue';
+import ProjectsType from '../types/ProjectsType';
 
 export default defineComponent({
   name: 'App',
@@ -24,7 +24,7 @@ export default defineComponent({
   },
   data() {
     return {
-      posts: [] as Post[],
+      posts: [] as ProjectsType[],
     };
   },
   mounted() {
@@ -35,7 +35,7 @@ export default defineComponent({
       try {
         const response = await axios.get('https://cms.reitz.dev/items/projects');
         const results = response.data.data;
-        this.posts = results.map((post: Post) => ({
+        this.posts = results.map((post: ProjectsType) => ({
           id: post.id.toString(),
           title: post.title,
           description: post.description,

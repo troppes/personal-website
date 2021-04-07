@@ -1,11 +1,14 @@
 <template>
-  <gallery-header />
+  <gallery-header
+    :image-key="imageKey"
+    :text="text"
+  />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 import axios from 'axios';
-import { Post } from '../types/Post';
+import GalleryHeaderType from '../types/GalleryHeaderType';
 import GalleryHeader from '../components/gallery/GalleryHeader.vue';
 
 export default defineComponent({
@@ -15,26 +18,20 @@ export default defineComponent({
   },
   data() {
     return {
-      section: 'home',
-      posts: [] as Post[],
+      text: '',
+      imageKey: '',
     };
   },
   mounted() {
-    this.fetchProjects();
+    this.fetchGalleryHeader();
   },
   methods: {
-    async fetchProjects() {
+    async fetchGalleryHeader() {
       try {
-        const response = await axios.get('https://cms.reitz.dev/items/projects');
-        const results = response.data.data;
-        this.posts = results.map((post: Post) => ({
-          id: post.id.toString(),
-          title: post.title,
-          description: post.description,
-          url: post.url,
-          dateCreated: post.dateCreated,
-          picture: post.picture,
-        }));
+        const response = await axios.get('https://cms.reitz.dev/items/gallerycover');
+        const results: GalleryHeaderType = response.data.data;
+        this.text = results.text;
+        this.imageKey = results.image;
       } catch (err) {
         if (err.response) {
           // client received an error response (5xx, 4xx)

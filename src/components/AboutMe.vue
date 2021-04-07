@@ -10,7 +10,7 @@
     </div>
     <div
       class="pure-u-1-2 profile"
-      :style="'background-image: url(https://cms.reitz.dev/assets/'+pictureKey+')'"
+      :style="pictureKey?'background-image: url(https://cms.reitz.dev/assets/'+pictureKey+')': 'background-color: var(--background-colour)'"
     />
   </div>
 </template>
@@ -22,10 +22,12 @@ export default {
     title: {
       type: String,
       required: true,
+      default: '',
     },
     msg: {
       type: String,
       required: true,
+      default: '',
     },
     pictureKey: {
       type: String,

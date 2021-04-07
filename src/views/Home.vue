@@ -24,10 +24,10 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import axios from 'axios';
-import Card from '../components/Card.vue';
+import Card from '../components/Project.vue';
 import Header from '../components/Header.vue';
-import { Post } from '../types/Post';
-import { Me } from '../types/Me';
+import ProjectsType from '../types/ProjectsType';
+import AboutMeType from '../types/AboutMeType';
 import AboutMe from '../components/AboutMe.vue';
 
 export default defineComponent({
@@ -40,8 +40,8 @@ export default defineComponent({
   data() {
     return {
       section: 'home',
-      posts: [] as Post[],
-      me: {} as Me,
+      posts: [] as ProjectsType[],
+      me: {} as AboutMeType,
     };
   },
   mounted() {
@@ -53,7 +53,7 @@ export default defineComponent({
       try {
         const response = await axios.get('https://cms.reitz.dev/items/projects?limit=3');
         const results = response.data.data;
-        this.posts = results.map((post: Post) => ({
+        this.posts = results.map((post: ProjectsType) => ({
           id: post.id.toString(),
           title: post.title,
           description: post.description,
