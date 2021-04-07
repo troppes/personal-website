@@ -118,6 +118,10 @@ export default defineComponent({
 
 <style scoped>
 
+footer{
+  color:green;
+}
+
 #layout {
   padding: 0;
 }

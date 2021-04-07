@@ -13,7 +13,9 @@ const routes:unknown = [
   { path: '/', component: Home, name: 'Home' },
   { path: '/gallery', component: Gallery, name: 'Gallery' },
   { path: '/projects', component: Projects, name: 'Projects' },
-  { path: '/blog', component: Blog, name: 'Blog' },
+  {
+    path: '/blog', component: Blog, name: 'Blog', meta: { hideFooter: true },
+  },
 ];
 
 const router = createRouter({
