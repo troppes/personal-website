@@ -6,7 +6,7 @@
 import { defineComponent } from 'vue';
 import axios from 'axios';
 import { Post } from '../types/Post';
-import GalleryHeader from '../components/blog/GalleryHeader.vue';
+import GalleryHeader from '../components/gallery/GalleryHeader.vue';
 
 export default defineComponent({
   name: 'App',
