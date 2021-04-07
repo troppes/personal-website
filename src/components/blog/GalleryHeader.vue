@@ -121,7 +121,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import axios from 'axios';
-import { GalleryHeader } from '../types/GalleryHeader';
+import { GalleryHeader } from '../../types/GalleryHeader';
 
 export default defineComponent({
   name: 'App',
