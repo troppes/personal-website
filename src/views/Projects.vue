@@ -1,10 +1,4 @@
 <template>
-  <Header />
-  <AboutMe
-    :title="me.title"
-    :msg="me.description"
-    :picture-key="me.picture"
-  />
   <div class="pure-g cards">
     <Card
       v-for="post in posts"
@@ -14,10 +8,6 @@
       :url="post.url"
       :picture-key="post.picture"
     />
-    <Card
-      msg="All projects can be found here"
-      title="All projects"
-    />
   </div>
 </template>
 
@@ -25,28 +15,20 @@
 import { defineComponent } from 'vue';
 import axios from 'axios';
 import Card from '../components/Card.vue';
-import Header from '../components/Header.vue';
 import { Post } from '../types/Post';
-import { Me } from '../types/Me';
-import AboutMe from '../components/AboutMe.vue';
 
 export default defineComponent({
   name: 'App',
   components: {
-    AboutMe,
     Card,
-    Header,
   },
   data() {
     return {
-      section: 'home',
       posts: [] as Post[],
-      me: {} as Me,
     };
   },
   mounted() {
     this.fetchProjects();
-    this.fetchAboutMe();
   },
   methods: {
     async fetchProjects() {
@@ -61,25 +43,6 @@ export default defineComponent({
           dateCreated: post.dateCreated,
           picture: post.picture,
         }));
-      } catch (err) {
-        if (err.response) {
-          // client received an error response (5xx, 4xx)
-          // eslint-disable-next-line no-console
-          console.log('Server Error:', err);
-        } else if (err.request) {
-          // client never received a response, or request never left
-          // eslint-disable-next-line no-console
-          console.log('Network Error:', err);
-        } else {
-          // eslint-disable-next-line no-console
-          console.log('Client Error:', err);
-        }
-      }
-    },
-    async fetchAboutMe() {
-      try {
-        const response = await axios.get('https://cms.reitz.dev/items/aboutme');
-        this.me = response.data.data;
       } catch (err) {
         if (err.response) {
           // client received an error response (5xx, 4xx)

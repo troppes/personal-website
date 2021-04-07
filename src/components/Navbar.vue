@@ -17,6 +17,14 @@
       </li>
       <li class="pure-menu-item">
         <router-link
+          to="/projects"
+          class="pure-menu-heading pure-menu-link"
+        >
+          Projects
+        </router-link>
+      </li>
+      <li class="pure-menu-item">
+        <router-link
           to="/gallery"
           class="pure-menu-heading pure-menu-link"
         >
