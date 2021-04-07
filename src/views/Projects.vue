@@ -33,7 +33,7 @@ export default defineComponent({
   methods: {
     async fetchProjects() {
       try {
-        const response = await axios.get('https://cms.reitz.dev/items/projects?limit=3');
+        const response = await axios.get('https://cms.reitz.dev/items/projects');
         const results = response.data.data;
         this.posts = results.map((post: Post) => ({
           id: post.id.toString(),
