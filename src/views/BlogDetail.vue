@@ -1,12 +1,9 @@
 <template>
-  <div class="pure-g">
+  <div class="pure-u-xl-4-24" />
+  <div class="pure-g center pure-u-xl-16-24">
     <div class="pure-u-1">
       <h2>{{ blogPost.title }}</h2>
     </div>
-    <div
-      class="pure-u-1 pure-img"
-      :style="blogPost.image?'background-image: url(https://cms.reitz.dev/assets/'+blogPost.image+')': 'background-color: var(--background-colour)'"
-    />
     <!-- eslint-disable vue/no-v-html -->
     <div
       class="pure-u-1"
@@ -14,6 +11,7 @@
     />
     <!-- eslint-enable vue/no-v-html -->
   </div>
+  <div class="pure-u-xls-4-24" />
 </template>
 
 <script lang="ts">
@@ -58,5 +56,8 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.center {
+  justify-content: center;
+}
 
 </style>
