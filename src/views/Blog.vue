@@ -31,6 +31,7 @@
       <BlogPost
         v-for="post in blogPosts"
         :key="post.id"
+        :pkey="post.id"
         :title="post.title"
         :short-desc="post.shortDescription"
         :picture-key="post.image"
@@ -48,7 +49,7 @@ import BlogPostType from '../types/BlogPostType';
 import BlogMetaDataType from '../types/BlogMetaDataType';
 
 export default defineComponent({
-  name: 'App',
+  name: 'Blog',
   components: {
     BlogPost,
   },
