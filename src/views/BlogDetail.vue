@@ -20,7 +20,6 @@
 import { defineComponent } from 'vue';
 import axios from 'axios';
 import BlogPostType from '../types/BlogPostType';
-import BlogMetaDataType from '../types/BlogMetaDataType';
 
 export default defineComponent({
   name: 'BlogDetail',
@@ -32,35 +31,13 @@ export default defineComponent({
     };
   },
   mounted() {
-    this.fetchBlogPosts();
-    this.fetchBlogMeta();
+    this.fetchBlogPost();
   },
   methods: {
-    async fetchBlogPosts() {
+    async fetchBlogPost() {
       try {
         const response = await axios.get(`https://cms.reitz.dev/items/blogposts/${this.$route.params.id}?fields=*.*`);
         this.blogPost = response.data.data;
-      } catch (err) {
-        if (err.response) {
-          // client received an error response (5xx, 4xx)
-          // eslint-disable-next-line no-console
-          console.log('Server Error:', err);
-        } else if (err.request) {
-          // client never received a response, or request never left
-          // eslint-disable-next-line no-console
-          console.log('Network Error:', err);
-        } else {
-          // eslint-disable-next-line no-console
-          console.log('Client Error:', err);
-        }
-      }
-    },
-    async fetchBlogMeta() {
-      try {
-        const response = await axios.get('https://cms.reitz.dev/items/blogmetadata');
-        const result: BlogMetaDataType = response.data.data;
-        this.title = result.title;
-        this.tagline = result.tagline;
       } catch (err) {
         if (err.response) {
           // client received an error response (5xx, 4xx)
