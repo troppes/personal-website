@@ -36,6 +36,7 @@
         :short-desc="post.shortDescription"
         :picture-key="post.image"
         :author="post.author"
+        :alt="post.id % 2 === 0"
       />
     </div>
   </div>
@@ -138,6 +139,7 @@ footer{
   border-right: 2px white dashed;
   border-top: 2px white dashed;
   box-shadow: 5px 5px 5px #575e57;
+  border-radius: 5px;
   color: #fff;
 }
 
@@ -165,6 +167,7 @@ footer{
 
 .content {
   padding: 2em 1em 0;
+  margin-top: 2vh;
 }
 
 @media (min-width: 48em) {
