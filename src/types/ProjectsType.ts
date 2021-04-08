@@ -1,4 +1,4 @@
-export interface Post{
+interface ProjectsType {
     id: number;
     status: string;
     description: string;
@@ -7,3 +7,4 @@ export interface Post{
     url: string;
     picture: string;
 }
+export default ProjectsType;

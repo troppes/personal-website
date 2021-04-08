@@ -1,7 +1,7 @@
 <template>
   <Navbar />
   <router-view />
-  <Footer />
+  <Footer v-if="!$route.meta.hideFooter" />
 </template>
 
 <script lang="ts">

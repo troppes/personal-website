@@ -1,48 +1,41 @@
 <template>
-  <div class="pure-g cards">
-    <Card
-      v-for="post in posts"
-      :key="post.id"
-      :title="post.title"
-      :msg="post.description"
-      :url="post.url"
-      :picture-key="post.picture"
+  <div class="pure-u-xl-4-24" />
+  <div class="pure-g center pure-u-xl-16-24">
+    <div class="pure-u-1">
+      <h2>{{ blogPost.title }}</h2>
+    </div>
+    <!-- eslint-disable vue/no-v-html -->
+    <div
+      class="pure-u-1"
+      v-html="blogPost.text"
     />
+    <!-- eslint-enable vue/no-v-html -->
   </div>
+  <div class="pure-u-xls-4-24" />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 import axios from 'axios';
-import Card from '../components/Project.vue';
-import ProjectsType from '../types/ProjectsType';
+import BlogPostType from '../types/BlogPostType';
 
 export default defineComponent({
-  name: 'App',
+  name: 'BlogDetail',
   components: {
-    Card,
   },
   data() {
     return {
-      posts: [] as ProjectsType[],
+      blogPost: {} as BlogPostType,
     };
   },
   mounted() {
-    this.fetchProjects();
+    this.fetchBlogPost();
   },
   methods: {
-    async fetchProjects() {
+    async fetchBlogPost() {
       try {
-        const response = await axios.get('https://cms.reitz.dev/items/projects');
-        const results = response.data.data;
-        this.posts = results.map((post: ProjectsType) => ({
-          id: post.id.toString(),
-          title: post.title,
-          description: post.description,
-          url: post.url,
-          dateCreated: post.dateCreated,
-          picture: post.picture,
-        }));
+        const response = await axios.get(`https://cms.reitz.dev/items/blogposts/${this.$route.params.id}?fields=*.*`);
+        this.blogPost = response.data.data;
       } catch (err) {
         if (err.response) {
           // client received an error response (5xx, 4xx)
@@ -63,9 +56,8 @@ export default defineComponent({
 </script>
 
 <style scoped>
-
-.cards{
-  padding-top: 10vh;
+.center {
+  justify-content: center;
 }
 
 </style>
