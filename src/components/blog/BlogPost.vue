@@ -1,42 +1,52 @@
 <template>
   <!-- A single blog post -->
-  <section class="post">
-    <div
-      :style="'background-image:url(https://cms.reitz.dev/assets/'+pictureKey+')'"
-    />
-    <header
-      class="post-header"
-    >
-      <h2 class="post-title">
-        {{ title }}
-      </h2>
+  <router-link :to="{ name: 'BlogDetail', params: { id: pkey }}">
+    <section class="post">
+      <div
+        :style="'background-image:url(https://cms.reitz.dev/assets/'+pictureKey+')'"
+      />
+      <header
+        class="post-header"
+      >
+        <h2 class="post-title">
+          {{ title }}
+        </h2>
 
-      <p class="post-meta">
-        By <a
-          href="#"
-          class="post-author"
-        >{{ author }}</a> under <a
-          class="post-category post-category-design"
-          href="#"
-        >CSS</a> <a
-          class="post-category post-category-pure"
-          href="#"
-        >Pure</a>
-      </p>
-    </header>
+        <p class="post-meta">
+          By
+          <router-link
+            to="/"
+            class="post-author"
+          >
+            {{ author }}
+          </router-link>
+          under <a
+            class="post-category post-category-design"
+            href="#"
+          >CSS</a> <a
+            class="post-category post-category-pure"
+            href="#"
+          >Pure</a>
+        </p>
+      </header>
 
-    <div class="post-description">
-      <p>
-        {{ shortDesc }}
-      </p>
-    </div>
-  </section>
+      <div class="post-description">
+        <p>
+          {{ shortDesc }}
+        </p>
+      </div>
+    </section>
+  </router-link>
 </template>
 
 <script>
 export default {
   name: 'BlogPost',
   props: {
+    pkey: {
+      type: String,
+      required: true,
+    },
     title: {
       type: String,
       required: true,
