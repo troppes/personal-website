@@ -4,7 +4,7 @@
   </div>
   <Particles
     id="tsparticles"
-    :style="'background-image: url(https://cms.reitz.dev/assets/'+imageKey+')'"
+    :style="imageKey? 'background-image: url(https://cms.reitz.dev/assets/'+imageKey+')' : 'background-color: var(--secondary-color)'"
     :options="{
       fpsLimit: 60,
       particles: {
@@ -118,48 +118,22 @@
   />
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-import axios from 'axios';
-import { GalleryHeader } from '../../types/GalleryHeader';
-
-export default defineComponent({
-  name: 'App',
-  components: {
-  },
-  data() {
-    return {
-      text: '',
-      imageKey: '',
-    };
-  },
-  mounted() {
-    this.fetchProjects();
-  },
-  methods: {
-    async fetchProjects() {
-      try {
-        const response = await axios.get('https://cms.reitz.dev/items/gallerycover');
-        const results: GalleryHeader = response.data.data;
-        this.text = results.text;
-        this.imageKey = results.image;
-      } catch (err) {
-        if (err.response) {
-          // client received an error response (5xx, 4xx)
-          // eslint-disable-next-line no-console
-          console.log('Server Error:', err);
-        } else if (err.request) {
-          // client never received a response, or request never left
-          // eslint-disable-next-line no-console
-          console.log('Network Error:', err);
-        } else {
-          // eslint-disable-next-line no-console
-          console.log('Client Error:', err);
-        }
-      }
+<script>
+export default {
+  name: 'Project',
+  props: {
+    text: {
+      type: String,
+      required: true,
+      default: '',
+    },
+    imageKey: {
+      type: String,
+      required: false,
+      default: '',
     },
   },
-});
+};
 </script>
 
 <style scoped>

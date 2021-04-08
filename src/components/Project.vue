@@ -13,7 +13,7 @@
         >
           <div
             class="articles__content articles__content--lhs"
-            :style="'background-image:url(https://cms.reitz.dev/assets/'+pictureKey+')'"
+            :style="pictureKey ? 'background-image:url(https://cms.reitz.dev/assets/'+pictureKey+')' : 'background-color: var(--colour-background)'"
           >
             <h2 class="articles__title">
               {{ title }}
@@ -24,7 +24,7 @@
           </div>
           <div
             class="articles__content articles__content--rhs"
-            :style="'background-image:url(https://cms.reitz.dev/assets/'+pictureKey+')'"
+            :style="pictureKey ? 'background-image:url(https://cms.reitz.dev/assets/'+pictureKey+')' : 'background-color: var(--colour-background)'"
             aria-hidden="true"
           >
             <h2 class="articles__title">
@@ -42,7 +42,7 @@
 
 <script>
 export default {
-  name: 'Card',
+  name: 'Project',
   props: {
     title: {
       type: String,
