@@ -38,7 +38,7 @@ export default {
   name: 'BlogPost',
   props: {
     pkey: {
-      type: String,
+      type: Number,
       required: true,
     },
     title: {
