@@ -25,9 +25,9 @@ export default defineComponent({
   components: {},
   props: {
     size: {
-      type: Number,
+      type: String,
       required: false,
-      default: 30,
+      default: '30',
     },
   },
   data() {
@@ -43,7 +43,7 @@ export default defineComponent({
       try {
         const response = await axios.get('https://cms.reitz.dev/items/social_media/');
         const results = response.data.data;
-        this.socialMedia = results.map((social: SocialMediaType) => ({
+        this.socialMedia = results.map((social: any) => ({
           id: social.id.toString(),
           url: social.url,
           test: social.alt,
