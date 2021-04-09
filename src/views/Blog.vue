@@ -70,7 +70,6 @@ export default defineComponent({
       try {
         const response = await axios.get('https://cms.reitz.dev/items/blogposts?fields=*.*');
         const results = response.data.data;
-        // eslint-disable-next-line -- Any okay until proper types are implemented
         this.blogPosts = results.map((post: any) => ({
           id: post.id,
           title: post.title,
