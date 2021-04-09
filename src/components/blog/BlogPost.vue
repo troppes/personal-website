@@ -82,7 +82,6 @@ body {
 }
 
 .blog-card {
-  color: black;
   display: flex;
   flex-direction: column;
   margin: 1rem auto 1.6%;
@@ -177,7 +176,7 @@ body {
   text-align: right;
 }
 .blog-card .description .read-more a {
-  color: var(--tertiary-color);
+  color: var(--fourth-color);
   display: inline-block;
   position: relative;
 }

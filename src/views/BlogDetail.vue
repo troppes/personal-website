@@ -1,17 +1,19 @@
 <template>
-  <div class="pure-u-xl-4-24" />
-  <div class="pure-g center pure-u-xl-16-24">
-    <div class="pure-u-1">
-      <h2>{{ blogPost.title }}</h2>
-    </div>
-    <!-- eslint-disable vue/no-v-html -->
-    <div
-      class="pure-u-1"
-      v-html="blogPost.text"
-    />
+  <div class="content">
+    <div class="pure-u-xl-4-24" />
+    <div class="pure-g center pure-u-xl-16-24">
+      <div class="pure-u-1">
+        <h2>{{ blogPost.title }}</h2>
+      </div>
+      <!-- eslint-disable vue/no-v-html -->
+      <div
+        class="pure-u-1"
+        v-html="blogPost.text"
+      />
     <!-- eslint-enable vue/no-v-html -->
+    </div>
+    <div class="pure-u-xls-4-24" />
   </div>
-  <div class="pure-u-xls-4-24" />
 </template>
 
 <script lang="ts">
@@ -56,8 +58,15 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.content{
+  padding-top: 10vh;
+  padding-bottom: 10vh;
+}
+
 .center {
-  justify-content: center;
+  background-color: var(--secondary-color);
+  box-shadow: 5px 5px 5px #575e57;
+  border: 2px white dashed;
 }
 
 </style>

@@ -8,23 +8,11 @@
         <h1 class="brand-title">
           {{ title }}
         </h1>
-        <!-- Disable ESLint since the Data is from a trusted source-->
-        <!-- eslint-disable vue/no-v-html -->
         <div
           class="brand-tagline"
           v-html="tagline"
         />
-        <!-- eslint-enable vue/no-v-html -->
-        <nav class="nav">
-          <ul class="nav-list">
-            <li class="nav-item">
-              <a
-                class="pure-button"
-                href="https://purecss.io"
-              >Social Media Buttons</a>
-            </li>
-          </ul>
-        </nav>
+        <social-media size="40" />
       </div>
     </div>
     <div class="content pure-u-1 pure-u-md-3-4">
@@ -48,10 +36,12 @@ import axios from 'axios';
 import BlogPost from '../components/blog/BlogPost.vue';
 import BlogPostType from '../types/BlogPostType';
 import BlogMetaDataType from '../types/BlogMetaDataType';
+import SocialMedia from '../components/SocialMedia.vue';
 
 export default defineComponent({
   name: 'Blog',
   components: {
+    SocialMedia,
     BlogPost,
   },
   data() {
@@ -70,7 +60,6 @@ export default defineComponent({
       try {
         const response = await axios.get('https://cms.reitz.dev/items/blogposts?fields=*.*');
         const results = response.data.data;
-        // eslint-disable-next-line -- Any okay until proper types are implemented
         this.blogPosts = results.map((post: any) => ({
           id: post.id,
           title: post.title,
@@ -153,17 +142,6 @@ footer{
 }
 .brand-tagline {
   font-weight: 300;
-}
-
-.nav-list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.nav-item {
-  display: inline-block;
-  *display: inline;
-  zoom: 1;
 }
 
 .content {
