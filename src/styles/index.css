@@ -9,10 +9,10 @@
     --navbar-text-color: hsl(0, 0%, 85%);
     --navbar-text-color-focus: white;
     --navbar-bg-contrast: hsl(0, 0%, 25%);
-    --main-color: #ff8080;
-    --secondary-color: #ffba92;
-    --tertiary-color: #e0f5b9;
-    --fourth-color: #c6f1d6;
+    --primary-color: #f67280;
+    --secondary-color: #c06c84;
+    --tertiary-color: #6c5b7b;
+    --fourth-color: #355c7d;
 
     --base-grid: 8px;
     --colour-background: #fff;
@@ -22,7 +22,7 @@
 }
 
 body{
-    background: var(--main-color);
+    background: var(--primary-color);
     color: white;
 }
 
