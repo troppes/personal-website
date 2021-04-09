@@ -107,7 +107,7 @@ export default {
 }
 
 .articles__link {
-  background-color: var(--main-color);
+  background-color: var(--primary-color);
   border: 2px solid var(--colour-background);
   display: block;
   width: 100%;

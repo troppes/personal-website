@@ -5,11 +5,6 @@
   <Particles
     id="tsparticles"
     :options="{
-      background: {
-        color: {
-          value: '#ff8080'
-        }
-      },
       fpsLimit: 144,
       interactivity: {
         detectsOn: 'canvas',
@@ -95,6 +90,10 @@ export default {
 <style scoped>
 #tsparticles {
   height: 40vh;
+  background-color: var(--primary-color);
+  margin-bottom: 10vh;
+  border-bottom: 2px dashed var(--colour-background);
+  box-shadow: inset 0 -10px 15px -10px #000000;
 }
 
 #welcome {
