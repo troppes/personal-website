@@ -1,7 +1,5 @@
 <template>
-  <div id="welcome">
-    Move Mouse Here
-  </div>
+  <div id="welcome" />
   <Particles
     id="tsparticles"
     :options="{
