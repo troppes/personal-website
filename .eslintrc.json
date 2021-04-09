@@ -28,6 +28,7 @@
   "rules": {
     "max-len": ["error", { "code": 150 }],
     "import/extensions": "off",
-    "import/no-unresolved": "off"
+    "import/no-unresolved": "off",
+    "@typescript-eslint/no-explicit-any": "off"
   }
 }
