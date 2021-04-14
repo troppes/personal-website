@@ -5,14 +5,12 @@
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    --navbar-bg-color: hsl(0, 0%, 15%);
-    --navbar-text-color: hsl(0, 0%, 85%);
-    --navbar-text-color-focus: white;
-    --navbar-bg-contrast: hsl(0, 0%, 25%);
     --primary-color: #f67280;
     --secondary-color: #c06c84;
     --tertiary-color: #6c5b7b;
     --fourth-color: #355c7d;
+
+    --primary-text-color: white;
 
     --base-grid: 8px;
     --colour-background: #fff;
