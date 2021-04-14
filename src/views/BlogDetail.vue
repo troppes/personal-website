@@ -1,5 +1,5 @@
 <template>
-  <div class="content">
+  <div class="content blog">
     <div class="pure-u-xl-4-24" />
     <div class="pure-g center pure-u-xl-16-24">
       <div class="pure-u-1">
@@ -58,6 +58,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
+
 .content{
   padding-top: 10vh;
   padding-bottom: 10vh;
