@@ -24,6 +24,15 @@ body{
     color: white;
 }
 
+a {
+    word-break: break-all;
+    white-space: pre-wrap;
+}
+pre {
+    word-break: break-all;
+    white-space: pre-wrap;
+}
+
 .pure-g > div[class*="pure-u-"] {
     padding: 1em;
     -webkit-box-sizing: border-box;
