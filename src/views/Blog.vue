@@ -110,12 +110,8 @@ export default defineComponent({
 
 <style scoped>
 
-footer{
-  color:green;
-}
-
 #layout {
-  padding: 0;
+  padding-top: 8vh;
 }
 
 .header {
@@ -126,8 +122,6 @@ footer{
 
 .sidebar {
   background: var(--secondary-color);
-  border-right: 2px white dashed;
-  border-top: 2px white dashed;
   box-shadow: 5px 5px 5px #575e57;
   border-radius: 5px;
   color: #fff;
@@ -149,6 +143,12 @@ footer{
   margin-top: 2vh;
 }
 
+@media (max-width: 48em){
+  .sidebar{
+    border: 2px white dashed;
+  }
+}
+
 @media (min-width: 48em) {
   .content {
     padding: 2em 3em 0;
@@ -161,7 +161,9 @@ footer{
   }
 
   .sidebar {
-    margin-top: 5vh;
+    border-right: 2px white dashed;
+    border-top: 2px white dashed;
+    margin-top: 8vh;
     position: fixed;
     z-index: -1;
     top: 0;

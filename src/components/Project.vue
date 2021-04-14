@@ -110,8 +110,8 @@ export default {
   background-color: var(--primary-color);
   border: 2px solid var(--colour-background);
   display: block;
-  width: 100%;
-  height: 100%;
+  width: 98%;
+  height: 98%;
 }
 
 .articles__link:after {
