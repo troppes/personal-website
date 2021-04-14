@@ -60,7 +60,6 @@ export default {
   position: relative;
   top: -8vh;
   margin-bottom: -8vh;
-  overflow: hidden;
 }
 
 .photo img{
