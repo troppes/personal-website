@@ -1,7 +1,7 @@
 <template>
   <div class="pure-g">
-    <div class="pure-u-lg-4-24" />
-    <div class="about-me pure-u-lg-16-24 pure-g">
+    <div class="pure-u-md-4-24" />
+    <div class="about-me pure-u-md-16-24 pure-g">
       <div class="photo pure-u-1 pure-u-xl-1-3">
         <img
           class="left pure-img"
@@ -19,7 +19,7 @@
         />
       </div>
     </div>
-    <div class="pure-u-lg-4-24" />
+    <div class="pure-u-md-4-24" />
   </div>
 </template>
 
