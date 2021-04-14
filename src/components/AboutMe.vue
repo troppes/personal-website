@@ -68,7 +68,7 @@ export default {
 
 .separator {
   margin-top: 5vh;
-  border: 1px solid #C3C3C3;
+  border: 1px solid var(--colour-background);
 }
 
 p {
