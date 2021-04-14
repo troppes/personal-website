@@ -2,14 +2,14 @@
   <div class="pure-g">
     <div class="pure-u-md-4-24" />
     <div class="about-me pure-u-md-16-24 pure-g">
-      <div class="photo pure-u-1 pure-u-xl-1-3">
+      <div class="photo pure-u-1 pure-u-lg-1-2">
         <img
           class="left pure-img"
           alt="profile picture"
           :src="'https://cms.reitz.dev/assets/'+pictureKey"
         >
       </div>
-      <div class="content pure-u-1 pure-u-xl-1-3">
+      <div class="content pure-u-1 pure-u-lg-1-2">
         <h1>{{ title }}</h1>
         <div class="separator" />
         <p v-html="msg" />
@@ -87,31 +87,8 @@ p {
   .photo {
     float: left;
     position: relative;
-    left: 2vh;
-    top: -8vh;
-    height: 30vh;
-    width: 50vh;
-    overflow: hidden;
-    border: 2px solid var(--colour-background);
-  }
-
-  .content {
-    float:right;
-    margin-right: 2vh;
-    width: 40vh;
-  }
-
-  /*object-fit: cover;*/
-  /*object-position: center;*/
-  img.left {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    height: auto;
-    width: 100%;
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+    top: -10vh;
+    height: 40vh;
   }
 
   .social-media {
