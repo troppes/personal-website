@@ -89,17 +89,6 @@ export default {
   animation-timing-function: ease-in-out;
 }
 
-.articles__article:before {
-  content: "";
-  position: absolute;
-  top: calc(var(--base-grid) * -2);
-  left: calc(var(--base-grid) * -2);
-  border: 2px dashed var(--colour-background);
-  background-image: repeating-linear-gradient(-24deg, transparent, transparent 4px, var(--colour-background-stripes) 0,
-    var(--colour-background-stripes) 5px);
-  z-index: -1;
-}
-
 .articles__article,
 .articles__article:before {
   width: calc(var(--base-grid) * 35);
@@ -160,7 +149,7 @@ export default {
 
 .articles__footer {
   background: rgba(255, 128, 128, 0.6);
-  border: var(--colour-background) 2px dashed;
+  border: var(--colour-background) 2px solid;
   padding-left: 2%;
   padding-right: 2%;
   margin-top: auto;

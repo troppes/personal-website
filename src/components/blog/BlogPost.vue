@@ -91,8 +91,7 @@ body {
   border-radius: 5px;
   overflow: hidden;
   z-index: 0;
-  border: 2px white dashed;
-  box-shadow: 5px 5px 5px #575e57;
+  border: 2px white solid;
 }
 .blog-card a {
   color: inherit;
