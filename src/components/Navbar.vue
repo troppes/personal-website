@@ -68,11 +68,11 @@ a {
   color: var(--primary-text-color);
 }
 
-a:active{
+a:active {
   display: none;
 }
 
-.menu .router-link-active{
+.menu .router-link-active {
   background-color: var(--secondary-color);
 }
 
@@ -188,28 +188,45 @@ a:active{
 /* 48em = 768px */
 
 @media (min-width: 48em) {
-  .header{
+  .header {
     background: none;
+  }
+
+  .menu .router-link-active {
+    background-color: var(--secondary-color);
+    border-bottom: white 2px solid;
+    border-left: white 2px solid;
+    border-right: white 2px solid;
   }
 
   a {
     margin-left: 0.2vh;
   }
 
+  a:hover{
+    border-bottom: white 2px solid;
+    border-left: white 2px solid;
+    border-right: white 2px solid;
+  }
+
   .header li {
     float: left;
   }
+
   .header li a {
     padding: 20px 30px;
   }
+
   .header .menu {
     clear: none;
     float: right;
     max-height: none;
   }
+
   .header .menu-icon {
     display: none;
   }
+
   .header li a:hover,
   .header .menu-btn:hover {
     background-color: var(--secondary-color);
@@ -221,7 +238,7 @@ a:active{
     border-bottom-left-radius: 10px;
   }
 
-  .menu .router-link-active{
+  .menu .router-link-active {
     background-color: var(--secondary-color);
     -webkit-border-bottom-right-radius: 10px;
     -webkit-border-bottom-left-radius: 10px;
@@ -233,4 +250,11 @@ a:active{
 
 }
 
+@media (max-width: 48em) {
+
+  .menu .router-link-active {
+    background-color: var(--secondary-color);
+    border: white 2px solid;
+  }
+}
 </style>

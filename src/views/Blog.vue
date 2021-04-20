@@ -122,7 +122,6 @@ export default defineComponent({
 
 .sidebar {
   background: var(--secondary-color);
-  box-shadow: 5px 5px 5px #575e57;
   border-radius: 5px;
   color: #fff;
 }
@@ -145,7 +144,7 @@ export default defineComponent({
 
 @media (max-width: 48em){
   .sidebar{
-    border: 2px white dashed;
+    border: 2px white solid;
   }
 }
 
@@ -161,8 +160,8 @@ export default defineComponent({
   }
 
   .sidebar {
-    border-right: 2px white dashed;
-    border-top: 2px white dashed;
+    border-right: 2px white solid;
+    border-top: 2px white solid;
     margin-top: 8vh;
     position: fixed;
     z-index: -1;
