@@ -62,12 +62,11 @@ export default defineComponent({
 .content{
   padding-top: 10vh;
   padding-bottom: 10vh;
+  color: var(--secondary-text-color);
 }
 
 .center {
   background-color: var(--secondary-color);
-  box-shadow: 5px 5px 5px #575e57;
-  border: 2px white dashed;
 }
 
 </style>

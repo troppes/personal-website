@@ -70,10 +70,15 @@ a {
 
 a:active {
   display: none;
+  background-color: transparent;
+}
+
+a:focus{
+  background-color: transparent;
 }
 
 .menu .router-link-active {
-  background-color: var(--secondary-color);
+  color: var(--headline-text-color);
 }
 
 /* header */
@@ -98,11 +103,6 @@ a:active {
   text-decoration: none;
 }
 
-.header li a:hover,
-.header .menu-btn:hover {
-  background-color: var(--secondary-color);
-}
-
 .header .logo {
   display: block;
   float: left;
@@ -110,7 +110,6 @@ a:active {
   padding: 10px 20px;
   text-decoration: none;
 }
-
 /* menu */
 
 .header .menu {
@@ -192,21 +191,14 @@ a:active {
     background: none;
   }
 
-  .menu .router-link-active {
-    background-color: var(--secondary-color);
-    border-bottom: white 2px solid;
-    border-left: white 2px solid;
-    border-right: white 2px solid;
-  }
-
   a {
     margin-left: 0.2vh;
   }
 
   a:hover{
-    border-bottom: white 2px solid;
-    border-left: white 2px solid;
-    border-right: white 2px solid;
+    color: var(--headline-text-color);
+    background-color: transparent;
+    display: none;
   }
 
   .header li {
@@ -225,36 +217,6 @@ a:active {
 
   .header .menu-icon {
     display: none;
-  }
-
-  .header li a:hover,
-  .header .menu-btn:hover {
-    background-color: var(--secondary-color);
-    -webkit-border-bottom-right-radius: 10px;
-    -webkit-border-bottom-left-radius: 10px;
-    -moz-border-radius-bottomright: 10px;
-    -moz-border-radius-bottomleft: 10px;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-  }
-
-  .menu .router-link-active {
-    background-color: var(--secondary-color);
-    -webkit-border-bottom-right-radius: 10px;
-    -webkit-border-bottom-left-radius: 10px;
-    -moz-border-radius-bottomright: 10px;
-    -moz-border-radius-bottomleft: 10px;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-  }
-
-}
-
-@media (max-width: 48em) {
-
-  .menu .router-link-active {
-    background-color: var(--secondary-color);
-    border: white 2px solid;
   }
 }
 </style>

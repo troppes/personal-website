@@ -122,8 +122,6 @@ export default defineComponent({
 
 .sidebar {
   background: var(--secondary-color);
-  border-radius: 5px;
-  color: #fff;
 }
 
 .brand-title,
@@ -142,14 +140,9 @@ export default defineComponent({
   margin-top: 2vh;
 }
 
-@media (max-width: 48em){
-  .sidebar{
-    border: 2px white solid;
-  }
-}
-
 @media (min-width: 48em) {
   .content {
+    float: left;
     padding: 2em 3em 0;
     margin-left: 25%;
   }
@@ -160,11 +153,8 @@ export default defineComponent({
   }
 
   .sidebar {
-    border-right: 2px white solid;
-    border-top: 2px white solid;
     margin-top: 8vh;
     position: fixed;
-    z-index: -1;
     top: 0;
     bottom: 0;
   }
