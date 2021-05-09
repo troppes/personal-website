@@ -1,6 +1,6 @@
 [![Build Status](https://drone.reitz.dev/api/badges/troppes/vue-website/status.svg)](https://drone.reitz.dev/troppes/vue-website)
 
-#Website Template for reitz.dev
+# Website Template for reitz.dev
 
 ## Install dependencies
 
