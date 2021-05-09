@@ -1,20 +1,14 @@
 <template>
-  <footer>
-    <div class="pure-g">
-      <div
-        class="pure-u-md-1-3 pure-u-1-1"
-        v-html="leftText"
-      />
-      <div
-        class="pure-u-md-1-3 pure-u-1-1"
-        v-html="middleText"
-      />
-      <div
-        class="pure-u-md-1-3 pure-u-1-1"
-        v-html="rightText"
-      />
-    </div>
-  </footer>
+  <Header />
+  <div class="pure-g">
+    <h1 class="pure-u-1-1">
+      {{ title }}
+    </h1>
+    <div
+      class="pure-u-1-1"
+      v-html="text"
+    />
+  </div>
 </template>
 
 <script lang="ts">
@@ -22,12 +16,11 @@ import { defineComponent } from 'vue';
 import axios from 'axios';
 
 export default defineComponent({
-  name: 'Footer',
+  name: 'NotFound',
   data() {
     return {
-      leftText: '',
-      middleText: '',
-      rightText: '',
+      title: '',
+      text: '',
     };
   },
   mounted() {
@@ -36,11 +29,10 @@ export default defineComponent({
   methods: {
     async fetchFooter() {
       try {
-        const response = await axios.get('https://cms.reitz.dev/items/footer');
+        const response = await axios.get('https://cms.reitz.dev/items/not_found');
         const results = response.data.data;
-        this.leftText = results.left_box;
-        this.middleText = results.middle_box;
-        this.rightText = results.right_box;
+        this.title = results.title;
+        this.text = results.text;
       } catch (err) {
         if (err.response) {
           // client received an error response (5xx, 4xx)
@@ -62,7 +54,9 @@ export default defineComponent({
 
 <style scoped>
 
-footer {
+.pure-g{
+  padding-top: 8vh;
+  padding-bottom: 20vh;
   text-align: center;
 }
 

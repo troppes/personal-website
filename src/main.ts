@@ -9,6 +9,7 @@ import Gallery from './views/Gallery.vue';
 import Blog from './views/Blog.vue';
 import BlogDetail from './views/BlogDetail.vue';
 import Projects from './views/Projects.vue';
+import NotFound from './views/NotFound.vue';
 
 const routes:unknown = [
   { path: '/', component: Home, name: 'Home' },
@@ -18,7 +19,7 @@ const routes:unknown = [
   {
     path: '/blog', component: Blog, name: 'Blog', meta: { hideFooter: true },
   },
-  { path: '/:pathMatch(.*)*', name: 'NotFound', component: Home }, // Todo Implement not found component
+  { path: '/:pathMatch(.*)*', component: NotFound, name: 'NotFound' },
 
 ];
 
