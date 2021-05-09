@@ -150,7 +150,6 @@ export default defineComponent({
 
   .header {
     margin: 80% 2em 0;
-    text-align: right;
   }
 
   .sidebar {
