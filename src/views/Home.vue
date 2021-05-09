@@ -17,7 +17,7 @@
     <Card
       msg="All projects can be found here"
       title="All projects"
-      internal="true"
+      :internal="true"
       url="/projects"
     />
   </div>
