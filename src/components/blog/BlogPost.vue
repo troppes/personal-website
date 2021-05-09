@@ -76,11 +76,6 @@ export default {
   box-sizing: border-box;
 }
 
-body {
-  background: #f1f1f1;
-  margin: 2rem;
-}
-
 .blog-card {
   display: flex;
   flex-direction: column;
@@ -91,13 +86,12 @@ body {
   border-radius: 5px;
   overflow: hidden;
   z-index: 0;
-  border: 2px white solid;
 }
 .blog-card a {
   color: inherit;
 }
 .blog-card a:hover {
-  color: var(--colour-background);
+  color: var(--primary-color);
 }
 .blog-card:hover .photo {
   transform: scale(1.3) rotate(3deg);
@@ -131,7 +125,7 @@ body {
   margin: auto;
   transition: left 0.2s;
   background: rgba(0, 0, 0, 0.6);
-  color: #fff;
+  color: var(--secondary-text-color);
   padding: 10px;
   width: 100%;
   font-size: 0.9rem;
@@ -155,27 +149,18 @@ body {
   position: relative;
   z-index: 1;
 }
-.blog-card .description h1,
-.blog-card .description h2 {
-  font-family: Poppins, sans-serif;
-}
+
 .blog-card .description h1 {
   line-height: 1;
   margin: 0;
   font-size: 1.7rem;
 }
-.blog-card .description h2 {
-  font-size: 1rem;
-  font-weight: 300;
-  text-transform: uppercase;
-  color: #a2a2a2;
-  margin-top: 5px;
-}
+
 .blog-card .description .read-more {
   text-align: right;
 }
 .blog-card .description .read-more a {
-  color: var(--fourth-color);
+  color: var(--primary-text-color);
   display: inline-block;
   position: relative;
 }
@@ -195,7 +180,7 @@ body {
   content: "";
   position: absolute;
   height: 5px;
-  background: var(--tertiary-color);
+  background: var(--secondary-color);
   width: 35px;
   top: -0.75rem;
   border-radius: 3px;

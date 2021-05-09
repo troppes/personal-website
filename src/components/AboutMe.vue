@@ -53,7 +53,12 @@ export default {
 /* The card */
 .about-me {
   background-color: var(--secondary-color);
-  border: 2px solid var(--colour-background);
+  border: 2px solid var(--secondary-color);
+  color: var(--primary-text-color);
+}
+
+h1 {
+  font-size: 3em;
 }
 
 .photo {
@@ -63,12 +68,12 @@ export default {
 }
 
 .photo img{
-  border: 2px solid var(--colour-background);
+  border: 2px solid var(--secondary-color);
 }
 
 .separator {
   margin-top: 5vh;
-  border: 1px solid var(--colour-background);
+  border: 1px solid var(--secondary-color);
 }
 
 p {

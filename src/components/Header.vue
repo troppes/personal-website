@@ -90,7 +90,7 @@ export default {
   height: 40vh;
   background-color: var(--primary-color);
   margin-bottom: 10vh;
-  border-bottom: 2px solid var(--colour-background);
+  border-bottom: 2px solid var(--secondary-color);
   box-shadow: inset 0 -10px 15px -10px #000000;
 }
 
