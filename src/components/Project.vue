@@ -13,7 +13,7 @@
         >
           <div
             class="articles__content articles__content--lhs"
-            :style="pictureKey ? 'background-image:url(https://cms.reitz.dev/assets/'+pictureKey+')' : 'background-color: var(--colour-background)'"
+            :style="pictureKey ? 'background-image:url(https://cms.reitz.dev/assets/'+pictureKey+')' : 'background-color: var(--secondary-color)'"
           >
             <h2 class="articles__title">
               {{ title }}
@@ -24,7 +24,7 @@
           </div>
           <div
             class="articles__content articles__content--rhs"
-            :style="pictureKey ? 'background-image:url(https://cms.reitz.dev/assets/'+pictureKey+')' : 'background-color: var(--colour-background)'"
+            :style="pictureKey ? 'background-image:url(https://cms.reitz.dev/assets/'+pictureKey+')' : 'background-color: var(--secondary-color)'"
             aria-hidden="true"
           >
             <h2 class="articles__title">
@@ -68,15 +68,6 @@ export default {
 
 <style scoped>
 
-.articles {
-  margin: calc(var(--base-grid) * 2) auto calc(var(--base-grid) * 5);
-  display: grid;
-  grid-row-gap: calc(var(--base-grid) * 8);
-  grid-column-gap: calc(var(--base-grid) * 6);
-  grid-template-columns: repeat(auto-fit, minmax(calc(var(--base-grid) * 35), 1fr));
-  justify-items: center;
-}
-
 .articles__article {
   cursor: pointer;
   display: block;
@@ -89,6 +80,11 @@ export default {
   animation-timing-function: ease-in-out;
 }
 
+*, :after, :before {
+  box-sizing: border-box;
+  margin: 0;
+}
+
 .articles__article,
 .articles__article:before {
   width: calc(var(--base-grid) * 35);
@@ -97,12 +93,13 @@ export default {
 
 .articles__link {
   background-color: var(--primary-color);
-  border: 2px solid var(--colour-background);
+  border: 2px solid var(--secondary-color);
   display: block;
-  width: 98%;
-  height: 98%;
+  width: 100%;
+  height: 100%;
 }
 
+/* Kleiner pfeil */
 .articles__link:after {
   content: "";
   position: absolute;
@@ -112,14 +109,14 @@ export default {
   height: calc(var(--base-grid) * 2);
   margin-top: calc(var(--base-grid) * -1);
   clip-path: polygon(75% 0, 100% 50%, 75% 100%, 0 100%, 25% 50%, 0 0);
-  background-color: var(--colour-background);
+  background-color: var(--secondary-color);
   opacity: 0;
   transition: opacity .5s ease-in, transform .3s ease-in-out 0ms;
 }
 
 .articles__content {
-  background-color: var(--colour-background);
-  color: var(--colour-text);
+  background-color: var(--secondary-color);
+  color: var(--primary-text-color);
   position: absolute;
   top: 0;
   right: 0;
@@ -128,7 +125,6 @@ export default {
   padding: calc(var(--base-grid) * 2);
   display: flex;
   flex-direction: column;
-  border: 2px solid var(--colour-background);
 }
 
 .articles__content--lhs {
@@ -148,10 +144,8 @@ export default {
 }
 
 .articles__footer {
-  background: rgba(255, 128, 128, 0.6);
-  border: var(--colour-background) 2px solid;
-  padding-left: 2%;
-  padding-right: 2%;
+  background: var(--secondary-color);
+  padding: 1vh;
   margin-top: auto;
   font-size: calc(var(--base-grid) * 2);
   line-height: calc(var(--base-grid) * 2);
@@ -160,7 +154,7 @@ export default {
 }
 
 .articles__link:hover .articles__content--rhs {
-  background-color: var(--colour-background-folded);
+  background-color: var(--secondary-color);
   transform: rotateY(-50deg);
 }
 

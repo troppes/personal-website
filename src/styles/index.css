@@ -5,28 +5,35 @@
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    --primary-color: #f67280;
-    --secondary-color: #c06c84;
-    --tertiary-color: #6c5b7b;
+    --primary-color: #0E1630;
+    --secondary-color: #171f38;
+
+    --tertiary-color: #ff0000;
     --fourth-color: #355c7d;
 
-    --primary-text-color: white;
+    --headline-text-color: #EB4A4A;
+    --primary-text-color: #808DAD;
+    --secondary-text-color: #FFFFFF;
 
     --base-grid: 8px;
-    --colour-background: #fff;
-    --colour-background-folded: #f5f5f5;
-    --colour-background-stripes: rgba(255,255,255,.5);
-    --colour-text: #1a1a1a;
 }
 
 body{
     background: var(--primary-color);
-    color: white;
+    color: var(--primary-text-color);
 }
 
 .blog .content a, pre {
     white-space: pre-wrap;
     word-break: break-all;
+}
+
+h1, h2, h3{
+    color: var(--headline-text-color);
+}
+
+a, a:visited {
+    color: var(--primary-text-color)
 }
 
 
