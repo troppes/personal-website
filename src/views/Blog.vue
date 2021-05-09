@@ -131,6 +131,7 @@ export default defineComponent({
 .brand-title {
   text-transform: uppercase;
 }
+
 .brand-tagline {
   font-weight: 300;
 }
