@@ -3,6 +3,7 @@
     :image-key="imageKey"
     :text="text"
   />
+  <h2>Coming soon!</h2>
 </template>
 
 <script lang="ts">
@@ -52,5 +53,10 @@ export default defineComponent({
 </script>
 
 <style scoped>
+
+h2 {
+  text-align: center;
+  font-size: 20vh;
+}
 
 </style>
