@@ -17,6 +17,8 @@
     <Card
       msg="All projects can be found here"
       title="All projects"
+      internal="true"
+      url="/projects"
     />
   </div>
 </template>

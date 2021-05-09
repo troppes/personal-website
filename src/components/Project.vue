@@ -7,7 +7,37 @@
         class="articles__article"
         style="--animation-order:1"
       >
+        <router-link
+          v-if="internal"
+          :to="url"
+          class="articles__link"
+        >
+          <div
+            class="articles__content articles__content--lhs"
+            :style="pictureKey ? 'background-image:url(https://cms.reitz.dev/assets/'+pictureKey+')' : 'background-color: var(--secondary-color)'"
+          >
+            <h2 class="articles__title">
+              {{ title }}
+            </h2>
+            <div class="articles__footer">
+              <p>{{ msg }}</p>
+            </div>
+          </div>
+          <div
+            class="articles__content articles__content--rhs"
+            :style="pictureKey ? 'background-image:url(https://cms.reitz.dev/assets/'+pictureKey+')' : 'background-color: var(--secondary-color)'"
+            aria-hidden="true"
+          >
+            <h2 class="articles__title">
+              {{ title }}
+            </h2>
+            <div class="articles__footer">
+              <p>{{ msg }}</p>
+            </div>
+          </div>
+        </router-link>
         <a
+          v-else
           :href="url"
           class="articles__link"
         >
@@ -56,6 +86,11 @@ export default {
       type: String,
       required: false,
       default: null,
+    },
+    internal: {
+      type: Boolean,
+      required: false,
+      default: false,
     },
     pictureKey: {
       type: String,
