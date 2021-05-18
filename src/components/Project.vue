@@ -1,72 +1,70 @@
 <template>
   <div
-    class="pure-u-1-1 pure-u-md-1-2 pure-u-lg-1-3 pure-u-xl-1-4 card"
+    class="pure-u-1-1 pure-u-md-1-2 pure-u-lg-1-3 pure-u-xl-1-4 card center"
   >
-    <ol class="articles">
-      <li
-        class="articles__article"
-        style="--animation-order:1"
+    <div
+      class="articles__article"
+      style="--animation-order:1"
+    >
+      <router-link
+        v-if="internal"
+        :to="url"
+        class="articles__link"
       >
-        <router-link
-          v-if="internal"
-          :to="url"
-          class="articles__link"
+        <div
+          class="articles__content articles__content--lhs"
+          :style="pictureKey ? 'background-image:url(https://cms.reitz.dev/assets/'+pictureKey+')' : 'background-color: var(--secondary-color)'"
         >
-          <div
-            class="articles__content articles__content--lhs"
-            :style="pictureKey ? 'background-image:url(https://cms.reitz.dev/assets/'+pictureKey+')' : 'background-color: var(--secondary-color)'"
-          >
-            <h2 class="articles__title">
-              {{ title }}
-            </h2>
-            <div class="articles__footer">
-              <p>{{ msg }}</p>
-            </div>
+          <h2 class="articles__title">
+            {{ title }}
+          </h2>
+          <div class="articles__footer">
+            <p>{{ msg }}</p>
           </div>
-          <div
-            class="articles__content articles__content--rhs"
-            :style="pictureKey ? 'background-image:url(https://cms.reitz.dev/assets/'+pictureKey+')' : 'background-color: var(--secondary-color)'"
-            aria-hidden="true"
-          >
-            <h2 class="articles__title">
-              {{ title }}
-            </h2>
-            <div class="articles__footer">
-              <p>{{ msg }}</p>
-            </div>
-          </div>
-        </router-link>
-        <a
-          v-else
-          :href="url"
-          class="articles__link"
+        </div>
+        <div
+          class="articles__content articles__content--rhs"
+          :style="pictureKey ? 'background-image:url(https://cms.reitz.dev/assets/'+pictureKey+')' : 'background-color: var(--secondary-color)'"
+          aria-hidden="true"
         >
-          <div
-            class="articles__content articles__content--lhs"
-            :style="pictureKey ? 'background-image:url(https://cms.reitz.dev/assets/'+pictureKey+')' : 'background-color: var(--secondary-color)'"
-          >
-            <h2 class="articles__title">
-              {{ title }}
-            </h2>
-            <div class="articles__footer">
-              <p>{{ msg }}</p>
-            </div>
+          <h2 class="articles__title">
+            {{ title }}
+          </h2>
+          <div class="articles__footer">
+            <p>{{ msg }}</p>
           </div>
-          <div
-            class="articles__content articles__content--rhs"
-            :style="pictureKey ? 'background-image:url(https://cms.reitz.dev/assets/'+pictureKey+')' : 'background-color: var(--secondary-color)'"
-            aria-hidden="true"
-          >
-            <h2 class="articles__title">
-              {{ title }}
-            </h2>
-            <div class="articles__footer">
-              <p>{{ msg }}</p>
-            </div>
+        </div>
+      </router-link>
+      <a
+        v-else
+        :href="url"
+        class="articles__link"
+      >
+        <div
+          class="articles__content articles__content--lhs"
+          :style="pictureKey ? 'background-image:url(https://cms.reitz.dev/assets/'+pictureKey+')' : 'background-color: var(--secondary-color)'"
+        >
+          <h2 class="articles__title">
+            {{ title }}
+          </h2>
+          <div class="articles__footer">
+            <p>{{ msg }}</p>
           </div>
-        </a>
-      </li>
-    </ol>
+        </div>
+        <div
+          class="articles__content articles__content--rhs"
+          :style="pictureKey ? 'background-image:url(https://cms.reitz.dev/assets/'+pictureKey+')' : 'background-color: var(--secondary-color)'"
+          aria-hidden="true"
+        >
+          <h2 class="articles__title">
+            {{ title }}
+          </h2>
+          <div class="articles__footer">
+            <p>{{ msg }}</p>
+          </div>
+        </div>
+      </a>
+    </div>
   </div>
 </template>
 
@@ -102,6 +100,11 @@ export default {
 </script>
 
 <style scoped>
+
+.center{
+  display: flex;
+  justify-content: center;
+}
 
 .articles__article {
   cursor: pointer;
@@ -185,7 +188,6 @@ export default {
   font-size: calc(var(--base-grid) * 2);
   line-height: calc(var(--base-grid) * 2);
   display: flex;
-  justify-content: space-between;
 }
 
 .articles__link:hover .articles__content--rhs {
