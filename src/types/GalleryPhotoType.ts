@@ -3,6 +3,6 @@ interface GalleryPhotoType {
     photoKey: string;
     description: string;
     tags: [];
-    alt: Date;
+    alt: string;
 }
 export default GalleryPhotoType;
