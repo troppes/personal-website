@@ -1,5 +1,6 @@
 @import 'pure-min.css';
 @import 'grids-responsive-min.css';
+@import 'lightgallery/css/lightgallery-bundle.min.css';
 
 :root {
     font-family: Avenir, Helvetica, Arial, sans-serif;
