@@ -71,7 +71,8 @@ export default {
     },
   },
   computed: {
-    datePosted() : string {
+    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+    datePosted() {
       const options = {
         year: 'numeric', month: 'long', day: 'numeric',
       };
