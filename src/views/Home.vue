@@ -53,7 +53,11 @@ export default defineComponent({
   methods: {
     async fetchProjects() {
       try {
-        const response = await axios.get('https://cms.reitz.dev/items/projects?limit=3');
+        const response = await axios.get(`${import.meta.env.VITE_APP_BACKEND_URL}/items/projects?limit=3`, {
+          headers: {
+            Authorization: `Bearer ${import.meta.env.VITE_APP_ACCESS_TOKEN}`,
+          },
+        });
         const results = response.data.data;
         this.posts = results.map((post: ProjectsType) => ({
           id: post.id.toString(),
@@ -80,7 +84,11 @@ export default defineComponent({
     },
     async fetchAboutMe() {
       try {
-        const response = await axios.get('https://cms.reitz.dev/items/aboutme');
+        const response = await axios.get(`${import.meta.env.VITE_APP_BACKEND_URL}/items/aboutme`, {
+          headers: {
+            Authorization: `Bearer ${import.meta.env.VITE_APP_ACCESS_TOKEN}`,
+          },
+        });
         this.me = response.data.data;
       } catch (err) {
         if (err.response) {

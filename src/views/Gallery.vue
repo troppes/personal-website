@@ -29,7 +29,11 @@ export default defineComponent({
   methods: {
     async fetchGalleryHeader() {
       try {
-        const response = await axios.get('https://cms.reitz.dev/items/gallerycover');
+        const response = await axios.get(`${import.meta.env.VITE_APP_BACKEND_URL}/items/gallerycover`, {
+          headers: {
+            Authorization: `Bearer ${import.meta.env.VITE_APP_ACCESS_TOKEN}`,
+          },
+        });
         const results: GalleryHeaderType = response.data.data;
         this.text = results.text;
         this.imageKey = results.image;
