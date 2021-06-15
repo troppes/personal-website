@@ -100,7 +100,11 @@ export default defineComponent({
     async fetchGallery() {
       try {
         // if tag selected -> Filter
-        const response = await axios.get('https://cms.reitz.dev/items/gallery');
+        const response = await axios.get(`${import.meta.env.VITE_APP_BACKEND_URL}/items/gallery`, {
+          headers: {
+            Authorization: `Bearer ${import.meta.env.VITE_APP_ACCESS_TOKEN}`,
+          },
+        });
         const results = response.data.data;
         this.galleryPhotos = results.map((post: any) => ({
           id: post.id,
@@ -157,6 +161,7 @@ h2 {
 
 .masonry-item:hover {
   transform: scale(1.05);
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 1023px) and (min-width: 768px) {
