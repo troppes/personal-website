@@ -24,7 +24,7 @@ trigger:
 
 steps:
   - name: build project
-    image: alpine
+    image: mhart/alpine-node:15 yarn
     environment:
       VITE_APP_BACKEND_URL:
         from_secret: VITE_APP_BACKEND_URL
@@ -36,7 +36,7 @@ steps:
       - echo $VITE_APP_BACKEND_URL >> .env.local
       - echo $VITE_APP_EXTERNAL_ASSETS_URL >> .env.local
       - echo $VITE_APP_ACCESS_TOKEN >> .env.local
-      - apk add --update nodejs yarn
+      #- apk add --update nodejs yarn
       - node -v
       - yarn install
       - yarn run build
