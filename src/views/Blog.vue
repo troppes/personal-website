@@ -6,7 +6,7 @@
     <div class="sidebar pure-u-1 pure-u-md-1-4">
       <div class="header">
         <h1 class="brand-title">
-          {{ getImageUrl() }}
+          {{ title }}
         </h1>
         <div
           class="brand-tagline"
