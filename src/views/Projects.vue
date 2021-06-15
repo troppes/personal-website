@@ -33,7 +33,11 @@ export default defineComponent({
   methods: {
     async fetchProjects() {
       try {
-        const response = await axios.get('https://cms.reitz.dev/items/projects');
+        const response = await axios.get(`${import.meta.env.VITE_APP_BACKEND_URL}/items/projects`, {
+          headers: {
+            Authorization: `Bearer ${import.meta.env.VITE_APP_ACCESS_TOKEN}`,
+          },
+        });
         const results = response.data.data;
         this.posts = results.map((post: ProjectsType) => ({
           id: post.id.toString(),

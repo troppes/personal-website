@@ -1,6 +1,6 @@
 <template>
   <gallery-header
-    :image-key="imageKey"
+    :picture-key="imageKey"
     :text="text"
   />
   <h2>Coming soon!</h2>
@@ -29,10 +29,14 @@ export default defineComponent({
   methods: {
     async fetchGalleryHeader() {
       try {
-        const response = await axios.get('https://cms.reitz.dev/items/gallerycover');
+        const response = await axios.get(`${import.meta.env.VITE_APP_BACKEND_URL}/items/gallerycover`, {
+          headers: {
+            Authorization: `Bearer ${import.meta.env.VITE_APP_ACCESS_TOKEN}`,
+          },
+        });
         const results: GalleryHeaderType = response.data.data;
-        this.text = results.text;
-        this.imageKey = results.image;
+        if (results.text != null) this.text = results.text;
+        if (results.image != null) this.imageKey = results.image;
       } catch (err) {
         if (err.response) {
           // client received an error response (5xx, 4xx)

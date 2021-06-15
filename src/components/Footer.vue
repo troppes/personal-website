@@ -36,7 +36,11 @@ export default defineComponent({
   methods: {
     async fetchFooter() {
       try {
-        const response = await axios.get('https://cms.reitz.dev/items/footer');
+        const response = await axios.get(`${import.meta.env.VITE_APP_BACKEND_URL}/items/footer`, {
+          headers: {
+            Authorization: `Bearer ${import.meta.env.VITE_APP_ACCESS_TOKEN}`,
+          },
+        });
         const results = response.data.data;
         this.leftText = results.left_box;
         this.middleText = results.middle_box;
