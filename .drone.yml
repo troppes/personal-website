@@ -13,8 +13,9 @@ steps:
       VITE_APP_ACCESS_TOKEN:
           from_secret: VITE_APP_BACKEND_URL
     commands:
-      - echo 'Test'
       - echo ${VITE_APP_ACCESS_TOKEN}
+      - sed -i 's/VITE_APP_BACKEND_URL.*/${VITE_APP_BACKEND_URL}/' .env
+      - cat .env
 #      - apk add --update nodejs yarn
 #      - yarn install
 #      - yarn run tsc
