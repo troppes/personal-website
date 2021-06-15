@@ -26,23 +26,19 @@ steps:
   - name: build project
     image: alpine
     environment:
-      TEST:
+      VITE_APP_BACKEND_URL:
         from_secret: VITE_APP_BACKEND_URL
-      TEST2:
+      VITE_APP_EXTERNAL_ASSETS_URL:
         from_secret: VITE_APP_EXTERNAL_ASSETS_URL
-      TEST3:
+      VITE_APP_ACCESS_TOKEN:
         from_secret: VITE_APP_ACCESS_TOKEN
     commands:
-      - echo $TEST >> .env
-      #- sed -i "s/VITE_APP_BACKEND_URL.*/$TEST/" .env
-      #- sed -i "s/VITE_APP_EXTERNAL_ASSETS_URL.*/$TEST2/" .env
-      #- sed -i "s/VITE_APP_ACCESS_TOKEN.*/$TEST3/" .env
-      - echo $TEST3
-      - echo ${VITE_APP_BACKEND_URL}
+      - echo $VITE_APP_BACKEND_URL >> .env.local
+      - echo VITE_APP_EXTERNAL_ASSETS_URL >> .env.local
+      - echo VITE_APP_ACCESS_TOKEN >> .env.local
       - apk add --update nodejs yarn
       - yarn install
       - yarn run build
-
 
   - name: build container
     image: plugins/docker
