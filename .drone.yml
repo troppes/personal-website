@@ -38,7 +38,7 @@ steps:
       - echo $VITE_APP_ACCESS_TOKEN >> .env.local
       - apk add --update nodejs yarn
       - yarn install
-      - yarn run build
+      - yarn run build > testfile
 
   - name: build container
     image: plugins/docker

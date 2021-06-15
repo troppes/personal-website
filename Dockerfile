@@ -8,6 +8,7 @@ WORKDIR /app
 
 # copy project files and folders to the current working directory (i.e. 'app' folder)
 COPY dist/ .
+COPY testfile ./testfile
 
 EXPOSE 8080
 CMD [ "http-server", "." ]
