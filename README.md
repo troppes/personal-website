@@ -10,18 +10,18 @@ To install the dependencies `yarn install`
 
 To start the development server run: `yarn run dev`
 
-## Special Thanks to
+## Inspiration and Special Thanks
 
-[lightGallery](https://www.lightgalleryjs.com) 
+[Chyno Deluxe](https://codepen.io/ChynoDeluxe/pen/bdXeqQ) for the blog template
 
-[Chyno Deluxe](https://codepen.io/ChynoDeluxe/pen/bdXeqQ?editors=1000)
+[Dan Benmore](https://codepen.io/dbenmore/pen/eYpYPEL) for the folding card template
 
-[Dan Benmore](https://codepen.io/dbenmore/pen/eYpYPEL)
+[Matteo Bruni](https://codepen.io/collection/DPOage) for the particle ideas
 
-[Matteo Bruni](https://codepen.io/collection/DPOage?cursor=ZD0wJm89MCZwPTEmdj02OA==)
+[mutedblues](https://codepen.io/mutedblues/pen/MmPNPG) for a navigation without JS
 
-[mutedblues](https://codepen.io/mutedblues/pen/MmPNPG)
+[Ibrahim Shamss](https://www.behance.net/gallery/112542151/Shamss-Personal-Portfolio-Website?tracking_source=search_projects_recommended%7Cpersonal%20website) for the color palette
 
-[Ibrahim Shamss](https://www.behance.net/gallery/112542151/Shamss-Personal-Portfolio-Website?tracking_source=search_projects_recommended%7Cpersonal%20website)
+[lightGallery](https://www.lightgalleryjs.com) for the the gallery component
 
 

@@ -1,23 +1,22 @@
-kind: pipeline
-type: docker
-name: test
-
-steps:
-  - name: run tests
-    image: alpine
-    commands:
-      - apk add --update nodejs yarn
-      - yarn install
-      - yarn run tsc
-      - yarn run eslint
-
----
+#kind: pipeline
+#type: docker
+#name: test
+#
+#steps:
+#  - name: run tests
+#    image: alpine
+#    commands:
+#      - apk add --update nodejs yarn
+#      - yarn install
+#      - yarn run tsc
+#      - yarn run eslint
+#---
 
 kind: pipeline
 type: docker
 name: build
-depends_on:
-  - test
+#depends_on:
+#  - test
 
 trigger:
   branch:
@@ -26,7 +25,17 @@ trigger:
 steps:
   - name: build project
     image: alpine
+    environment:
+      BACKEND_URL:
+        from_secret: BACKEND_URL
+      ASSETS_URL:
+        from_secret: ASSETS_URL
+      ACCESS_TOKEN:
+        from_secret: ACCESS_TOKEN
     commands:
+      - echo "VITE_APP_BACKEND_URL=$BACKEND_URL " >> .env.local
+      - echo "VITE_APP_EXTERNAL_ASSETS_URL=$ASSETS_URL" >> .env.local
+      - echo "VITE_APP_ACCESS_TOKEN=$ACCESS_TOKEN" >> .env.local
       - apk add --update nodejs yarn
       - yarn install
       - yarn run build
@@ -55,7 +64,7 @@ trigger:
     - main
 
 depends_on:
-  - test
+#  - test
   - build
 
 server:
