@@ -33,11 +33,11 @@ steps:
       VITE_APP_ACCESS_TOKEN:
         from_secret: VITE_APP_ACCESS_TOKEN
     commands:
-      - ls -l
+      - ls -al
       - echo $VITE_APP_BACKEND_URL >> .env.local
       - echo $VITE_APP_EXTERNAL_ASSETS_URL >> .env.local
       - echo $VITE_APP_ACCESS_TOKEN >> .env.local
-      - ls -l
+      - ls -al
       - apk add --update nodejs yarn
       - yarn install
       - yarn run build
