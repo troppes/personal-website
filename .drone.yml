@@ -26,10 +26,16 @@ steps:
   - name: build project
     image: alpine
     environment:
-      APP_CONFIG:
-        from_secret: APP_CONFIG
+      BACKEND_URL:
+        from_secret: BACKEND_URL
+      ASSETS_URL:
+        from_secret: ASSETS_URL
+      ACCESS_TOKEN:
+        from_secret: ACCESS_TOKEN
     commands:
-      - echo $APP_CONFIG >> .env.local
+      - echo "VITE_APP_BACKEND_URL=$BACKEND_URL " >> .env.local
+      - echo "VITE_APP_EXTERNAL_ASSETS_URL=$ASSETS_URL" >> .env.local
+      - echo "VITE_APP_ACCESS_TOKEN=$ACCESS_TOKEN" >> .env.local
       - apk add --update nodejs yarn
       - yarn install
       - yarn run build
