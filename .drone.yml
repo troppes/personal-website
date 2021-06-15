@@ -33,9 +33,9 @@ steps:
       VITE_APP_ACCESS_TOKEN:
         from_secret: VITE_APP_ACCESS_TOKEN
     commands:
-#      - sed -i 's/VITE_APP_BACKEND_URL.*/${VITE_APP_BACKEND_URL}/' .env
-#      - sed -i 's/VITE_APP_EXTERNAL_ASSETS_URL.*/${VITE_APP_EXTERNAL_ASSETS_URL}/' .env
-#      - sed -i 's/VITE_APP_ACCESS_TOKEN.*/${VITE_APP_ACCESS_TOKEN}/' .env
+      - sed -i 's/VITE_APP_BACKEND_URL.*/${VITE_APP_BACKEND_URL}/' .env
+      - sed -i 's/VITE_APP_EXTERNAL_ASSETS_URL.*/${VITE_APP_EXTERNAL_ASSETS_URL}/' .env
+      - sed -i 's/VITE_APP_ACCESS_TOKEN.*/${VITE_APP_ACCESS_TOKEN}/' .env
       - apk add --update nodejs yarn
       - yarn install
       - yarn run build
