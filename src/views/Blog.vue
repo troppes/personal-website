@@ -27,6 +27,7 @@
         :date="post.dateCreated"
         :alt="post.id % 2 === 0"
       />
+      <Footer class="footer" />
     </div>
   </div>
 </template>
@@ -38,10 +39,12 @@ import BlogPost from '../components/blog/BlogPost.vue';
 import BlogPostType from '../types/BlogPostType';
 import BlogMetaDataType from '../types/BlogMetaDataType';
 import SocialMedia from '../components/SocialMedia.vue';
+import Footer from '../components/Footer.vue';
 
 export default defineComponent({
   name: 'Blog',
   components: {
+    Footer,
     SocialMedia,
     BlogPost,
   },
@@ -140,6 +143,10 @@ export default defineComponent({
 .content {
   padding: 2em 1em 0;
   margin-top: 2vh;
+}
+
+.footer{
+  padding-top: 8vh;
 }
 
 @media (min-width: 48em) {
