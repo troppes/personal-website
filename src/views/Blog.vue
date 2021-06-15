@@ -3,6 +3,7 @@
     id="layout"
     class="pure-g"
   >
+    {{ getImageUrl }}
     <div class="sidebar pure-u-1 pure-u-md-1-4">
       <div class="header">
         <h1 class="brand-title">
@@ -67,8 +68,6 @@ export default defineComponent({
             Authorization: `Bearer ${import.meta.env.VITE_APP_ACCESS_TOKEN}`,
           },
         });
-        console.log(import.meta.env.VITE_APP_BACKEND_URL);
-        console.log(import.meta.env.VITE_APP_EXTERNAL_ASSETS_URL);
         const results = response.data.data;
         this.blogPosts = results.map((post: any) => ({
           id: post.id,
@@ -117,6 +116,10 @@ export default defineComponent({
           console.log('Client Error:', err);
         }
       }
+    },
+    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+    getImageUrl() {
+      return import.meta.env.VITE_APP_EXTERNAL_ASSETS_URL;
     },
   },
 });
