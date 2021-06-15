@@ -7,7 +7,7 @@
     "dev": "vite",
     "tsc": "vue-tsc --noEmit",
     "lint": "eslint --ext .js,.vue src",
-    "build": "vite build",
+    "build": "vite build --debug",
     "serve": "vite preview",
     "bu": "vite build --mode production"
 
