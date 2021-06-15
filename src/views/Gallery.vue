@@ -3,34 +3,38 @@
     :image-key="galleryHeader.imageKey"
     :text="galleryHeader.text"
   />
-  <light-gallery
-    :settings="{ speed: 500, plugins: plugins }"
-    :on-init="onInit"
-  >
-    <a
-      v-for="photo in galleryPhotos"
-      :key="photo.id"
-      data-lg-size="1406-1390"
-      class="gallery-item"
-      :data-src="'https://cms.reitz.dev/assets/'+photo.photoKey"
-      :data-sub-html="photo.description"
+  <div class="masonry-wrapper">
+    <light-gallery
+      :settings="{ speed: 500, plugins: plugins }"
+      :on-init="onInit"
+      class="masonry"
     >
-      <img
-        :alt="photo.alt"
-        class="img-responsive"
-        :src="'https://cms.reitz.dev/assets/'+photo.photoKey+'?fit=cover&width=800&quality=80'"
+      <a
+        v-for="photo in galleryPhotos"
+        :key="photo.id"
+        :data-src="'https://cms.reitz.dev/assets/'+photo.photoKey"
+        :data-sub-html="photo.description"
+        class="masonry-item"
       >
-    </a>
-  </light-gallery>
+        <img
+          :alt="photo.alt"
+          class="masonry-content pure-img"
+          :src="'https://cms.reitz.dev/assets/'+photo.photoKey+'?fit=cover&width=400&quality=80'"
+        >
+      </a>
+    </light-gallery>
+  </div>
 </template>
 
 <script lang="ts">
 
 import { defineComponent } from 'vue';
 import axios from 'axios';
+
 import LightGallery from 'lightgallery/vue';
 import lgThumbnail from 'lightgallery/plugins/thumbnail';
 import lgZoom from 'lightgallery/plugins/zoom';
+
 import GalleryHeaderType from '../types/GalleryHeaderType';
 import GalleryHeader from '../components/gallery/GalleryHeader.vue';
 import GalleryPhotoType from '../types/GalleryPhotoType';
@@ -70,6 +74,7 @@ export default defineComponent({
     async fetchGalleryHeader() {
       try {
         const response = await axios.get('https://cms.reitz.dev/items/gallerycover');
+
         const results: GalleryHeaderType = response.data.data;
         this.galleryHeader.text = results.text;
         this.galleryHeader.imageKey = results.image;
@@ -125,4 +130,46 @@ h2 {
   text-align: center;
   font-size: 20vh;
 }
+
+.masonry-wrapper {
+  padding-top: 8vh;
+  max-width: 130vh;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.masonry {
+  columns: 1;
+  column-gap: 2vh;
+}
+
+.masonry-item {
+  display: inline-block;
+  vertical-align: top;
+  margin-bottom: 1vh;
+  transition: transform .5s ease-in-out;
+
+}
+
+.masonry-item:hover {
+  transform: scale(1.05);
+}
+
+@media only screen and (max-width: 1023px) and (min-width: 768px) {
+  .masonry {
+    columns: 2;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .masonry {
+    columns: 3;
+  }
+}
+
+.masonry-item, .masonry-content {
+  border-radius: 4px;
+  overflow: hidden;
+}
+
 </style>
