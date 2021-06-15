@@ -1,6 +1,6 @@
 <template>
   <gallery-header
-    :image-key="galleryHeader.imageKey"
+    :picture-key="galleryHeader.imageKey"
     :text="galleryHeader.text"
   />
   <div class="masonry-wrapper">
@@ -73,11 +73,15 @@ export default defineComponent({
     },
     async fetchGalleryHeader() {
       try {
-        const response = await axios.get('https://cms.reitz.dev/items/gallerycover');
+        const response = await axios.get(`${import.meta.env.VITE_APP_BACKEND_URL}/items/gallerycover`, {
+          headers: {
+            Authorization: `Bearer ${import.meta.env.VITE_APP_ACCESS_TOKEN}`,
+          },
+        });
 
         const results: GalleryHeaderType = response.data.data;
-        this.galleryHeader.text = results.text;
-        this.galleryHeader.imageKey = results.image;
+        if (results.text != null) this.galleryHeader.text = results.text;
+        if (results.image != null) this.galleryHeader.imageKey = results.image;
       } catch (err) {
         if (err.response) {
           // client received an error response (5xx, 4xx)
