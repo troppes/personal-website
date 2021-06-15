@@ -5,7 +5,15 @@ name: test
 steps:
   - name: run tests
     image: alpine
+    environment:
+      VITE_APP_BACKEND_URL:
+        from_secret: VITE_APP_BACKEND_URL
+      VITE_APP_EXTERNAL_ASSETS_URL:
+        from_secret: VITE_APP_BACKEND_URL
+      VITE_APP_ACCESS_TOKEN:
+          from_secret: VITE_APP_BACKEND_URL
     commands:
+      - echo ${VITE_APP_ACCESS_TOKEN}
       - apk add --update nodejs yarn
       - yarn install
       - yarn run tsc
