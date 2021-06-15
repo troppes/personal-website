@@ -14,7 +14,7 @@
           {{ author }}
         </li>
         <li class="date">
-          July. 15, 2015
+          {{ datePosted }}
         </li>
       </ul>
     </div>
@@ -63,6 +63,20 @@ export default {
       type: Boolean,
       required: false,
       default: true,
+    },
+    date: {
+      type: Date,
+      required: false,
+      default: new Date(1970, 1, 1),
+    },
+  },
+  computed: {
+    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+    datePosted() {
+      const options = {
+        year: 'numeric', month: 'long', day: 'numeric',
+      };
+      return this.date.toLocaleDateString('de-DE', options);
     },
   },
 };
