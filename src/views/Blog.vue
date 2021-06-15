@@ -24,8 +24,10 @@
         :short-desc="post.shortDescription"
         :picture-key="post.image"
         :author="post.author"
+        :date="post.dateCreated"
         :alt="post.id % 2 === 0"
       />
+      <Footer class="footer" />
     </div>
   </div>
 </template>
@@ -37,10 +39,12 @@ import BlogPost from '../components/blog/BlogPost.vue';
 import BlogPostType from '../types/BlogPostType';
 import BlogMetaDataType from '../types/BlogMetaDataType';
 import SocialMedia from '../components/SocialMedia.vue';
+import Footer from '../components/Footer.vue';
 
 export default defineComponent({
   name: 'Blog',
   components: {
+    Footer,
     SocialMedia,
     BlogPost,
   },
@@ -65,7 +69,7 @@ export default defineComponent({
           title: post.title,
           image: post.image,
           shortDescription: post.short_description,
-          dateCreated: post.date_created,
+          dateCreated: new Date(Date.parse(post.date_created)),
           author: `${post.user_created.first_name} ${post.user_created.last_name}`,
         }));
       } catch (err) {
@@ -139,6 +143,10 @@ export default defineComponent({
 .content {
   padding: 2em 1em 0;
   margin-top: 2vh;
+}
+
+.footer{
+  padding-top: 8vh;
 }
 
 @media (min-width: 48em) {
