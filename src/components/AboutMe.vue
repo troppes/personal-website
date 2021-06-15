@@ -4,9 +4,10 @@
     <div class="about-me pure-u-md-16-24 pure-g">
       <div class="photo pure-u-1 pure-u-lg-1-2">
         <img
+          v-if="pictureKey"
           class="left pure-img"
           alt="profile picture"
-          :src="'https://cms.reitz.dev/assets/'+pictureKey"
+          :src="getImageUrl"
         >
       </div>
       <div class="content pure-u-1 pure-u-lg-1-2">
@@ -44,6 +45,12 @@ export default {
       type: String,
       required: false,
       default: null,
+    },
+  },
+  computed: {
+    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+    getImageUrl() {
+      return import.meta.env.VITE_APP_EXTERNAL_ASSETS_URL + this.pictureKey;
     },
   },
 };

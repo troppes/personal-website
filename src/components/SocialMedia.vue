@@ -9,7 +9,7 @@
         <img
           :alt="social.alt"
           :width="size"
-          :src="'https://cms.reitz.dev/assets/'+social.imageKey"
+          :src="getImageUrl(social)"
         >
       </a>
     </div>
@@ -39,6 +39,9 @@ export default defineComponent({
     this.fetchSocialMedia();
   },
   methods: {
+    getImageUrl(social: SocialMediaType) {
+      return import.meta.env.VITE_APP_EXTERNAL_ASSETS_URL + social.imageKey;
+    },
     async fetchSocialMedia() {
       try {
         const response = await axios.get(`${import.meta.env.VITE_APP_BACKEND_URL}/items/social_media`, {
