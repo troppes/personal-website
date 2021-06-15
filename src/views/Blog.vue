@@ -24,6 +24,7 @@
         :short-desc="post.shortDescription"
         :picture-key="post.image"
         :author="post.author"
+        :date="post.dateCreated"
         :alt="post.id % 2 === 0"
       />
     </div>
@@ -65,7 +66,7 @@ export default defineComponent({
           title: post.title,
           image: post.image,
           shortDescription: post.short_description,
-          dateCreated: post.date_created,
+          dateCreated: new Date(Date.parse(post.date_created)),
           author: `${post.user_created.first_name} ${post.user_created.last_name}`,
         }));
       } catch (err) {
