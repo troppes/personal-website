@@ -62,7 +62,11 @@ export default defineComponent({
   methods: {
     async fetchBlogPosts() {
       try {
-        const response = await axios.get('https://cms.reitz.dev/items/blogposts?fields=*.*');
+        const response = await axios.get(`${import.meta.env.VITE_APP_BACKEND_URL}/items/blogposts?fields=*.*`, {
+          headers: {
+            Authorization: `Bearer ${import.meta.env.VITE_APP_ACCESS_TOKEN}`,
+          },
+        });
         const results = response.data.data;
         this.blogPosts = results.map((post: any) => ({
           id: post.id,
@@ -89,7 +93,11 @@ export default defineComponent({
     },
     async fetchBlogMeta() {
       try {
-        const response = await axios.get('https://cms.reitz.dev/items/blogmetadata');
+        const response = await axios.get(`${import.meta.env.VITE_APP_BACKEND_URL}/items/blogmetadata`, {
+          headers: {
+            Authorization: `Bearer ${import.meta.env.VITE_APP_ACCESS_TOKEN}`,
+          },
+        });
         const result: BlogMetaDataType = response.data.data;
         this.title = result.title;
         this.tagline = result.tagline;
@@ -132,6 +140,7 @@ export default defineComponent({
 .brand-tagline {
   margin: 0;
 }
+
 .brand-title {
   text-transform: uppercase;
 }
@@ -145,7 +154,7 @@ export default defineComponent({
   margin-top: 2vh;
 }
 
-.footer{
+.footer {
   padding-top: 8vh;
 }
 

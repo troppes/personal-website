@@ -7,7 +7,7 @@
     <div class="meta">
       <div
         class="photo"
-        :style="pictureKey? 'background-image: url(https://cms.reitz.dev/assets/'+pictureKey+')' : 'background-color: var(--secondary-color)'"
+        :style="pictureKey? 'background-image: url('+getImageUrl+')' : 'background-color: var(--secondary-color)'"
       />
       <ul class="details">
         <li class="author">
@@ -77,6 +77,10 @@ export default {
         year: 'numeric', month: 'long', day: 'numeric',
       };
       return this.date.toLocaleDateString('de-DE', options);
+    },
+    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+    getImageUrl() {
+      return import.meta.env.VITE_APP_EXTERNAL_ASSETS_URL + this.pictureKey;
     },
   },
 };

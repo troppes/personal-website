@@ -29,7 +29,11 @@ export default defineComponent({
   methods: {
     async fetchFooter() {
       try {
-        const response = await axios.get('https://cms.reitz.dev/items/not_found');
+        const response = await axios.get(`${import.meta.env.VITE_APP_BACKEND_URL}/items/not_found`, {
+          headers: {
+            Authorization: `Bearer ${import.meta.env.VITE_APP_ACCESS_TOKEN}`,
+          },
+        });
         const results = response.data.data;
         this.title = results.title;
         this.text = results.text;
