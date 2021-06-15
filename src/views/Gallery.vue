@@ -1,6 +1,6 @@
 <template>
   <gallery-header
-    :image-key="imageKey"
+    :picture-key="imageKey"
     :text="text"
   />
   <h2>Coming soon!</h2>
@@ -35,8 +35,8 @@ export default defineComponent({
           },
         });
         const results: GalleryHeaderType = response.data.data;
-        this.text = results.text;
-        this.imageKey = results.image;
+        if (results.text != null) this.text = results.text;
+        if (results.image != null) this.imageKey = results.image;
       } catch (err) {
         if (err.response) {
           // client received an error response (5xx, 4xx)

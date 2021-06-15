@@ -67,7 +67,6 @@ export default defineComponent({
             Authorization: `Bearer ${import.meta.env.VITE_APP_ACCESS_TOKEN}`,
           },
         });
-        console.log(import.meta.env.VITE_APP_BACKEND_URL);
         const results = response.data.data;
         this.blogPosts = results.map((post: any) => ({
           id: post.id,
