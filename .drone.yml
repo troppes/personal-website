@@ -24,7 +24,7 @@ trigger:
 
 steps:
   - name: build project
-    image: mhart/alpine-node:15 yarn
+    image: mhart/alpine-node:16
     environment:
       VITE_APP_BACKEND_URL:
         from_secret: VITE_APP_BACKEND_URL
