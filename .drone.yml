@@ -37,6 +37,7 @@ steps:
       - echo $VITE_APP_EXTERNAL_ASSETS_URL >> .env.local
       - echo $VITE_APP_ACCESS_TOKEN >> .env.local
       - apk add --update nodejs yarn
+      - rm .env
       - yarn install
       - yarn run bu
 
