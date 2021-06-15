@@ -14,10 +14,10 @@ steps:
           from_secret: VITE_APP_BACKEND_URL
     commands:
       - echo ${VITE_APP_ACCESS_TOKEN}
-      - apk add --update nodejs yarn
-      - yarn install
-      - yarn run tsc
-      - yarn run eslint
+#      - apk add --update nodejs yarn
+#      - yarn install
+#      - yarn run tsc
+#      - yarn run eslint
 
 ---
 
