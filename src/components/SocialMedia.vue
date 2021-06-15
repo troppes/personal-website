@@ -41,7 +41,11 @@ export default defineComponent({
   methods: {
     async fetchSocialMedia() {
       try {
-        const response = await axios.get('https://cms.reitz.dev/items/social_media/');
+        const response = await axios.get(`${import.meta.env.VITE_APP_BACKEND_URL}/items/social_media`, {
+          headers: {
+            Authorization: `Bearer ${import.meta.env.VITE_APP_ACCESS_TOKEN}`,
+          },
+        });
         const results = response.data.data;
         this.socialMedia = results.map((social: any) => ({
           id: social.id.toString(),

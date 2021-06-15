@@ -36,7 +36,11 @@ export default defineComponent({
   methods: {
     async fetchBlogPost() {
       try {
-        const response = await axios.get(`https://cms.reitz.dev/items/blogposts/${this.$route.params.id}?fields=*.*`);
+        const response = await axios.get(`${import.meta.env.VITE_APP_BACKEND_URL}/items//blogposts/${this.$route.params.id}?fields=*.*`, {
+          headers: {
+            Authorization: `Bearer ${import.meta.env.VITE_APP_ACCESS_TOKEN}`,
+          },
+        });
         this.blogPost = response.data.data;
       } catch (err) {
         if (err.response) {
