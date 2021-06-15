@@ -116,10 +116,6 @@ export default defineComponent({
         }
       }
     },
-    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-    getImageUrl() {
-      return import.meta.env.VITE_APP_EXTERNAL_ASSETS_URL;
-    },
   },
 });
 </script>
