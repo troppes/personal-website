@@ -34,8 +34,8 @@ steps:
         from_secret: VITE_APP_ACCESS_TOKEN
     commands:
       - echo $VITE_APP_BACKEND_URL >> .env.local
-      - echo VITE_APP_EXTERNAL_ASSETS_URL >> .env.local
-      - echo VITE_APP_ACCESS_TOKEN >> .env.local
+      - echo $VITE_APP_EXTERNAL_ASSETS_URL >> .env.local
+      - echo $VITE_APP_ACCESS_TOKEN >> .env.local
       - apk add --update nodejs yarn
       - yarn install
       - yarn run build
