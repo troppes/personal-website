@@ -35,8 +35,8 @@ steps:
     commands:
       - echo "$TEST" >> .env
       #- sed -i "s/VITE_APP_BACKEND_URL.*/$TEST/" .env
-      - sed -i "s/VITE_APP_EXTERNAL_ASSETS_URL.*/$TEST2/" .env
-      - sed -i "s/VITE_APP_ACCESS_TOKEN.*/$TEST3/" .env
+      #- sed -i "s/VITE_APP_EXTERNAL_ASSETS_URL.*/$TEST2/" .env
+      #- sed -i "s/VITE_APP_ACCESS_TOKEN.*/$TEST3/" .env
       - echo $TEST3
       - echo ${VITE_APP_BACKEND_URL}
       - apk add --update nodejs yarn
