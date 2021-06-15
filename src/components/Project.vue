@@ -13,7 +13,7 @@
       >
         <div
           class="articles__content articles__content--lhs"
-          :style="pictureKey ? 'background-image:url(https://cms.reitz.dev/assets/'+pictureKey+')' : 'background-color: var(--secondary-color)'"
+          :style="pictureKey ? 'background-image:url('+getImageUrl+')' : 'background-color: var(--secondary-color)'"
         >
           <h2 class="articles__title">
             {{ title }}
@@ -24,7 +24,7 @@
         </div>
         <div
           class="articles__content articles__content--rhs"
-          :style="pictureKey ? 'background-image:url(https://cms.reitz.dev/assets/'+pictureKey+')' : 'background-color: var(--secondary-color)'"
+          :style="pictureKey ? 'background-image:url('+getImageUrl+')' : 'background-color: var(--secondary-color)'"
           aria-hidden="true"
         >
           <h2 class="articles__title">
@@ -42,7 +42,7 @@
       >
         <div
           class="articles__content articles__content--lhs"
-          :style="pictureKey ? 'background-image:url(https://cms.reitz.dev/assets/'+pictureKey+')' : 'background-color: var(--secondary-color)'"
+          :style="pictureKey ? 'background-image:url('+getImageUrl+')' : 'background-color: var(--secondary-color)'"
         >
           <h2 class="articles__title">
             {{ title }}
@@ -53,7 +53,7 @@
         </div>
         <div
           class="articles__content articles__content--rhs"
-          :style="pictureKey ? 'background-image:url(https://cms.reitz.dev/assets/'+pictureKey+')' : 'background-color: var(--secondary-color)'"
+          :style="pictureKey ? 'background-image:url('+getImageUrl+')' : 'background-color: var(--secondary-color)'"
           aria-hidden="true"
         >
           <h2 class="articles__title">
@@ -94,6 +94,12 @@ export default {
       type: String,
       required: false,
       default: null,
+    },
+  },
+  computed: {
+    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+    getImageUrl() {
+      return import.meta.env.VITE_APP_EXTERNAL_ASSETS_URL + this.pictureKey;
     },
   },
 };

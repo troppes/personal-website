@@ -4,7 +4,7 @@
   </div>
   <Particles
     id="tsparticles"
-    :style="imageKey? 'background-image: url(https://cms.reitz.dev/assets/'+imageKey+')' : 'background-color: var(--secondary-color)'"
+    :style="pictureKey? 'background-image: url('+getImageUrl+')' : 'background-color: var(--secondary-color)'"
     :options="{
       fpsLimit: 60,
       particles: {
@@ -127,10 +127,15 @@ export default {
       required: true,
       default: '',
     },
-    imageKey: {
+    pictureKey: {
       type: String,
       required: false,
       default: '',
+    },
+  },
+  computed: {
+    getImageUrl() {
+      return import.meta.env.VITE_APP_EXTERNAL_ASSETS_URL + this.pictureKey;
     },
   },
 };
