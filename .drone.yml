@@ -33,7 +33,7 @@ steps:
       TEST3:
         from_secret: VITE_APP_ACCESS_TOKEN
     commands:
-      - sed "s/VITE_APP_BACKEND_URL/$TEST/g"
+      - echo "$TEST" >> .env
       #- sed -i "s/VITE_APP_BACKEND_URL.*/$TEST/" .env
       - sed -i "s/VITE_APP_EXTERNAL_ASSETS_URL.*/$TEST2/" .env
       - sed -i "s/VITE_APP_ACCESS_TOKEN.*/$TEST3/" .env
