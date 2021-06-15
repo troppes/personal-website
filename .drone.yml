@@ -13,6 +13,7 @@ steps:
       VITE_APP_ACCESS_TOKEN:
           from_secret: VITE_APP_BACKEND_URL
     commands:
+      - echo 'Test'
       - echo ${VITE_APP_ACCESS_TOKEN}
 #      - apk add --update nodejs yarn
 #      - yarn install
