@@ -10,7 +10,6 @@ steps:
       - yarn install
       - yarn run tsc
       - yarn run eslint
-
 ---
 
 kind: pipeline
@@ -26,10 +25,21 @@ trigger:
 steps:
   - name: build project
     image: alpine
+    environment:
+      VITE_APP_BACKEND_URL:
+        from_secret: VITE_APP_BACKEND_URL
+      VITE_APP_EXTERNAL_ASSETS_URL:
+        from_secret: VITE_APP_EXTERNAL_ASSETS_URL
+      VITE_APP_ACCESS_TOKEN:
+        from_secret: VITE_APP_ACCESS_TOKEN
     commands:
+      - sed -i 's/VITE_APP_BACKEND_URL.*/${VITE_APP_BACKEND_URL}/' .env
+      - sed -i 's/VITE_APP_EXTERNAL_ASSETS_URL.*/${VITE_APP_EXTERNAL_ASSETS_URL}/' .env
+      - sed -i 's/VITE_APP_ACCESS_TOKEN.*/${VITE_APP_ACCESS_TOKEN}/' .env
       - apk add --update nodejs yarn
       - yarn install
       - yarn run build
+
 
   - name: build container
     image: plugins/docker
