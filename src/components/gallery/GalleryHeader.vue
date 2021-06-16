@@ -120,7 +120,7 @@
 
 <script>
 export default {
-  name: 'Project',
+  name: 'GalleryHeader',
   props: {
     text: {
       type: String,
