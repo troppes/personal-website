@@ -32,10 +32,13 @@ steps:
         from_secret: ASSETS_URL
       ACCESS_TOKEN:
         from_secret: ACCESS_TOKEN
+      LIGHTGALLERY_KEY:
+        from_secret: LIGHTGALLERY_KEY
     commands:
       - echo "VITE_APP_BACKEND_URL=$BACKEND_URL " >> .env.local
       - echo "VITE_APP_EXTERNAL_ASSETS_URL=$ASSETS_URL" >> .env.local
       - echo "VITE_APP_ACCESS_TOKEN=$ACCESS_TOKEN" >> .env.local
+      - echo "VITE_APP_LIGHTGALLERY_KEY=$LIGHTGALLERY_KEY" >> .env.local
       - apk add --update nodejs yarn
       - yarn install
       - yarn run build

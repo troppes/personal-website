@@ -5,7 +5,7 @@
   />
   <div class="masonry-wrapper">
     <light-gallery
-      :settings="{ speed: 500, plugins: plugins }"
+      :settings="{ speed: 500, plugins: plugins, licenseKey: getLicense()}"
       :on-init="onInit"
       class="masonry"
     >
@@ -127,6 +127,9 @@ export default defineComponent({
           console.log('Client Error:', err);
         }
       }
+    },
+    getLicense() {
+      return import.meta.env.VITE_APP_LIGHTGALLERY_KEY;
     },
   },
 });
