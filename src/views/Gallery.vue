@@ -8,7 +8,7 @@
       <div
         v-for="tag in tags"
         :key="tag.id"
-        class="tags pure-u-1-2 pure-u-lg-1-4 pure-u-xl-1-8"
+        class="pure-u-1-2 pure-u-lg-1-4 pure-u-xl-1-8"
       >
         <a
           class="tag"
@@ -16,14 +16,14 @@
         >{{ tag.tag }}</a>
       </div>
       <div
-        class="tags pure-u-1-2 pure-u-lg-1-4 pure-u-xl-1-8"
+        class="pure-u-1-2 pure-u-lg-1-4 pure-u-xl-1-8"
       >
         <a
           class="show-all"
           @click="moreTagsClicked"
         >{{ allTagsButton }}</a>
       </div>
-      <div class="tags pure-u-1-2 pure-u-lg-1-4 pure-u-xl-1-8">
+      <div class="pure-u-1-2 pure-u-lg-1-4 pure-u-xl-1-8">
         <a
           class="reset"
           @click="tagClicked(null)"
@@ -237,11 +237,6 @@ export default defineComponent({
 
 <style scoped>
 
-.tags {
-  display: flex;
-  justify-content: center;
-}
-
 .masonry-wrapper {
   padding-top: 10vh;
   margin: auto;
@@ -288,11 +283,11 @@ export default defineComponent({
   border-radius: 3px;
   color: var(--primary-text-color);
   display: inline-block;
-  height: 26px;
-  line-height: 26px;
-  padding: 0 20px 0 23px;
+  height: 1.625rem;
+  line-height: 1.625rem;
+  padding: 0 1.25rem 0 1.438rem;
   position: relative;
-  margin: 0 10px 10px 0;
+  margin: 0 0.625rem 0.625rem 0;
   text-decoration: none;
   -webkit-transition: color 0.2s;
 }
@@ -305,11 +300,11 @@ export default defineComponent({
   border-radius: 3px 0 0 3px;
   color: var(--primary-text-color);
   display: inline-block;
-  height: 26px;
-  line-height: 26px;
-  padding: 0 20px 0 23px;
+  height: 1.625rem;
+  line-height: 1.625rem;
+  padding: 0 1.25rem 0 1.438rem;
   position: relative;
-  margin: 0 10px 10px 0;
+  margin: 0 0.625rem 0.625rem 0;
   text-decoration: none;
   -webkit-transition: color 0.2s;
 }
@@ -322,31 +317,31 @@ export default defineComponent({
   border-radius: 3px;
   color: var(--headline-text-color);
   display: inline-block;
-  height: 26px;
-  line-height: 26px;
-  padding: 0 20px 0 23px;
+  height: 1.625rem;
+  line-height: 1.625rem;
+  padding: 0 1.25rem 0 1.438rem;
   position: relative;
-  margin: 0 10px 10px 0;
+  margin: 0 0.625rem 0.625rem 0;
   text-decoration: none;
   -webkit-transition: color 0.2s;
 }
 
 .tag::before {
   background: var(--primary-color);
-  border-radius: 10px;
+  border-radius: 0.625rem;
   content: '';
-  height: 6px;
-  left: 10px;
+  height: 0.375rem;
+  left: 0.625rem;
   position: absolute;
-  width: 6px;
-  top: 10px;
+  width: 0.375rem;
+  top: 0.625rem;
 }
 
 .tag::after {
   background: var(--primary-color);
-  border-bottom: 13px solid transparent;
-  border-left: 10px solid var(--secondary-color);;
-  border-top: 13px solid transparent;
+  border-bottom: 0.813rem solid transparent;
+  border-left: 0.625rem solid var(--secondary-color);;
+  border-top: 0.813rem solid transparent;
   content: '';
   position: absolute;
   right: 0;
