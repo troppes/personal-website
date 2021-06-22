@@ -53,7 +53,7 @@ export default defineComponent({
   methods: {
     async fetchProjects() {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_APP_BACKEND_URL}/items/projects?limit=3`, {
+        const response = await axios.get(`${import.meta.env.VITE_APP_BACKEND_URL}/items/projects?limit=3&sort=sort,-date_created`, {
           headers: {
             Authorization: `Bearer ${import.meta.env.VITE_APP_ACCESS_TOKEN}`,
           },
