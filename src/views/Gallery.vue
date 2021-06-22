@@ -240,7 +240,7 @@ export default defineComponent({
 .masonry-wrapper {
   padding-top: 10vh;
   margin: auto;
-  width: 80%;
+  width: 60%;
 }
 
 .masonry {
@@ -261,6 +261,9 @@ export default defineComponent({
 @media only screen and (max-width: 1023px) and (min-width: 768px) {
   .masonry {
     columns: 2;
+  }
+  .masonry-wrapper {
+    width: 80%;
   }
 }
 
