@@ -114,6 +114,8 @@ export default defineComponent({
       lightGallery = detail.instance;
     },
     tagClicked(tag: GalleryTagType | null) {
+      this.galleryPhotos = [];
+      this.offset = 10;
       this.currentTag = tag !== null ? tag.id : -1;
       this.fetchGallery();
     },
@@ -189,7 +191,9 @@ export default defineComponent({
       window.onscroll = async () => {
         const bottomOfWindow = (window.innerHeight + window.pageYOffset) >= document.body.offsetHeight;
         if (bottomOfWindow) {
-          const response = await axios.get(`${import.meta.env.VITE_APP_BACKEND_URL}/items/gallery?sort=sort,-date_created&offset=${this.offset}`, {
+          let url = `${import.meta.env.VITE_APP_BACKEND_URL}/items/gallery?sort=sort,-date_created&offset=${this.offset}`;
+          url = this.currentTag === -1 ? url : `${url}&filter[tags][gallery_tags_id]=${this.currentTag}`;
+          const response = await axios.get(url, {
             headers: {
               Authorization: `Bearer ${import.meta.env.VITE_APP_ACCESS_TOKEN}`,
             },
