@@ -8,7 +8,7 @@
       <div
         v-for="tag in tags"
         :key="tag.id"
-        class="tags pure-u-1-2 pure-u-md-1-4 pure-u-lg-1-6 pure-u-xl-1-8"
+        class="tags pure-u-1-2 pure-u-lg-1-4 pure-u-xl-1-8"
       >
         <a
           class="tag"
@@ -16,14 +16,14 @@
         >{{ tag.tag }}</a>
       </div>
       <div
-        class="tags pure-u-1-2 pure-u-md-1-4 pure-u-lg-1-6 pure-u-xl-1-8"
+        class="tags pure-u-1-2 pure-u-lg-1-4 pure-u-xl-1-8"
       >
         <a
           class="show-all"
           @click="moreTagsClicked"
         >{{ allTagsButton }}</a>
       </div>
-      <div class="tags pure-u-1-2 pure-u-md-1-4 pure-u-lg-1-6 pure-u-xl-1-8">
+      <div class="tags pure-u-1-2 pure-u-lg-1-4 pure-u-xl-1-8">
         <a
           class="reset"
           @click="tagClicked(null)"
@@ -237,11 +237,6 @@ export default defineComponent({
 
 <style scoped>
 
-h2 {
-  text-align: center;
-  font-size: 20vh;
-}
-
 .tags {
   display: flex;
   justify-content: center;
@@ -249,20 +244,16 @@ h2 {
 
 .masonry-wrapper {
   padding-top: 10vh;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-.masonry {
-  columns: 1;
-  column-gap: 2vh;
   margin: auto;
   width: 80%;
 }
 
+.masonry {
+  columns: 1;
+}
+
 .masonry-item {
   display: inline-block;
-  vertical-align: top;
   margin-top: 1.5vh;
   transition: transform .5s ease-in-out;
 }
@@ -270,12 +261,6 @@ h2 {
 .masonry-item:hover {
   transform: scale(1.05);
   cursor: pointer;
-}
-
-@media only screen and (max-width: 768px) {
-  .masonry {
-    width: 50%;
-  }
 }
 
 @media only screen and (max-width: 1023px) and (min-width: 768px) {
