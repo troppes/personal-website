@@ -1,4 +1,4 @@
-[![Build Status](https://drone.reitz.dev/api/badges/troppes/vue-website/status.svg)](https://drone.reitz.dev/troppes/vue-website)
+[![Build Status](https://drone.reitz.dev/api/badges/troppes/personal-website/status.svg)](https://drone.reitz.dev/troppes/personal-website)
 
 # Website Template for reitz.dev
 
