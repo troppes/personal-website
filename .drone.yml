@@ -52,34 +52,3 @@ steps:
         from_secret: docker_pw
       repo: floreitz/website
       tags: latest
-
----
-
-kind: pipeline
-type: ssh
-name: deploy
-
-clone:
-  disable: true
-
-trigger:
-  branch:
-    - main
-
-depends_on:
-  - test
-  - build
-
-server:
-  host:
-    from_secret: host
-  user: deploy
-  password:
-    from_secret: password
-
-steps:
-  - name: deploy
-    commands:
-      - cd /srv/docker/
-      - sudo docker-compose pull website
-      - sudo docker-compose up -d
