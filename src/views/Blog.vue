@@ -62,7 +62,7 @@ export default defineComponent({
   methods: {
     async fetchBlogPosts() {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_APP_BACKEND_URL}/items/blogposts?fields=*.*`, {
+        const response = await axios.get(`${import.meta.env.VITE_APP_BACKEND_URL}/items/blogposts?fields=*.*&sort=sort,-date_created`, {
           headers: {
             Authorization: `Bearer ${import.meta.env.VITE_APP_ACCESS_TOKEN}`,
           },
