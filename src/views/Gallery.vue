@@ -4,6 +4,32 @@
     :text="galleryHeader.text"
   />
   <div class="masonry-wrapper">
+    <div class="pure-g">
+      <div
+        v-for="tag in tags"
+        :key="tag.id"
+        class="tags pure-u-1-2 pure-u-md-1-4 pure-u-lg-1-6 pure-u-xl-1-8"
+      >
+        <a
+          class="tag"
+          @click="tagClicked(tag)"
+        >{{ tag.tag }}</a>
+      </div>
+      <div
+        class="tags pure-u-1-2 pure-u-md-1-4 pure-u-lg-1-6 pure-u-xl-1-8"
+      >
+        <a
+          class="show-all"
+          @click="moreTagsClicked"
+        >{{ allTagsButton }}</a>
+      </div>
+      <div class="tags pure-u-1-2 pure-u-md-1-4 pure-u-lg-1-6 pure-u-xl-1-8">
+        <a
+          class="reset"
+          @click="tagClicked(null)"
+        >Reset</a>
+      </div>
+    </div>
     <light-gallery
       :settings="{ speed: 500, plugins: plugins, licenseKey: getLicense()}"
       :on-init="onInit"
@@ -14,6 +40,12 @@
         :key="photo.id"
         :data-src="'https://cms.reitz.dev/assets/'+photo.photoKey"
         :data-sub-html="photo.description"
+        data-pinterest-text="Check out this Photo I found on https://reitz.dev/gallery"
+        data-tweet-text="Check out this Photo I found on https://reitz.dev/gallery"
+        :data-slide-name="photo.photoKey"
+        :data-facebook-share-url="'https://cms.reitz.dev/assets/'+photo.photoKey"
+        :data-twitter-share-url="'https://cms.reitz.dev/assets/'+photo.photoKey"
+        :data-pinterest-share-url="'https://cms.reitz.dev/assets/'+photo.photoKey"
         class="masonry-item"
       >
         <img
@@ -34,10 +66,13 @@ import axios from 'axios';
 import LightGallery from 'lightgallery/vue';
 import lgThumbnail from 'lightgallery/plugins/thumbnail';
 import lgZoom from 'lightgallery/plugins/zoom';
+import lgFullScreen from 'lightgallery/plugins/fullscreen';
+import lgShare from 'lightgallery/plugins/share';
 
 import GalleryHeaderType from '../types/GalleryHeaderType';
 import GalleryHeader from '../components/gallery/GalleryHeader.vue';
 import GalleryPhotoType from '../types/GalleryPhotoType';
+import GalleryTagType from '../types/GalleryTagType';
 
 let lightGallery: any = null;
 
@@ -53,7 +88,12 @@ export default defineComponent({
       galleryHeader: { text: '', imageKey: '' },
       isModalVisible: false,
       modalImage: '',
-      plugins: [lgThumbnail, lgZoom],
+      plugins: [lgThumbnail, lgZoom, lgFullScreen, lgShare],
+      offset: 10,
+      tags: [] as GalleryTagType[],
+      allTags: [] as GalleryTagType[],
+      currentTag: -1,
+      allTagsButton: 'More tags',
     };
   },
   watch: {
@@ -66,14 +106,29 @@ export default defineComponent({
   mounted() {
     this.fetchGalleryHeader();
     this.fetchGallery();
+    this.getMoreImages();
+    this.getAllTags();
   },
   methods: {
     onInit: (detail: any) => {
       lightGallery = detail.instance;
     },
+    tagClicked(tag: GalleryTagType | null) {
+      this.currentTag = tag !== null ? tag.id : -1;
+      this.fetchGallery();
+    },
+    moreTagsClicked() {
+      if (this.tags.length === this.allTags.length) {
+        this.tags = this.tags.slice(0, 6);
+        this.allTagsButton = 'More tags';
+      } else {
+        this.tags = this.allTags;
+        this.allTagsButton = 'Less tags';
+      }
+    },
     async fetchGalleryHeader() {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_APP_BACKEND_URL}/items/gallerycover`, {
+        const response = await axios.get(`${import.meta.env.VITE_APP_BACKEND_URL}/items/gallery_cover`, {
           headers: {
             Authorization: `Bearer ${import.meta.env.VITE_APP_ACCESS_TOKEN}`,
           },
@@ -100,7 +155,9 @@ export default defineComponent({
     async fetchGallery() {
       try {
         // if tag selected -> Filter
-        const response = await axios.get(`${import.meta.env.VITE_APP_BACKEND_URL}/items/gallery`, {
+        let url = `${import.meta.env.VITE_APP_BACKEND_URL}/items/gallery?limit=${this.offset}`;
+        url = this.currentTag === -1 ? url : `${url}&filter[tags][gallery_tags_id]=${this.currentTag}`;
+        const response = await axios.get(url, {
           headers: {
             Authorization: `Bearer ${import.meta.env.VITE_APP_ACCESS_TOKEN}`,
           },
@@ -128,6 +185,49 @@ export default defineComponent({
         }
       }
     },
+    async getMoreImages() {
+      window.onscroll = async () => {
+        const bottomOfWindow = document.documentElement.scrollTop + window.innerHeight === document.documentElement.offsetHeight;
+        if (bottomOfWindow) {
+          const response = await axios.get(`${import.meta.env.VITE_APP_BACKEND_URL}/items/gallery?offset=${this.offset}`, {
+            headers: {
+              Authorization: `Bearer ${import.meta.env.VITE_APP_ACCESS_TOKEN}`,
+            },
+          });
+          const results = response.data.data;
+          this.galleryPhotos = this.galleryPhotos.concat(results.map((post: any) => ({
+            id: post.id,
+            photoKey: post.photo,
+            description: post.description,
+            tags: post.tags,
+            alt: post.alt,
+          })));
+          this.offset += 10;
+        }
+      };
+    },
+    async getAllTags() {
+      const response = await axios.get(`${import.meta.env.VITE_APP_BACKEND_URL}/items/gallery_tags`, {
+        headers: {
+          Authorization: `Bearer ${import.meta.env.VITE_APP_ACCESS_TOKEN}`,
+        },
+      });
+      const results = response.data.data;
+
+      this.allTags = results.map((tag: any) => ({
+        id: tag.id,
+        tag: tag.tag,
+        timesUsed: Object.keys(tag.gallery).length,
+      }));
+
+      this.allTags.sort((a, b) => {
+        if (a.timesUsed > b.timesUsed) return -1;
+        if (a.timesUsed < b.timesUsed) return 1;
+        return 0;
+      });
+
+      this.tags = [...this.allTags].slice(0, 6);
+    },
     getLicense() {
       return import.meta.env.VITE_APP_LIGHTGALLERY_KEY;
     },
@@ -142,9 +242,13 @@ h2 {
   font-size: 20vh;
 }
 
+.tags {
+  display: flex;
+  justify-content: center;
+}
+
 .masonry-wrapper {
-  padding-top: 8vh;
-  max-width: 130vh;
+  padding-top: 10vh;
   margin-right: auto;
   margin-left: auto;
 }
@@ -152,19 +256,26 @@ h2 {
 .masonry {
   columns: 1;
   column-gap: 2vh;
+  margin: auto;
+  width: 80%;
 }
 
 .masonry-item {
   display: inline-block;
   vertical-align: top;
-  margin-bottom: 1vh;
+  margin-top: 1.5vh;
   transition: transform .5s ease-in-out;
-
 }
 
 .masonry-item:hover {
   transform: scale(1.05);
   cursor: pointer;
+}
+
+@media only screen and (max-width: 768px) {
+  .masonry {
+    width: 50%;
+  }
 }
 
 @media only screen and (max-width: 1023px) and (min-width: 768px) {
@@ -182,6 +293,88 @@ h2 {
 .masonry-item, .masonry-content {
   border-radius: 4px;
   overflow: hidden;
+}
+
+.show-all {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+  background: var(--secondary-color);
+  border-radius: 3px;
+  color: var(--primary-text-color);
+  display: inline-block;
+  height: 26px;
+  line-height: 26px;
+  padding: 0 20px 0 23px;
+  position: relative;
+  margin: 0 10px 10px 0;
+  text-decoration: none;
+  -webkit-transition: color 0.2s;
+}
+
+.tag {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+  background: var(--secondary-color);
+  border-radius: 3px 0 0 3px;
+  color: var(--primary-text-color);
+  display: inline-block;
+  height: 26px;
+  line-height: 26px;
+  padding: 0 20px 0 23px;
+  position: relative;
+  margin: 0 10px 10px 0;
+  text-decoration: none;
+  -webkit-transition: color 0.2s;
+}
+
+.reset {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+  background: var(--secondary-color);
+  border-radius: 3px;
+  color: var(--headline-text-color);
+  display: inline-block;
+  height: 26px;
+  line-height: 26px;
+  padding: 0 20px 0 23px;
+  position: relative;
+  margin: 0 10px 10px 0;
+  text-decoration: none;
+  -webkit-transition: color 0.2s;
+}
+
+.tag::before {
+  background: var(--primary-color);
+  border-radius: 10px;
+  content: '';
+  height: 6px;
+  left: 10px;
+  position: absolute;
+  width: 6px;
+  top: 10px;
+}
+
+.tag::after {
+  background: var(--primary-color);
+  border-bottom: 13px solid transparent;
+  border-left: 10px solid var(--secondary-color);;
+  border-top: 13px solid transparent;
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.tag:hover, .reset:hover, .show-all:hover {
+  background-color: var(--fourth-color);
+  color: var(--headline-text-color);
+}
+
+.tag:hover::after {
+  border-left-color: var(--fourth-color);
 }
 
 </style>
