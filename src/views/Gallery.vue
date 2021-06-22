@@ -187,7 +187,7 @@ export default defineComponent({
     },
     async getMoreImages() {
       window.onscroll = async () => {
-        const bottomOfWindow = document.documentElement.scrollTop + window.innerHeight === document.documentElement.offsetHeight;
+        const bottomOfWindow = (window.innerHeight + window.pageYOffset) >= document.body.offsetHeight;
         if (bottomOfWindow) {
           const response = await axios.get(`${import.meta.env.VITE_APP_BACKEND_URL}/items/gallery?sort=sort,-date_created&offset=${this.offset}`, {
             headers: {
