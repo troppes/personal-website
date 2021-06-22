@@ -155,7 +155,7 @@ export default defineComponent({
     async fetchGallery() {
       try {
         // if tag selected -> Filter
-        let url = `${import.meta.env.VITE_APP_BACKEND_URL}/items/gallery?limit=${this.offset}`;
+        let url = `${import.meta.env.VITE_APP_BACKEND_URL}/items/gallery?sort=sort,-date_created&limit=${this.offset}`;
         url = this.currentTag === -1 ? url : `${url}&filter[tags][gallery_tags_id]=${this.currentTag}`;
         const response = await axios.get(url, {
           headers: {
@@ -189,7 +189,7 @@ export default defineComponent({
       window.onscroll = async () => {
         const bottomOfWindow = document.documentElement.scrollTop + window.innerHeight === document.documentElement.offsetHeight;
         if (bottomOfWindow) {
-          const response = await axios.get(`${import.meta.env.VITE_APP_BACKEND_URL}/items/gallery?offset=${this.offset}`, {
+          const response = await axios.get(`${import.meta.env.VITE_APP_BACKEND_URL}/items/gallery?sort=sort,-date_created&offset=${this.offset}`, {
             headers: {
               Authorization: `Bearer ${import.meta.env.VITE_APP_ACCESS_TOKEN}`,
             },
