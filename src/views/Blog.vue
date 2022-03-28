@@ -64,7 +64,6 @@ export default defineComponent({
       try {
         const response = await axios.get(`${import.meta.env.VITE_APP_BACKEND_URL}/items/blogposts?fields=*.*&sort=sort,-date_created`, {
           headers: {
-            'Access-Control-Allow-Origin': `*`,
             Authorization: `Bearer ${import.meta.env.VITE_APP_ACCESS_TOKEN}`,
           },
         });
@@ -96,7 +95,6 @@ export default defineComponent({
       try {
         const response = await axios.get(`${import.meta.env.VITE_APP_BACKEND_URL}/items/blogmetadata`, {
           headers: {
-            'Access-Control-Allow-Origin': `*`,
             Authorization: `Bearer ${import.meta.env.VITE_APP_ACCESS_TOKEN}`,
           },
         });

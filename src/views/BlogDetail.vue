@@ -38,7 +38,6 @@ export default defineComponent({
       try {
         const response = await axios.get(`${import.meta.env.VITE_APP_BACKEND_URL}/items//blogposts/${this.$route.params.id}?fields=*.*`, {
           headers: {
-            'Access-Control-Allow-Origin': `*`,
             Authorization: `Bearer ${import.meta.env.VITE_APP_ACCESS_TOKEN}`,
           },
         });
