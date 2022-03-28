@@ -132,7 +132,7 @@ export default defineComponent({
       try {
         const response = await axios.get(`${import.meta.env.VITE_APP_BACKEND_URL}/items/gallery_cover`, {
           headers: {
-            'Access-Control-Allow-Origin': `${import.meta.env.VITE_APP_BACKEND_URL}`,
+            'Access-Control-Allow-Origin': `*`,
             Authorization: `Bearer ${import.meta.env.VITE_APP_ACCESS_TOKEN}`,
           },
         });
@@ -162,7 +162,7 @@ export default defineComponent({
         url = this.currentTag === -1 ? url : `${url}&filter[tags][gallery_tags_id]=${this.currentTag}`;
         const response = await axios.get(url, {
           headers: {
-            'Access-Control-Allow-Origin': `${import.meta.env.VITE_APP_BACKEND_URL}`,
+            'Access-Control-Allow-Origin': `*`,
             Authorization: `Bearer ${import.meta.env.VITE_APP_ACCESS_TOKEN}`,
           },
         });
@@ -197,7 +197,7 @@ export default defineComponent({
           url = this.currentTag === -1 ? url : `${url}&filter[tags][gallery_tags_id]=${this.currentTag}`;
           const response = await axios.get(url, {
             headers: {
-              'Access-Control-Allow-Origin': `${import.meta.env.VITE_APP_BACKEND_URL}`,
+              'Access-Control-Allow-Origin': `*`,
               Authorization: `Bearer ${import.meta.env.VITE_APP_ACCESS_TOKEN}`,
             },
           });
@@ -216,7 +216,7 @@ export default defineComponent({
     async getAllTags() {
       const response = await axios.get(`${import.meta.env.VITE_APP_BACKEND_URL}/items/gallery_tags`, {
         headers: {
-          'Access-Control-Allow-Origin': `${import.meta.env.VITE_APP_BACKEND_URL}`,
+          'Access-Control-Allow-Origin': `*`,
           Authorization: `Bearer ${import.meta.env.VITE_APP_ACCESS_TOKEN}`,
         },
       });
