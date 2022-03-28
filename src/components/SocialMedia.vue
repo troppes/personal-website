@@ -46,6 +46,7 @@ export default defineComponent({
       try {
         const response = await axios.get(`${import.meta.env.VITE_APP_BACKEND_URL}/items/social_media`, {
           headers: {
+            'Access-Control-Allow-Origin': `${import.meta.env.VITE_APP_BACKEND_URL}`,
             Authorization: `Bearer ${import.meta.env.VITE_APP_ACCESS_TOKEN}`,
           },
         });
