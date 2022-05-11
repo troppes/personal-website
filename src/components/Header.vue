@@ -74,7 +74,7 @@
       color: '000',
       size: {
         value: 10,
-        limit: 30,
+        limit: 80,
         random: false,
         density: 10
       },
