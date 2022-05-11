@@ -3,79 +3,87 @@
   <Particles
     id="tsparticles"
     :options="{
-      fpsLimit: 144,
-      interactivity: {
-        detectsOn: 'canvas',
-        events: {
-          onClick: {
-            enable: true,
-            mode: 'push'
-          },
-          onHover: {
-            enable: true,
-            mode: 'repulse'
-          },
-          resize: true
-        },
-        modes: {
-          bubble: {
-            distance: 400,
-            duration: 2,
-            opacity: 0.8,
-            size: 40,
-            speed: 3
-          },
-          push: {
-            quantity: 4
-          },
-          repulse: {
-            distance: 200,
-            duration: 0.4
-          }
-        }
-      },
+      fpsLimit: 60,
       particles: {
-        color: {
-          value: '#FFFFFF'
-        },
-        links: {
-          color: '#FFFFFF',
-          distance: 150,
+      number: {
+        value: 800,
+        density: {
           enable: true,
-          opacity: 0.5,
-          width: 1
-        },
-        collisions: {
-          enable: true
-        },
-        move: {
-          direction: 'none',
-          enable: true,
-          outMode: 'bounce',
-          random: false,
-          speed: 6,
-          straight: false
-        },
-        number: {
-          density: {
-            enable: true,
-            value_area: 800
-          },
-          value: 80
-        },
-        opacity: {
-          value: 0.5
-        },
-        shape: {
-          type: 'circle'
-        },
-        size: {
-          random: true,
-          value: 5
+          area: 900
         }
       },
-      detectRetina: true
-    }"
+      color: {
+        value: ['#ffffff']
+      },
+      shape: {
+        type: 'circle'
+      },
+      opacity: {
+        value: 1
+      },
+      size: {
+        value: 3,
+        random: {
+          enable: true,
+          minimumValue: 1
+        }
+      },
+      move: {
+        size: true,
+        enable: true,
+        speed: 0.01,
+        direction: 'none',
+        random: false,
+        straight: false,
+        outModes: {
+          default: 'out'
+        },
+        attract: {
+          enable: false,
+          rotateX: 600,
+          rotateY: 1200
+        },
+        trail: {
+          enable: true,
+          length: 3,
+          fillColor: '#0E1630'
+        },
+        warp: true
+      }
+    },
+    interactivity: {
+      detect_on: 'canvas',
+      events: {
+        onClick: {
+          enable: true,
+          mode: 'push'
+        },
+        resize: true
+        },
+      modes: {
+        push: {
+          quantity: 4
+        },
+      }
+    },
+    detectRetina: true,
+    absorbers: {
+      orbits: true,
+      destroy: true,
+      opacity: 1,
+      color: '000',
+      size: {
+        value: 10,
+        limit: 80,
+        random: false,
+        density: 10
+      },
+      position: {
+        x: 50,
+        y: 50
+      }
+    },
+  }"
   />
 </template>
 
