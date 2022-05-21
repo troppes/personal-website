@@ -31,7 +31,7 @@
       move: {
         size: true,
         enable: true,
-        speed: 0.01,
+        speed: 0.05,
         direction: 'none',
         random: false,
         straight: false,
@@ -68,21 +68,21 @@
     },
     detectRetina: true,
     absorbers: {
-      orbits: true,
-      destroy: true,
-      opacity: 1,
-      color: '000',
-      size: {
-        value: 10,
-        limit: 80,
-        random: false,
-        density: 10
-      },
-      position: {
-        x: 50,
-        y: 50
-      }
-    },
+        orbits: true,
+        destroy: true,
+        opacity: 1,
+        color: '000 ',
+        size: {
+          value: 10,
+          limit: 20 ,
+          random: false,
+          density: 10
+        },
+        position: {
+          x: 50,
+          y: 50
+        }
+          },
   }"
   />
 </template>
