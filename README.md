@@ -1,38 +1,25 @@
-# create-svelte
+[![Build Status](https://drone.reitz.dev/api/badges/troppes/personal-website/status.svg)](https://drone.reitz.dev/troppes/personal-website)
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+# Website Template for reitz.dev
 
-## Creating a project
+## Install dependencies
 
-If you're seeing this, you've probably already done this step. Congrats!
+To install the dependencies `bun install`
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+## Start Development Server
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+To start the development server run: `bun --bun run dev`
 
-## Developing
+## Inspiration and Special Thanks
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+[Chyno Deluxe](https://codepen.io/ChynoDeluxe/pen/bdXeqQ) for the blog template
 
-```bash
-npm run dev
+[Dan Benmore](https://codepen.io/dbenmore/pen/eYpYPEL) for the folding card template
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+[Matteo Bruni](https://codepen.io/collection/DPOage) for the particle ideas
 
-## Building
+[mutedblues](https://codepen.io/mutedblues/pen/MmPNPG) for a navigation without JS
 
-To create a production version of your app:
+[Ibrahim Shamss](https://www.behance.net/gallery/112542151/Shamss-Personal-Portfolio-Website?tracking_source=search_projects_recommended%7Cpersonal%20website) for the color palette
 
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+[lightGallery](https://www.lightgalleryjs.com) for the the gallery component
