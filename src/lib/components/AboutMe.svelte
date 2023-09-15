@@ -18,7 +18,7 @@
 			<div class="separator" />
 			<p>{@html aboutMe.description}</p>
 			<div class="social-media">
-				<SocialMedia size="60" {socialMedia} />
+				<SocialMedia {socialMedia} />
 			</div>
 		</div>
 	</div>

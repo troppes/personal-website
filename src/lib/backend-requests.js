@@ -21,6 +21,19 @@ export async function getProjects() {
 	return get(env.ACCESS_TOKEN, env.BACKEND_URL + '/items/projects?sort=sort,-date_created');
 }
 
-export async function get404() {
-	return get(env.ACCESS_TOKEN, env.BACKEND_URL + '/items/not_found');
+// Only fetches 100 objects to not overload the browser and server
+export async function getPhotos() {
+	return get(
+		env.ACCESS_TOKEN,
+		env.BACKEND_URL +
+			'/items/gallery?sort=sort,-date_created&limit=100&fields=*,tags.gallery_tags_id'
+	);
+}
+
+export async function getTags() {
+	return get(env.ACCESS_TOKEN, env.BACKEND_URL + '/items/gallery_tags');
+}
+
+export async function getGalleryHeader() {
+	return get(env.ACCESS_TOKEN, env.BACKEND_URL + '/items/gallery_cover');
 }
