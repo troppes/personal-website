@@ -1,4 +1,5 @@
 <script>
+	import Header from '$lib/components/Layout/Header.svelte';
 	import AboutMe from '$lib/components/AboutMe.svelte';
 	import Card from '$lib/components/Card.svelte';
 
@@ -12,13 +13,8 @@
 	};
 </script>
 
-<AboutMe
-	title="me.title"
-	msg="me.description"
-	picture-key="me.picture"
-	socialMedia={data.socialMedia}
-	aboutMe={data.aboutMe}
-/>
+<Header />
+<AboutMe socialMedia={data.socialMedia} aboutMe={data.aboutMe} />
 
 <div class="pure-g cards">
 	{#each data.projects as post}
