@@ -49,7 +49,6 @@
 		margin: 1rem auto 1.6%;
 		background: var(--secondary-color);
 		line-height: 1.4;
-		font-family: sans-serif;
 		border-radius: 5px;
 		overflow: hidden;
 		z-index: 0;

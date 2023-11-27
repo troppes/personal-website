@@ -2,13 +2,11 @@
 	export let socialMedia;
 </script>
 
-<div class="pure-g social">
+<div class="flex-container">
 	{#each socialMedia as social}
-		<div class="pure-u-1-{socialMedia.length}">
-			<a href={social.url}>
-				<img alt={social.alt} class="social-image" src={social.pictureUrl} />
-			</a>
-		</div>
+		<a href={social.url}>
+			<img alt={social.alt} class="social-image" src={social.pictureUrl} />
+		</a>
 	{/each}
 </div>
 

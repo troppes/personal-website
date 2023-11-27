@@ -5,7 +5,7 @@
 	export let socialMedia;
 </script>
 
-<div class="pure-g">
+<div class="flex-container">
 	<div class="pure-u-md-4-24" />
 	<div class="about-me pure-u-md-16-24 pure-g">
 		<div class="photo pure-u-lg-12-24 pure-u-1">
@@ -44,6 +44,9 @@
 
 	.photo img {
 		border: 2px solid var(--secondary-color);
+		max-width: 600px;
+		min-width: 400px;
+		height: auto;
 	}
 
 	.separator {

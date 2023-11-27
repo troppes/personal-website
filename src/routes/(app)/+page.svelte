@@ -16,7 +16,7 @@
 <Header />
 <AboutMe socialMedia={data.socialMedia} aboutMe={data.aboutMe} />
 
-<div class="pure-g cards">
+<div class="flex-container cards">
 	{#each data.projects as post}
 		<Card {post} />
 	{/each}
