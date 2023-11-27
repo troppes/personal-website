@@ -1,5 +1,5 @@
 import { env } from '$env/dynamic/private';
-import { getProjects } from '../../lib/backend-requests.js';
+import { getProjects } from '$lib/backend-requests.js';
 
 export async function load() {
 	let projects = null;

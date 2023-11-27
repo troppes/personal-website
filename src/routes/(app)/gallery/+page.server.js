@@ -1,5 +1,5 @@
 import { env } from '$env/dynamic/private';
-import { getPhotos, getTags, getGalleryHeader } from '../../lib/backend-requests.js';
+import { getPhotos, getTags, getGalleryHeader } from '$lib/backend-requests.js';
 
 export async function load() {
 	let photos = null;
