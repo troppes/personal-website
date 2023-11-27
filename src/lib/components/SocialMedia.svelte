@@ -14,6 +14,8 @@
 
 <style>
 	.social-image {
-		width: 40%;
+		max-width: 60px;
+		min-width: 40px;
+		height: auto;
 	}
 </style>

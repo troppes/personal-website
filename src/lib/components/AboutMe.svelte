@@ -8,12 +8,12 @@
 <div class="pure-g">
 	<div class="pure-u-md-4-24" />
 	<div class="about-me pure-u-md-16-24 pure-g">
-		<div class="photo pure-u-1 pure-u-lg-1-2">
+		<div class="photo pure-u-lg-12-24 pure-u-1">
 			{#if aboutMe.picture}
 				<img class="left pure-img" alt="profile" src={aboutMe.picture} />
 			{/if}
 		</div>
-		<div class="content pure-u-1 pure-u-lg-1-2">
+		<div class="content pure-u-lg-11-24 pure-u-1">
 			<h1>{aboutMe.title}</h1>
 			<div class="separator" />
 			<p>{@html aboutMe.description}</p>
