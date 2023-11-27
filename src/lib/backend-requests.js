@@ -37,3 +37,18 @@ export async function getTags() {
 export async function getGalleryHeader() {
 	return get(env.ACCESS_TOKEN, env.BACKEND_URL + '/items/gallery_cover');
 }
+
+export async function getBlogPosts() {
+	return get(
+		env.ACCESS_TOKEN,
+		env.BACKEND_URL + '/items/blogposts?fields=*.*&sort=sort,-date_created'
+	);
+}
+
+export async function getBlogMetaData() {
+	return get(env.ACCESS_TOKEN, env.BACKEND_URL + '/items/blogmetadata');
+}
+
+export async function getBlogPost(id) {
+	return get(env.ACCESS_TOKEN, env.BACKEND_URL + '/items/blogposts/' + id + '?fields=*.*');
+}

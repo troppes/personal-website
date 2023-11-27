@@ -1,5 +1,5 @@
 import { env } from '$env/dynamic/private';
-import { getSocialMedia, getAboutMe, getProjectsForHome } from '../lib/backend-requests.js';
+import { getSocialMedia, getAboutMe, getProjectsForHome } from '../../lib/backend-requests.js';
 
 export async function load() {
 	let socialMedia = null;

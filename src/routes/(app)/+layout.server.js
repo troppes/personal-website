@@ -1,4 +1,4 @@
-import { getFooter } from '../lib/backend-requests.js';
+import { getFooter } from '../../lib/backend-requests.js';
 
 export async function load() {
 	let footer = null;
