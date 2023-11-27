@@ -6,34 +6,49 @@
 	import lgShare from 'lightgallery/plugins/share';
 	import { onMount } from 'svelte';
 
-	import GalleryHeader from '$lib/components/Gallery/GalleryHeader.svelte';
-
 	export let data;
 
 	let lightGallery = null;
+	let lgJS = null;
 	let allTags = data.tags || [];
 	let allPhotos = [...data.galleryPhotos] || [];
-	let galleryHeader = data.galleryHeader || null;
 	let licenseKey = data.licenseKey || null;
-	let offset = 10;
+	let offset = 20;
 
 	let tags = [...allTags].slice(0, 6);
 	let photos = [...allPhotos.splice(0, offset)];
 	let allTagsButton = 'More tags';
 
-	onMount(() => {
-		if (lightGallery) {
-			LightGallery(lightGallery, {
-				plugins: [lgThumbnail, lgZoom, lgFullScreen, lgShare],
-				speed: 500,
-				licenseKey: licenseKey
-			});
+	function getPicSize() {
+		const randomNumber = Math.random();
+		if (randomNumber < 0.5) {
+			return '';
+		} else if (randomNumber < 0.7) {
+			return 'tall';
+		} else if (randomNumber < 0.9) {
+			return 'wide';
+		} else {
+			return 'big';
 		}
+	}
+
+	onMount(() => {
+		lgJS = LightGallery(lightGallery, {
+			plugins: [lgThumbnail, lgZoom, lgFullScreen, lgShare],
+			speed: 500,
+			licenseKey: licenseKey
+		});
+
+		lightGallery.addEventListener('lgBeforeOpen', () => {
+			lgJS.refresh();
+		});
+
 		window.onscroll = async () => {
-			const bottomOfWindow = window.innerHeight + window.scrollY >= document.body.offsetHeight;
+			const bottomOfWindow = window.innerHeight + window.scrollY >= document.body.offsetHeight - 30;
 			if (bottomOfWindow) {
 				photos.push(...allPhotos.splice(0, offset));
-				photos = photos;
+				photos = photos; // needed for refresh
+				lgJS.refresh();
 			}
 		};
 	});
@@ -59,88 +74,82 @@
 	}
 </script>
 
-<GalleryHeader pictureUrl={galleryHeader} />
-
-<div class="masonry-wrapper">
-	<div class="pure-g">
-		{#each tags as tag}
-			<div class="pure-u-1-2 pure-u-lg-1-4 pure-u-xl-1-8">
-				<button class="tag" on:click={tagClicked(tag)}>{tag.tag}</button>
-			</div>
-		{/each}
-
-		<div class="pure-u-1-2 pure-u-lg-1-4 pure-u-xl-1-8">
-			<button class="show-all" on:click={moreTagsClicked}>{allTagsButton}</button>
+<div class="flex-container">
+	{#each tags as tag}
+		<div class="tag-box">
+			<button class="tag" on:click={tagClicked(tag)}>{tag.tag}</button>
 		</div>
-		<div class="pure-u-1-2 pure-u-lg-1-4 pure-u-xl-1-8">
-			<button class="reset" on:click={resetTags}>Reset</button>
-		</div>
+	{/each}
+
+	<div class="tag-box">
+		<button class="show-all tag" on:click={moreTagsClicked}>{allTagsButton}</button>
 	</div>
-	<div bind:this={lightGallery} class="masonry">
-		{#each photos as photo}
-			<a
-				href={photo.photoUrl}
-				data-src={photo.photoUrl}
-				data-sub-html={photo.description}
-				data-pinterest-text="Check out this Photo I found on https://reitz.dev/gallery"
-				data-tweet-text="Check out this Photo I found on https://reitz.dev/gallery"
-				data-slide-name={photo.id}
-				data-facebook-share-url={photo.photoUrl}
-				data-twitter-share-url={photo.photoUrl}
-				data-pinterest-share-url={photo.photoUrl}
-				class="masonry-item"
-			>
-				<img
-					alt={photo.alt}
-					class="masonry-content pure-img"
-					src="{photo.photoUrl}?fit=cover&width=400&quality=80"
-				/>
-			</a>
-		{/each}
+	<div class="tag-box">
+		<button class="reset tag" on:click={resetTags}>Reset</button>
 	</div>
+</div>
+<div bind:this={lightGallery} class="masonry">
+	{#each photos as photo}
+		<a
+			href={photo.photoUrl}
+			data-src={photo.photoUrl}
+			data-sub-html={photo.description}
+			data-pinterest-text="Check out this Photo I found on https://reitz.dev/gallery"
+			data-tweet-text="Check out this Photo I found on https://reitz.dev/gallery"
+			data-slide-name={photo.id}
+			data-facebook-share-url={photo.photoUrl}
+			data-twitter-share-url={photo.photoUrl}
+			data-pinterest-share-url={photo.photoUrl}
+			class={'masonry-item ' + getPicSize()}
+		>
+			<img alt={photo.alt} src="{photo.photoUrl}?fit=cover&width=400&quality=80" />
+		</a>
+	{/each}
 </div>
 
 <style>
-	.masonry-wrapper {
-		padding-top: 10vh;
+	.flex-container {
+		padding-top: 20vh;
 		margin: auto;
 		width: 60%;
 	}
 
 	.masonry {
-		columns: 1;
+		display: grid;
+		grid-gap: 10px;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		grid-auto-rows: 200px;
+		grid-auto-flow: dense;
+	}
+
+	.masonry .wide {
+		grid-column: span 2;
+	}
+	.masonry .tall {
+		grid-row: span 2;
+	}
+	.masonry .big {
+		grid-column: span 2;
+		grid-row: span 2;
 	}
 
 	.masonry-item {
-		display: inline-block;
-		margin-top: 1.5vh;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		transition: transform 0.5s ease-in-out;
+	}
+
+	.masonry-item > img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		border-radius: 5px;
 	}
 
 	.masonry-item:hover {
 		transform: scale(1.05);
 		cursor: pointer;
-	}
-
-	@media only screen and (max-width: 1023px) and (min-width: 768px) {
-		.masonry {
-			columns: 2;
-		}
-		.masonry-wrapper {
-			width: 80%;
-		}
-	}
-
-	@media only screen and (min-width: 1024px) {
-		.masonry {
-			columns: 3;
-		}
-	}
-
-	.masonry-item,
-	.masonry-content {
-		border-radius: 4px;
-		overflow: hidden;
 	}
 
 	.show-all {
@@ -228,5 +237,23 @@
 
 	.tag:hover::after {
 		border-left-color: var(--fourth-color);
+	}
+
+	.tag-box {
+		flex-grow: 0;
+		flex-shrink: 0;
+		flex-basis: 100%;
+	}
+
+	@media only screen and (min-width: 769px) {
+		.tag-box {
+			flex-basis: 50%;
+		}
+	}
+
+	@media only screen and (min-width: 1024px) {
+		.tag-box {
+			flex-basis: 25%;
+		}
 	}
 </style>

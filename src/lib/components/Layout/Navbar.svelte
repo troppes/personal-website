@@ -15,21 +15,21 @@
 	<label class="menu-icon" for="menu-btn"><span class="navicon" /></label>
 	<ul class="pure-menu-list menu">
 		<li class="pure-menu-item">
-			<a href="/" class={path === '/' ? 'pure-menu-link active' : 'pure-menu-link'}> Home </a>
+			<a href="/" class={path === '/' ? 'pure-menu-link active' : 'pure-menu-link'}> &#62;Home </a>
 		</li>
 		<li class="pure-menu-item">
 			<a href="/blog" class={path === '/blog' ? 'pure-menu-link active' : 'pure-menu-link'}>
-				Blog
+				&#62;Blog
 			</a>
 		</li>
 		<li class="pure-menu-item">
 			<a href="/projects" class={path === '/projects' ? 'pure-menu-link active' : 'pure-menu-link'}>
-				Projects
+				&#62;Projects
 			</a>
 		</li>
 		<li class="pure-menu-item">
 			<a href="/gallery" class={path === '/gallery' ? 'pure-menu-link active' : 'pure-menu-link'}>
-				Gallery
+				&#62;Gallery
 			</a>
 		</li>
 	</ul>
@@ -38,6 +38,7 @@
 <style>
 	a {
 		color: var(--primary-text-color);
+		font-size: 1.2em;
 	}
 
 	a:active {
@@ -78,7 +79,7 @@
 	.header .logo {
 		display: block;
 		float: left;
-		font-size: 2em;
+		font-size: 2.2em;
 		padding: 10px 20px;
 		text-decoration: none;
 	}
@@ -156,9 +157,7 @@
 		top: 0;
 	}
 
-	/* 48em = 768px */
-
-	@media (min-width: 48em) {
+	@media (min-width: 64em) {
 		.header {
 			background: none;
 		}

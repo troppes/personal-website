@@ -1,11 +1,9 @@
 import { env } from '$env/dynamic/private';
-import { getPhotos, getTags, getGalleryHeader } from '$lib/backend-requests.js';
+import { getPhotos, getTags } from '$lib/backend-requests.js';
 
 export async function load() {
 	let photos = null;
 	let tags = null;
-	let galleryHeader = null;
-
 	try {
 		photos = await getPhotos();
 		photos = photos.data.map((post) => ({
@@ -15,12 +13,6 @@ export async function load() {
 			alt: post.alt,
 			photoUrl: getImageUrl(post.photo)
 		}));
-	} catch (e) {
-		console.error(e);
-	}
-
-	try {
-		galleryHeader = await getGalleryHeader();
 	} catch (e) {
 		console.error(e);
 	}
@@ -45,7 +37,6 @@ export async function load() {
 	return {
 		galleryPhotos: photos,
 		tags: tags,
-		galleryHeader: getImageUrl(galleryHeader.data.image),
 		licenseKey: env.LIGHTGALLERY_KEY
 	};
 }
