@@ -140,7 +140,7 @@
 			{#each basicInfo.skills as skill, i}
 				"{skill}"
 				{#if i < basicInfo.skills.length - 1}
-					<span class="clear">,</span>
+					<span class="clear">,&ensp;</span>
 				{/if}
 			{/each}
 		</span>
