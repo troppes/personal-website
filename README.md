@@ -1,3 +1,5 @@
+[![build website](https://github.com/troppes/personal-website/actions/workflows/build-container.yml/badge.svg)](https://github.com/troppes/personal-website/actions/workflows/build-container.yml)
+
 # reitz.dev Website
 
 Here you can find the source code to my current website, written in SvelteKit.
