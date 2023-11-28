@@ -1,5 +1,3 @@
-[![Build Status](https://drone.reitz.dev/api/badges/troppes/personal-website/status.svg)](https://drone.reitz.dev/troppes/personal-website)
-
 # Website Template for reitz.dev
 
 ## Install dependencies
@@ -15,8 +13,6 @@ To start the development server run: `bun --bun run dev`
 [Chyno Deluxe](https://codepen.io/ChynoDeluxe/pen/bdXeqQ) for the blog template
 
 [Dan Benmore](https://codepen.io/dbenmore/pen/eYpYPEL) for the folding card template
-
-[Matteo Bruni](https://codepen.io/collection/DPOage) for the particle ideas
 
 [mutedblues](https://codepen.io/mutedblues/pen/MmPNPG) for a navigation without JS
 
