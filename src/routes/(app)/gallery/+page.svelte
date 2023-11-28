@@ -6,6 +6,8 @@
 	import lgShare from 'lightgallery/plugins/share';
 	import { onMount } from 'svelte';
 
+	import 'lightgallery/css/lightgallery-bundle.min.css';
+
 	export let data;
 
 	let lightGallery = null;
