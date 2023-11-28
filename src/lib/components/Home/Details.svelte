@@ -132,7 +132,6 @@
 	<div class="code">
 		<span class="move-2" />
 		<span class="identifier">return</span>
-		<span class="identifier">return</span>
 		<span>String&lbrack;&rbrack;&ensp;</span>
 		<span>&lbrace;&ensp;</span>
 

@@ -45,10 +45,6 @@
 		margin-top: 2vh;
 	}
 
-	.social-media {
-		margin-left: 5vh;
-	}
-
 	.brand-title {
 		display: block;
 		text-transform: uppercase;
@@ -61,6 +57,10 @@
 			float: left;
 			padding: 2em 3em 0;
 			margin-left: 25%;
+		}
+
+		.social-media {
+			margin-left: 5vh;
 		}
 
 		.sidebar {
