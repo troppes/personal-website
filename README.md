@@ -1,4 +1,6 @@
-# Website Template for reitz.dev
+# reitz.dev Website
+
+Here you can find the source code to my current website, written in SvelteKit.
 
 ## Install dependencies
 
