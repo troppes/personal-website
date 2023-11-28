@@ -44,6 +44,7 @@
 	}
 
 	.blog-card {
+		box-shadow: 0px 1px 1px 1px #000000;
 		display: flex;
 		flex-direction: column;
 		margin: 1rem auto 1.6%;

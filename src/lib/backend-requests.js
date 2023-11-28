@@ -14,7 +14,7 @@ export async function getAboutMe() {
 }
 
 export async function getProjectsForHome() {
-	return get(env.ACCESS_TOKEN, env.BACKEND_URL + '/items/projects?limit=3&sort=sort,-date_created');
+	return get(env.ACCESS_TOKEN, env.BACKEND_URL + '/items/projects?limit=4&sort=sort,-date_created');
 }
 
 export async function getProjects() {
@@ -51,4 +51,11 @@ export async function getBlogMetaData() {
 
 export async function getBlogPost(id) {
 	return get(env.ACCESS_TOKEN, env.BACKEND_URL + '/items/blogposts/' + id + '?fields=*.*');
+}
+
+export async function getBasicInfo() {
+	return get(
+		env.ACCESS_TOKEN,
+		env.BACKEND_URL + '/items/basic_info?fields=*.*,education.*.*,work_exp.*.*'
+	);
 }
