@@ -16,5 +16,13 @@
 	}
 	.flex-container {
 		justify-content: space-between;
+		align-items: center;
+		flex-direction: column;
+	}
+
+	@media (min-width: 1200px) {
+		.flex-container {
+			flex-direction: row;
+		}
 	}
 </style>

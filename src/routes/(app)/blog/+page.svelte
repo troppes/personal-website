@@ -29,6 +29,8 @@
 		flex-flow: column wrap;
 		margin-top: 15vh;
 		text-align: center;
+		justify-content: space-between;
+		align-items: center;
 		top: auto;
 		margin: 3em auto;
 	}
@@ -65,6 +67,7 @@
 			border-radius: 0px 5px 5px 0px;
 			box-shadow: 0px 1px 1px 1px #000000;
 			margin-top: 20vh;
+			align-items: normal;
 			padding: 10vh 2vh 10vh 2vh;
 			width: 400px; /* Set the width of the sidebar */
 			position: absolute; /* Fixed Sidebar (stay in place on scroll) */
