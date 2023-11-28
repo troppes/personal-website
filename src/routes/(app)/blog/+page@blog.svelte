@@ -28,6 +28,8 @@
 
 <style>
 	.sidebar {
+		display: flex;
+		flex-flow: column wrap;
 		margin-top: 15vh;
 		text-align: center;
 		top: auto;
@@ -39,11 +41,6 @@
 		margin: 0;
 	}
 
-	.brand-title {
-		text-transform: uppercase;
-		font-size: 3em;
-	}
-
 	.brand-tagline {
 		font-weight: 300;
 	}
@@ -53,7 +50,18 @@
 		margin-top: 2vh;
 	}
 
-	@media (min-width: 1024px) {
+	.social-media {
+		margin-left: 5vh;
+	}
+
+	.brand-title {
+		display: block;
+		text-transform: uppercase;
+		font-size: 3em;
+		padding-top: 10vh;
+	}
+
+	@media (min-width: 1300px) {
 		.content {
 			float: left;
 			padding: 2em 3em 0;
@@ -70,6 +78,10 @@
 			top: 0; /* Stay at the top */
 			left: 0;
 			background-color: var(--secondary-color);
+		}
+
+		.brand-title {
+			padding-top: 0vh;
 		}
 	}
 </style>
