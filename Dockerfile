@@ -1,13 +1,12 @@
-FROM node:lts-alpine
-
-# install simple http server for serving static content
-RUN npm install -g http-server
-
-# make the 'app' folder the current working directory
+FROM oven/bun AS builder
 WORKDIR /app
+COPY . .
 
-# copy project files and folders to the current working directory (i.e. 'app' folder)
-COPY dist/ .
+# Run build process
+RUN bun i
+RUN bun run build
 
-EXPOSE 8080
-CMD [ "http-server", "." ]
+FROM oven/bun
+COPY --from=builder /app/build .
+EXPOSE 3000
+CMD ["bun", "run", "start"]

@@ -1,0 +1,13 @@
+version: '1'
+services:
+  external:
+    container_name: reitzdev
+    # The name of the image that will be created when building this container
+    image: reitzdev/website
+    env_file:
+      - .env
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8080:3000
