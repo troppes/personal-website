@@ -63,6 +63,8 @@
 
 	.articles__article,
 	.articles__article:before {
+		box-shadow: 1px 1px 1px 1px #000000;
+
 		width: calc(var(--base-grid) * 35);
 		height: calc(var(--base-grid) * 35);
 	}

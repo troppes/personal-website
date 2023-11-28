@@ -1,7 +1,6 @@
 <script lang="ts">
 	import BlogPost from '$lib/components/Blog/BlogPost.svelte';
 	import SocialMedia from '$lib/components/SocialMedia.svelte';
-	import Footer from '$lib/components/Layout/Footer.svelte';
 	export let data;
 </script>
 
@@ -21,8 +20,6 @@
 		{#each data.posts as post}
 			<BlogPost {post} />
 		{/each}
-
-		<Footer footer={data.footer.data} />
 	</div>
 </div>
 
@@ -39,10 +36,6 @@
 	.brand-title,
 	.brand-tagline {
 		margin: 0;
-	}
-
-	.brand-tagline {
-		font-weight: 300;
 	}
 
 	.content {
@@ -69,7 +62,8 @@
 		}
 
 		.sidebar {
-			border-radius: 5px;
+			border-radius: 0px 5px 5px 0px;
+			box-shadow: 0px 1px 1px 1px #000000;
 			margin-top: 20vh;
 			padding: 10vh 2vh 10vh 2vh;
 			width: 400px; /* Set the width of the sidebar */
