@@ -21,12 +21,10 @@ export async function getProjects() {
 	return get(env.ACCESS_TOKEN, env.BACKEND_URL + '/items/projects?sort=sort,-date_created');
 }
 
-// Only fetches 100 objects to not overload the browser and server
 export async function getPhotos() {
 	return get(
 		env.ACCESS_TOKEN,
-		env.BACKEND_URL +
-			'/items/gallery?sort=sort,-date_created&limit=100&fields=*,tags.gallery_tags_id'
+		env.BACKEND_URL + '/items/gallery?sort=sort,-date_created&fields=*,tags.gallery_tags_id'
 	);
 }
 
