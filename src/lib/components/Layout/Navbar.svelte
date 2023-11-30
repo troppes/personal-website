@@ -79,7 +79,7 @@
 	.header .logo {
 		display: block;
 		float: left;
-		font-size: 2.2em;
+		font-size: 2em;
 		padding: 10px 20px;
 		text-decoration: none;
 	}

@@ -27,12 +27,9 @@
 	.sidebar {
 		display: flex;
 		flex-flow: column wrap;
-		margin-top: 15vh;
 		text-align: center;
 		justify-content: space-between;
 		align-items: center;
-		top: auto;
-		margin: 3em auto;
 	}
 
 	.brand-title,

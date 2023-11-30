@@ -53,7 +53,7 @@
 	}
 
 	.aboutme {
-		padding-top: 20vh;
+		padding-top: 10vh;
 	}
 
 	.card:nth-child(4) {
