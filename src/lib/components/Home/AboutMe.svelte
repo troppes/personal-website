@@ -1,5 +1,5 @@
 <script>
-	import { onMount } from 'svelte';
+	import { onMount, onDestroy } from 'svelte';
 	export let aboutMe;
 
 	let textArray = aboutMe.likes;
@@ -7,9 +7,14 @@
 	let stringIndex = 0;
 	let charIndex = 0;
 	let isTyping = true;
+	let typeInterval = null;
 
 	onMount(() => {
-		setInterval(typewriter, 200);
+		typeInterval = setInterval(typewriter, 200);
+	});
+
+	onDestroy(() => {
+		clearInterval(typeInterval);
 	});
 
 	function typewriter() {
