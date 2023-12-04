@@ -96,8 +96,8 @@
 			href={photo.photoUrl}
 			data-src={photo.photoUrl}
 			data-sub-html={photo.description}
-			data-pinterest-text="Check out this Photo I found on https://reitz.dev/gallery"
-			data-tweet-text="Check out this Photo I found on https://reitz.dev/gallery"
+			data-pinterest-text="Check out this Photo I found on {data.url}/gallery"
+			data-tweet-text="Check out this Photo I found on {data.url}/gallery"
 			data-slide-name={photo.id}
 			data-facebook-share-url={photo.photoUrl}
 			data-twitter-share-url={photo.photoUrl}

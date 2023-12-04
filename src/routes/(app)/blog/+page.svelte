@@ -2,6 +2,15 @@
 	import BlogPost from '$lib/components/Blog/BlogPost.svelte';
 	import SocialMedia from '$lib/components/SocialMedia.svelte';
 	export let data;
+
+	let page = 1;
+	let pageSize = 3;
+
+	function getPage(array, page, pageSize) {
+		const start = (page - 1) * pageSize;
+		const end = start + pageSize;
+		return array.slice(start, end);
+	}
 </script>
 
 <div class="sidebar">
@@ -17,9 +26,16 @@
 </div>
 <div class="flex-container">
 	<div class="content">
-		{#each data.posts as post}
+		{#each getPage(data.posts, page, pageSize) as post}
 			<BlogPost {post} />
 		{/each}
+		<div class="navigation">
+			<button on:click={() => (page -= 1)} disabled={page === 1}>Previous</button>
+			<button
+				on:click={() => (page += 1)}
+				disabled={page === Math.ceil(data.posts.length / pageSize)}>Next</button
+			>
+		</div>
 	</div>
 </div>
 
@@ -30,6 +46,31 @@
 		text-align: center;
 		justify-content: space-between;
 		align-items: center;
+	}
+
+	.navigation {
+		display: flex;
+		flex-flow: row wrap;
+		text-align: center;
+		justify-content: space-around;
+		align-items: center;
+	}
+
+	.navigation > button {
+		all: unset;
+		background-color: var(--secondary-color);
+		padding: 0.5em;
+		border-radius: 5px 5px 5px 5px;
+		box-shadow: 1px 1px 1px 1px #000000;
+	}
+
+	.navigation > button:disabled {
+		all: unset;
+		background-color: var(--primary-color);
+		padding: 0.5em;
+		border-radius: 5px 5px 5px 5px;
+
+		border: 1px solid var(--secondary-color);
 	}
 
 	.brand-title,
