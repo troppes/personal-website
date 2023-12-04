@@ -37,7 +37,8 @@ export async function load() {
 	return {
 		galleryPhotos: photos,
 		tags: tags,
-		licenseKey: env.LIGHTGALLERY_KEY
+		licenseKey: env.LIGHTGALLERY_KEY,
+		url: env.URL
 	};
 }
 
