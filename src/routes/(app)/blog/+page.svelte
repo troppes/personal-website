@@ -92,7 +92,7 @@
 
 	@media (min-width: 1300px) {
 		.flex-container {
-			min-height: 90vh; /* Set the minimum height here */
+			min-height: 90vh;
 		}
 
 		.content {
