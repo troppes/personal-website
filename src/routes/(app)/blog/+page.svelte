@@ -91,6 +91,10 @@
 	}
 
 	@media (min-width: 1300px) {
+		.flex-container {
+			min-height: 90vh; /* Set the minimum height here */
+		}
+
 		.content {
 			float: left;
 			padding: 2em 3em 0;
