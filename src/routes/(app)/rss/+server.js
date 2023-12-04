@@ -1,8 +1,6 @@
 import { getBlogMetaData, getBlogPosts } from '$lib/backend-requests.js';
 import { env } from '$env/dynamic/private';
 
-export const prerender = true;
-
 export async function GET() {
 	let posts = null;
 	let metaData = null;
