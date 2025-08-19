@@ -3,7 +3,9 @@ import {
 	getSocialMedia,
 	getAboutMe,
 	getProjectsForHome,
-	getBasicInfo
+	getBasicInfo,
+	getWorkExp,
+	getEducation
 } from '../../lib/backend-requests.js';
 
 export async function load() {
@@ -11,6 +13,8 @@ export async function load() {
 	let aboutMe = null;
 	let projects = null;
 	let basicInfo = null;
+	let workExp = null;
+	let education = null;
 
 	try {
 		socialMedia = await getSocialMedia();
@@ -27,15 +31,18 @@ export async function load() {
 
 	try {
 		basicInfo = await getBasicInfo();
-		basicInfo.data.education = basicInfo.data.education.map((education) => ({
-			id: education.education_id.id.toString(),
-			date: education.education_id.date,
-			details: education.education_id.details
+		workExp = await getWorkExp();
+		education = await getEducation();
+
+		basicInfo.data.education = education.map((education) => ({
+			id: education.id.toString(),
+			date: education.date,
+			details: education.details
 		}));
-		basicInfo.data.work_exp = basicInfo.data.work_exp.map((work_exp) => ({
-			id: work_exp.work_exp_id.id.toString(),
-			date: work_exp.work_exp_id.date,
-			details: work_exp.work_exp_id.details
+		basicInfo.data.work_exp = workExp.map((work_exp) => ({
+			id: work_exp.id.toString(),
+			date: work_exp.date,
+			details: work_exp.details
 		}));
 	} catch (e) {
 		console.error(e);
