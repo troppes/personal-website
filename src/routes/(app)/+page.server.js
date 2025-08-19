@@ -34,12 +34,12 @@ export async function load() {
 		workExp = await getWorkExp();
 		education = await getEducation();
 
-		basicInfo.data.education = education.map((education) => ({
+		basicInfo.data.education = education.data.map((education) => ({
 			id: education.id.toString(),
 			date: education.date,
 			details: education.details
 		}));
-		basicInfo.data.work_exp = workExp.map((work_exp) => ({
+		basicInfo.data.work_exp = workExp.data.map((work_exp) => ({
 			id: work_exp.id.toString(),
 			date: work_exp.date,
 			details: work_exp.details
