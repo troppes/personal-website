@@ -57,6 +57,7 @@ export async function getBasicInfo() {
 		env.BACKEND_URL + '/items/basic_info?fields=*.*'
 	);
 }
+
 export async function getWorkExp() {
 	return get(
 		env.ACCESS_TOKEN,
