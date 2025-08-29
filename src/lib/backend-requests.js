@@ -47,8 +47,9 @@ export async function getBlogMetaData() {
 	return get(env.ACCESS_TOKEN, env.BACKEND_URL + '/items/blogmetadata');
 }
 
-/**
+/** Fetches a single blog post by ID
  * @param {string} id
+ * @returns {Promise<any>} the blog post data
  */
 export async function getBlogPost(id) {
 	return get(env.ACCESS_TOKEN, env.BACKEND_URL + '/items/blogposts/' + id + '?fields=*.*');

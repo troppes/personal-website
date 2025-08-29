@@ -1,19 +1,18 @@
 import { error } from '@sveltejs/kit';
 import { env } from '$env/dynamic/private';
-import { getBlogMetaData, getBlogPosts, getSocialMedia, getFooter } from '$lib/backend-requests.js';
+import { getBlogPosts, getSocialMedia, getFooter } from '$lib/backend-requests.js';
 
 /** @typedef {import('./$types').PageServerLoad} Load */
 
 export async function load() {
 	try {
-		const [postsRes, metaDataRes, socialMediaRes, footerRes] = await Promise.all([
+		const [postsRes, socialMediaRes, footerRes] = await Promise.all([
 			getBlogPosts(),
-			getBlogMetaData(),
 			getSocialMedia(),
 			getFooter()
 		]);
 
-		if (!postsRes?.data || !metaDataRes?.data || !socialMediaRes?.data || !footerRes?.data) {
+		if (!postsRes?.data || !socialMediaRes?.data || !footerRes?.data) {
 			throw new Error('Failed to fetch required data');
 		}
 
@@ -42,7 +41,6 @@ export async function load() {
 		);
 
 		return {
-			metadata: metaDataRes.data,
 			posts,
 			socialMedia,
 			footer: footerRes.data
