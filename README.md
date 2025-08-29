@@ -2,7 +2,11 @@
 
 # reitz.dev Website
 
-Here you can find the source code to my current website, written in SvelteKit.
+This is the source code to my current website hosted under `https://reitz.dev`.
+
+## To start development
+
+Copy or rename the `.env.example` to `.env` and fill out the credentials. Afterwards install all dependencies to start developing.
 
 ## Install dependencies
 
@@ -17,8 +21,6 @@ To start the development server run: `bun --bun run dev`
 [Chyno Deluxe](https://codepen.io/ChynoDeluxe/pen/bdXeqQ) for the blog template
 
 [Dan Benmore](https://codepen.io/dbenmore/pen/eYpYPEL) for the folding card template
-
-[mutedblues](https://codepen.io/mutedblues/pen/MmPNPG) for a navigation without JS
 
 [Ibrahim Shamss](https://www.behance.net/gallery/112542151/Shamss-Personal-Portfolio-Website?tracking_source=search_projects_recommended%7Cpersonal%20website) for the color palette
 
