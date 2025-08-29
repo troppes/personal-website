@@ -12,7 +12,7 @@
 <header class="header">
 	<a href="/" class="logo"> Florian Reitz </a>
 	<input id="menu-btn" class="menu-btn" type="checkbox" />
-	<label class="menu-icon" for="menu-btn"><span class="navicon" /></label>
+	<label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
 	<ul class="pure-menu-list menu">
 		<li class="pure-menu-item">
 			<a href="/" class={path === '/' ? 'pure-menu-link active' : 'pure-menu-link'}> &#62;Home </a>

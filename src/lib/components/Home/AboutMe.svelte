@@ -1,21 +1,29 @@
 <script>
-	import { onMount, onDestroy } from 'svelte';
-	export let aboutMe;
+	const { aboutMe } = $props();
 
 	let textArray = aboutMe.likes;
+	/**
+	 * @type {HTMLSpanElement}
+	 */
 	let animatedText;
 	let stringIndex = 0;
 	let charIndex = 0;
 	let isTyping = true;
+	/**
+	 * @type {number | null | undefined}
+	 */
 	let typeInterval = null;
 
-	onMount(() => {
-		typeInterval = setInterval(typewriter, 200);
-	});
-
-	onDestroy(() => {
-		clearInterval(typeInterval);
-	});
+    $effect(() => {
+        typeInterval = setInterval(typewriter, 200);
+        
+        return () => {
+            if (typeInterval) {
+                clearInterval(typeInterval);
+                typeInterval = null;
+            }
+        };
+    });
 
 	function typewriter() {
 		if (stringIndex < textArray.length) {
@@ -54,7 +62,7 @@
 		<div>Hi there 👋</div>
 		<div>My name is {aboutMe.name}.</div>
 		<div class="typewriter">
-			I love to <span bind:this={animatedText} />
+			I love to <span bind:this={animatedText}></span>
 		</div>
 		<div class="show">Let me show you...</div>
 	</div>
