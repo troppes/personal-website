@@ -4,22 +4,26 @@
 	import lgZoom from 'lightgallery/plugins/zoom';
 	import lgFullScreen from 'lightgallery/plugins/fullscreen';
 	import lgShare from 'lightgallery/plugins/share';
-	import { onMount } from 'svelte';
 
 	import 'lightgallery/css/lightgallery-bundle.min.css';
 
-	export let data;
+	const { data } = $props();
 
-	let lightGallery = null;
-	let lgJS = null;
+	/**
+	 * @type {HTMLElement}
+	 */
+	let lightGalleryElem;
+	/**
+	 * @type {any | null}
+	 */
+	let lgJS = $state(null);
 	let allTags = data.tags || [];
-	let allPhotos = [...data.galleryPhotos] || [];
-	let licenseKey = data.licenseKey || null;
-	let offset = 20;
-
-	let tags = [...allTags].slice(0, 6);
-	let photos = [...allPhotos.splice(0, offset)];
-	let allTagsButton = 'More tags';
+	let allPhotos = [...(data.galleryPhotos || [])];
+	let licenseKey = data.licenseKey || undefined;
+	const offset = 20;
+	let tags = $state([...allTags].slice(0, 6));
+	let photos = $state([...allPhotos.splice(0, offset)]);
+	let allTagsButton = $state('More tags');
 
 	function getPicSize() {
 		const randomNumber = Math.random();
@@ -34,27 +38,41 @@
 		}
 	}
 
-	onMount(() => {
-		lgJS = LightGallery(lightGallery, {
-			plugins: [lgThumbnail, lgZoom, lgFullScreen, lgShare],
-			speed: 500,
-			licenseKey: licenseKey
-		});
+    function initLightGallery() {
+        if (lightGalleryElem) {
+            lgJS = LightGallery(lightGalleryElem, {
+                plugins: [lgThumbnail, lgZoom, lgFullScreen, lgShare],
+                speed: 500,
+                licenseKey
+            });
+			lightGalleryElem.addEventListener('lgBeforeOpen', () => {
+				if(lgJS) {
+					lgJS.refresh();
+				}
+			});
+        }
+    }
+    function onScroll() {
+        const bottomOfWindow = window.innerHeight + window.scrollY >= document.body.offsetHeight - 30;
+        if (bottomOfWindow && allPhotos.length > 0) {
+            photos = [...photos, ...allPhotos.splice(0, offset)];
+        }
+    }
 
-		lightGallery.addEventListener('lgBeforeOpen', () => {
-			lgJS.refresh();
-		});
+    $effect(() => {
+        window.addEventListener('scroll', onScroll);
+		initLightGallery();
+        return () => {
+			window.removeEventListener('scroll', onScroll);
+			if (lgJS) {
+                lgJS = null;
+            }
+		}
+    });
 
-		window.onscroll = async () => {
-			const bottomOfWindow = window.innerHeight + window.scrollY >= document.body.offsetHeight - 30;
-			if (bottomOfWindow) {
-				photos.push(...allPhotos.splice(0, offset));
-				photos = photos; // needed for refresh
-				lgJS.refresh();
-			}
-		};
-	});
-
+	/**
+	 * @param {{ id: any; }} tag
+	 */
 	function tagClicked(tag) {
 		allPhotos = [];
 		photos = [...data.galleryPhotos].filter((e) => e.tags.includes(Number(tag.id)));
@@ -79,18 +97,18 @@
 <div class="flex-container">
 	{#each tags as tag}
 		<div class="tag-box">
-			<button class="tag" on:click={tagClicked(tag)}>{tag.tag}</button>
+			<button class="tag" onclick={() => tagClicked(tag)}>{tag.tag}</button>
 		</div>
 	{/each}
 
 	<div class="tag-box">
-		<button class="show-all tag" on:click={moreTagsClicked}>{allTagsButton}</button>
+		<button class="show-all tag" onclick={() =>  moreTagsClicked()}>{allTagsButton}</button>
 	</div>
 	<div class="tag-box">
-		<button class="reset tag" on:click={resetTags}>Reset</button>
+		<button class="reset tag" onclick={() => resetTags()}>Reset</button>
 	</div>
 </div>
-<div bind:this={lightGallery} class="masonry">
+<div bind:this={lightGalleryElem} class="masonry">
 	{#each photos as photo}
 		<a
 			href={photo.photoUrl}

@@ -1,15 +1,24 @@
+import { error } from '@sveltejs/kit';
 import { getBlogPost } from '$lib/backend-requests.js';
 
+/**
+ * Load function for blog post page
+ * @type {import('./$types').PageServerLoad}
+ * @returns {Promise<import('./$types').PageData>} 
+ */
 export async function load({ params }) {
-	let post = null;
+  try {
+    const postRes = await getBlogPost(params.slug);
 
-	try {
-		post = await getBlogPost(params.slug);
-	} catch (e) {
-		console.error(e);
-	}
+    if (!postRes?.data) {
+      throw error(404, 'Post not found');
+    }
 
-	return {
-		post: post
-	};
+    return {
+      post: postRes.data
+    };
+  } catch (e) {
+    console.error('Failed to load blog post:', e);
+    throw error(500, 'Failed to load blog post');
+  }
 }

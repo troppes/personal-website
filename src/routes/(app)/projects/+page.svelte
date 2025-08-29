@@ -1,15 +1,16 @@
 <script>
 	import Card from '$lib/components/Card.svelte';
-	export let data;
+	
+	const { data } = $props();
 </script>
 
-<div class="spacer" />
+<div class="spacer"></div>
 <div class="grid-container">
-	{#each data.projects as post}
-		<div class="card-wrapper">
-			<Card {post} />
-		</div>
-	{/each}
+    {#each data.projects as post}
+        <div class="card-wrapper">
+            <Card {post} />
+        </div>
+    {/each}
 </div>
 
 <style>

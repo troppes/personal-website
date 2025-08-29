@@ -1,16 +1,22 @@
 <script>
-	export let post;
+    const { post } = $props();
 
-	function datePosted(date) {
-		const options = {
-			year: 'numeric',
-			month: 'long',
-			day: 'numeric'
-		};
-		return date.toLocaleDateString('de-DE', options);
-	}
+    /**
+     * Formats a date into a localized string
+     * @param {Date} date - The date to format
+     * @returns {string} The formatted date string
+     */
+    function datePosted(date) {
+        /** @type {Intl.DateTimeFormatOptions} */
+        const options = {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        };
+        
+        return date.toLocaleDateString('de-DE', options);
+    }
 </script>
-
 <!-- A single blog post -->
 <div class={post.id % 2 === 0 ? 'blog-card alt' : 'blog-card'}>
 	<div class="meta">
@@ -19,7 +25,7 @@
 			style={post.pictureUrl
 				? 'background-image: url(' + post.pictureUrl + ')'
 				: 'background-color: var(--secondary-color)'}
-		/>
+		></div>
 		<ul class="details">
 			<li class="author">
 				{post.author}
@@ -78,8 +84,7 @@
 		background-position: center;
 		transition: transform 0.2s;
 	}
-	.blog-card .details,
-	.blog-card .details ul {
+	.blog-card .details {
 		margin: auto;
 		padding: 0;
 		list-style: none;
@@ -96,19 +101,6 @@
 		padding: 10px;
 		width: 100%;
 		font-size: 0.9rem;
-	}
-	.blog-card .details a {
-		text-decoration: dotted underline;
-	}
-	.blog-card .details ul li {
-		display: inline-block;
-	}
-
-	.blog-card .details .tags li {
-		margin-right: 2px;
-	}
-	.blog-card .details .tags li:first-child {
-		margin-left: -4px;
 	}
 	.blog-card .description {
 		padding: 1rem;

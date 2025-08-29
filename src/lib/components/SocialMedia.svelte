@@ -1,5 +1,5 @@
 <script>
-	export let socialMedia;
+	const { socialMedia } = $props();
 </script>
 
 <div class="socials">

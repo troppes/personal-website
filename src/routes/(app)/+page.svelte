@@ -4,14 +4,14 @@
 	import SocialMedia from '$lib/components/SocialMedia.svelte';
 	import Details from '$lib/components/Home/Details.svelte';
 
-	export let data;
+	const { data } = $props();
 
-	let allprojects = {
+	const allprojects = $state({
 		description: 'All projects can be found here',
 		title: 'All projects',
 		url: '/projects',
 		pictureUrl: null
-	};
+	});
 </script>
 
 <div class="aboutme">

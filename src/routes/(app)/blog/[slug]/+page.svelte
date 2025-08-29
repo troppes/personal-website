@@ -1,12 +1,12 @@
 <script>
-	export let data;
+    const { data } = $props();
 </script>
 
 <div class="content blog">
 	<div class="flex-container">
-		<h2>{data.post.data.title}</h2>
+		<h2>{data.post.title}</h2>
 
-		<p>{@html data.post.data.text}</p>
+		<p>{@html data.post.text}</p>
 	</div>
 </div>
 

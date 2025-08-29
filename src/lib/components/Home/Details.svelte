@@ -1,5 +1,5 @@
 <script>
-	export let basicInfo;
+    const { basicInfo } = $props();
 </script>
 
 <div class="skills">
@@ -8,60 +8,60 @@
 		<span>BasicInfos &lbrace;</span>
 	</div>
 	<div class="code">
-		<span class="move-1" />
+		<span class="move-1"></span>
 		<span class="identifier">String</span>
 		<span class="variable">name</span>
 		<span>;</span>
 	</div>
 	<div class="code">
-		<span class="move-1" />
+		<span class="move-1"></span>
 		<span class="identifier">String</span>
 		<span class="variable">email</span>
 		<span>;</span>
 	</div>
-	<div class="code" />
+	<div class="code"></div>
 	<div class="code">
-		<span class="move-1" />
+		<span class="move-1"></span>
 		<span class="identifier">BasicInfos()</span>
 		<span>&lbrace;</span>
 	</div>
 	<div class="code">
-		<span class="move-2" />
+		<span class="move-2"></span>
 		<span class="this">this.</span>
 		<span class="variable">name</span>
-		<span class="equals" />
+		<span class="equals"></span>
 		<span class="assignment">"{basicInfo.name}";</span>
 	</div>
 	<div class="code">
-		<span class="move-2" />
+		<span class="move-2"></span>
 		<span class="this">this.</span>
 		<span class="variable">email</span>
-		<span class="equals" />
+		<span class="equals"></span>
 		<span class="assignment">"{basicInfo.email}";</span>
 	</div>
 	<div class="code">
-		<span class="move-1" />
+		<span class="move-1"></span>
 		<span>&rbrace;</span>
 	</div>
-	<div class="code" />
+	<div class="code"></div>
 	<div class="code">
-		<span class="move-1" />
+		<span class="move-1"></span>
 		<span class="identifier">public</span>
 		<span>Map&lt;String,String&gt;&ensp;</span>
 		<span class="method">getEducation</span>
 		<span>&lbrace;</span>
 	</div>
 	<div class="code">
-		<span class="move-2" />
+		<span class="move-2"></span>
 		<span>Map&lt;String,String&gt;&ensp;</span>
 		<span class="variable">education</span>
-		<span class="equals" />
+		<span class="equals"></span>
 		<span class="identifier">new</span>
 		<span>HashMap&lt;&gt;;</span>
 	</div>
 	{#each basicInfo.education as education}
 		<div class="code">
-			<span class="move-2" />
+			<span class="move-2"></span>
 			<span class="variable">education</span>
 			<span>.put&lpar;</span>
 			<span class="assignment">"{education.date}"</span>
@@ -72,35 +72,35 @@
 	{/each}
 
 	<div class="code">
-		<span class="move-2" />
+		<span class="move-2"></span>
 		<span class="identifier">return</span>
 		<span class="variable">education</span>
 		<span>;</span>
 	</div>
 	<div class="code">
-		<span class="move-1" />
+		<span class="move-1"></span>
 		<span>&rbrace;</span>
 	</div>
-	<div class="code" />
+	<div class="code"></div>
 	<div class="code">
-		<span class="move-1" />
+		<span class="move-1"></span>
 		<span class="identifier">public</span>
 		<span>Map&lt;String,String&gt;&ensp;</span>
 		<span class="method">getWorkExperience</span>
 		<span>&lbrace;</span>
 	</div>
 	<div class="code">
-		<span class="move-2" />
+		<span class="move-2"></span>
 		<span>Map&lt;String,String&gt;&ensp;</span>
 		<span class="variable">workExp</span>
-		<span class="equals" />
+		<span class="equals"></span>
 		<span class="identifier">new</span>
 		<span>HashMap&lt;&gt;;</span>
 	</div>
 
 	{#each basicInfo.work_exp as workExp}
 		<div class="code">
-			<span class="move-2" />
+			<span class="move-2"></span>
 			<span class="variable">workExp</span>
 			<span>.put&lpar;</span>
 			<span class="assignment">"{workExp.date}"</span>
@@ -111,26 +111,26 @@
 	{/each}
 
 	<div class="code">
-		<span class="move-2" />
+		<span class="move-2"></span>
 		<span class="identifier">return</span>
 		<span class="variable">workExp</span>
 		<span>;</span>
 	</div>
 	<div class="code">
-		<span class="move-1" />
+		<span class="move-1"></span>
 		<span>&rbrace;</span>
 	</div>
-	<div class="code" />
+	<div class="code"></div>
 
 	<div class="code">
-		<span class="move-1" />
+		<span class="move-1"></span>
 		<span class="identifier">public</span>
 		<span>String&lbrack;&rbrack;&ensp;</span>
 		<span class="method">getSkills</span>
 		<span>&lbrace;</span>
 	</div>
 	<div class="code">
-		<span class="move-2" />
+		<span class="move-2"></span>
 		<span class="identifier">return</span>
 		<span>String&lbrack;&rbrack;&ensp;</span>
 		<span>&lbrace;&ensp;</span>
@@ -146,7 +146,7 @@
 		<span>&rbrace;;</span>
 	</div>
 	<div class="code">
-		<span class="move-1" />
+		<span class="move-1"></span>
 		<span>&rbrace;</span>
 	</div>
 	<div class="code"><span>&rbrace;</span></div>

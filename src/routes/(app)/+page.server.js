@@ -1,3 +1,4 @@
+import { error } from '@sveltejs/kit';
 import { env } from '$env/dynamic/private';
 import {
 	getSocialMedia,
@@ -8,76 +9,78 @@ import {
 	getEducation
 } from '../../lib/backend-requests.js';
 
+/** @type {import('./$types').PageServerLoad} */
 export async function load() {
-	let socialMedia = null;
-	let aboutMe = null;
-	let projects = null;
-	let basicInfo = null;
-	let workExp = null;
-	let education = null;
-
 	try {
-		socialMedia = await getSocialMedia();
+		const [
+			socialMediaRes,
+			basicInfoRes,
+			workExpRes,
+			educationRes,
+			aboutMeRes,
+			projectsRes
+		] = await Promise.all([
+			getSocialMedia(),
+			getBasicInfo(),
+			getWorkExp(),
+			getEducation(),
+			getAboutMe(),
+			getProjectsForHome()
+		]);
 
-		socialMedia = socialMedia.data.map((social) => ({
+		const socialMedia = socialMediaRes.data.map((/** @type {{ id: { toString: () => any; }; url: any; alt: any; image: string; }} */ social) => ({
 			id: social.id.toString(),
 			url: social.url,
 			alt: social.alt,
 			pictureUrl: getImageUrl(social.image)
 		}));
-	} catch (e) {
-		console.error(e);
-	}
 
-	try {
-		basicInfo = await getBasicInfo();
-		workExp = await getWorkExp();
-		education = await getEducation();
+		const basicInfo = {
+			...basicInfoRes.data,
+			education: educationRes.data.map((/** @type {{ id: { toString: () => any; }; date: any; details: any; }} */ edu) => ({
+				id: edu.id.toString(),
+				date: edu.date,
+				details: edu.details
+			})),
+			work_exp: workExpRes.data.map((/** @type {{ id: { toString: () => any; }; date: any; details: any; }} */ work) => ({
+				id: work.id.toString(),
+				date: work.date,
+				details: work.details
+			}))
+		};
 
-		basicInfo.data.education = education.data.map((education) => ({
-			id: education.id.toString(),
-			date: education.date,
-			details: education.details
-		}));
-		basicInfo.data.work_exp = workExp.data.map((work_exp) => ({
-			id: work_exp.id.toString(),
-			date: work_exp.date,
-			details: work_exp.details
-		}));
-	} catch (e) {
-		console.error(e);
-	}
+		const aboutMe = {
+			...aboutMeRes.data,
+			picture: getImageUrl(aboutMeRes.data.picture)
+		};
 
-	try {
-		aboutMe = await getAboutMe();
-
-		aboutMe.data.picture = getImageUrl(aboutMe.data.picture);
-	} catch (e) {
-		console.error(e);
-	}
-
-	try {
-		projects = await getProjectsForHome();
-
-		projects = projects.data.map((post) => ({
+		const projects = projectsRes.data.map((/** @type {{ id: { toString: () => any; }; title: any; description: any; url: any; picture: string; }} */ post) => ({
 			id: post.id.toString(),
 			title: post.title,
 			description: post.description,
 			url: post.url,
 			pictureUrl: post.picture ? getImageUrl(post.picture) : null
 		}));
-	} catch (e) {
-		console.error(e);
-	}
 
-	return {
-		socialMedia: socialMedia,
-		aboutMe: aboutMe.data,
-		projects: projects,
-		basicInfo: basicInfo.data
-	};
+		return {
+			socialMedia,
+			aboutMe,
+			projects,
+			basicInfo
+		};
+	} catch (e) {
+		console.error('Failed to load page data:', e);
+		throw error(500, {
+			message: 'Failed to load page data'
+		});
+	}
 }
 
+/**
+ * Constructs the full URL for an image
+ * @param {string} imageKey - The image key/path
+ * @returns {string} The complete image URL
+ */
 function getImageUrl(imageKey) {
 	return env.EXTERNAL_ASSETS_URL + imageKey;
 }
