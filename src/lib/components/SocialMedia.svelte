@@ -3,7 +3,7 @@
 </script>
 
 <div class="socials">
-	{#each socialMedia as social}
+	{#each socialMedia as social (social.id)}
 		<a href={social.url} class="social-link">
 			<img alt={social.alt} class="social-image" src={social.pictureUrl} />
 			<p class="social-text">{social.alt}</p>

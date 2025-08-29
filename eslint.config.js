@@ -1,31 +1,28 @@
-const { defineConfig } = require('eslint/config');
+import prettier from 'eslint-config-prettier';
+import { includeIgnoreFile } from '@eslint/compat';
+import js from '@eslint/js';
+import svelte from 'eslint-plugin-svelte';
+import globals from 'globals';
+import { fileURLToPath } from 'node:url';
+import svelteConfig from './svelte.config.js';
 
-module.exports = defineConfig([
+const gitignorePath = fileURLToPath(new URL('./.gitignore', import.meta.url));
+
+/** @type {import('eslint').Linter.Config[]} */
+export default [
+	includeIgnoreFile(gitignorePath),
+	js.configs.recommended,
+	...svelte.configs.recommended,
+	prettier,
+	...svelte.configs.prettier,
 	{
-		ignores: [
-			'.DS_Store',
-			'node_modules',
-			'/build',
-			'/.svelte-kit',
-			'/package',
-			'.env',
-			'.env.*',
-			'!/.env.example',
-			'pnpm-lock.yaml',
-			'package-lock.json',
-			'yarn.lock'
-		],
-		root: true,
-		extends: ['eslint:recommended', 'plugin:svelte/recommended', 'prettier'],
-		parserOptions: {
-			sourceType: 'module',
-			ecmaVersion: 2022,
-			extraFileExtensions: ['.svelte']
-		},
-		env: {
-			browser: true,
-			es2022: true,
-			node: true
+		languageOptions: {
+			globals: { ...globals.browser, ...globals.node }
 		}
+	},
+	{
+		files: ['**/*.svelte', '**/*.svelte.js'],
+		languageOptions: { parserOptions: { svelteConfig } },
+		rules: { 'svelte/no-at-html-tags': 'off' }
 	}
-]);
+];

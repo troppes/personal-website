@@ -59,7 +59,7 @@
 		<span class="identifier">new</span>
 		<span>HashMap&lt;&gt;;</span>
 	</div>
-	{#each basicInfo.education as education}
+	{#each basicInfo.education as education (education.id)}
 		<div class="code">
 			<span class="move-2"></span>
 			<span class="variable">education</span>
@@ -98,7 +98,7 @@
 		<span>HashMap&lt;&gt;;</span>
 	</div>
 
-	{#each basicInfo.work_exp as workExp}
+	{#each basicInfo.work_exp as workExp (workExp.id)}
 		<div class="code">
 			<span class="move-2"></span>
 			<span class="variable">workExp</span>
@@ -136,7 +136,7 @@
 		<span>&lbrace;&ensp;</span>
 
 		<span class="assignment">
-			{#each basicInfo.skills as skill, i}
+			{#each basicInfo.skills as skill, i (i)}
 				"{skill}"
 				{#if i < basicInfo.skills.length - 1}
 					<span class="clear">,&ensp;</span>

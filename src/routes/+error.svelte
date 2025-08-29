@@ -1,10 +1,10 @@
 <script>
-	const { error } = $props();
+	const { errors } = $props();
 </script>
 
-<h1 class="code">{error?.status ?? '404'}</h1>
+<h1 class="code">{errors?.status ?? '404'}</h1>
 <div class="message">
-	<p>{error?.message ?? 'That should not happen! The page you are looking for does not exist.'}</p>
+	<p>{errors?.message ?? 'That should not happen! The page you are looking for does not exist.'}</p>
 </div>
 
 <style>

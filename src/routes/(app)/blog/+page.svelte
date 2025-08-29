@@ -28,6 +28,7 @@
 			{data.metadata.data.title}
 		</h1>
 		<div class="brand-tagline">
+			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 			{@html data.metadata.data.tagline}
 		</div>
 	{/if}
@@ -38,7 +39,7 @@
 
 <div class="flex-container">
 	<div class="content">
-		{#each getPage(data.posts, page, pageSize) as post}
+		{#each getPage(data.posts, page, pageSize) as post (post.id)}
 			<BlogPost {post} />
 		{/each}
 		<div class="navigation">

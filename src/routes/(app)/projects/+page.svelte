@@ -6,7 +6,7 @@
 
 <div class="spacer"></div>
 <div class="grid-container">
-	{#each data.projects as post}
+	{#each data.projects as post (post.id)}
 		<div class="card-wrapper">
 			<Card {post} />
 		</div>

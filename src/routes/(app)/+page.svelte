@@ -19,7 +19,7 @@
 </div>
 <h1>Projects</h1>
 <div class="cards">
-	{#each data.projects as post}
+	{#each data.projects as post (post.id)}
 		<div class="card">
 			<Card {post} />
 		</div>

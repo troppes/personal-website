@@ -24,5 +24,8 @@ jobs:
       - name: Install dependencies with Bun
         run: bun install
 
-      - name: Run lint script
+      - name: Rune svelte check
+        run: bun run check
+
+      - name: Run lint
         run: bun run lint

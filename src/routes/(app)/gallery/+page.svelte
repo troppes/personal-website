@@ -95,7 +95,7 @@
 </script>
 
 <div class="flex-container">
-	{#each tags as tag}
+	{#each tags as tag (tag.id)}
 		<div class="tag-box">
 			<button class="tag" onclick={() => tagClicked(tag)}>{tag.tag}</button>
 		</div>
@@ -109,7 +109,7 @@
 	</div>
 </div>
 <div bind:this={lightGalleryElem} class="masonry">
-	{#each photos as photo}
+	{#each photos as photo (photo.id)}
 		<a
 			href={photo.photoUrl}
 			data-src={photo.photoUrl}

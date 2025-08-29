@@ -5,10 +5,9 @@
 	let stringIndex = $state(0);
 	let charIndex = $state(0);
 	let isTyping = $state(true);
+	let displayText = $state('');
 	/** @type {number | undefined} */
 	let typeInterval = $state(undefined);
-	/** @type {HTMLSpanElement} */
-	let animatedText;
 
 	function typewriter() {
 		if (stringIndex < textArray.length) {
@@ -17,14 +16,14 @@
 
 			if (isTyping) {
 				if (charIndex < currentString.length) {
-					animatedText.innerHTML += currentString.charAt(charIndex);
+					displayText += currentString.charAt(charIndex);
 					charIndex++;
 				} else {
 					isTyping = false;
 				}
 			} else {
 				if (charIndex > 0) {
-					animatedText.innerHTML = currentString.substring(0, charIndex - 1);
+					displayText = currentString.substring(0, charIndex - 1);
 					charIndex--;
 				} else {
 					isTyping = true;
@@ -33,15 +32,13 @@
 					if (stringIndex >= textArray.length) stringIndex = 0;
 
 					charIndex = 0;
-					animatedText.innerHTML = '';
+					displayText = '';
 				}
 			}
 		}
 	}
 
 	$effect(() => {
-		if (!animatedText) return;
-
 		typeInterval = setInterval(typewriter, 200);
 
 		return () => {
@@ -58,7 +55,7 @@
 		<div>Hi there 👋</div>
 		<div>My name is {aboutMe.name}.</div>
 		<div class="typewriter">
-			I love to <span bind:this={animatedText}></span>
+			I love to <span>{displayText}</span>
 		</div>
 		<div class="show">Let me show you...</div>
 	</div>
