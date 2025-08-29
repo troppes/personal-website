@@ -21,6 +21,9 @@ jobs:
         with:
           bun-version: latest
 
+      - name: Move .env.example to .env
+        run: mv .env.example .env
+
       - name: Install dependencies with Bun
         run: bun install
 
