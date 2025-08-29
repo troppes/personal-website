@@ -1,61 +1,56 @@
 <script>
-    import BlogPost from '$lib/components/Blog/BlogPost.svelte';
-    import SocialMedia from '$lib/components/SocialMedia.svelte';
-    
-    const { data } = $props();
-    
-    let page = $state(1);
-    let pageSize = $state(3);
+	import BlogPost from '$lib/components/Blog/BlogPost.svelte';
+	import SocialMedia from '$lib/components/SocialMedia.svelte';
 
-    /**
-     * Get a page of items from an array
-     * @template T
-     * @param {T[]} array - The array to paginate
-     * @param {number} page - The page number
-     * @param {number} pageSize - Items per page
-     * @returns {T[]} - The paginated items
-     */
-    function getPage(array, page, pageSize) {
-        const start = (page - 1) * pageSize;
-        const end = start + pageSize;
-        return array.slice(start, end);
-    }
+	const { data } = $props();
+
+	let page = $state(1);
+	let pageSize = $state(3);
+
+	/**
+	 * Get a page of items from an array
+	 * @template T
+	 * @param {T[]} array - The array to paginate
+	 * @param {number} page - The page number
+	 * @param {number} pageSize - Items per page
+	 * @returns {T[]} - The paginated items
+	 */
+	function getPage(array, page, pageSize) {
+		const start = (page - 1) * pageSize;
+		const end = start + pageSize;
+		return array.slice(start, end);
+	}
 </script>
 
 <div class="sidebar">
-    {#if data?.metadata?.data}
-        <h1 class="brand-title">
-            {data.metadata.data.title}
-        </h1>
-        <div class="brand-tagline">
-            {@html data.metadata.data.tagline}
-        </div>
-    {/if}
-    <div class="social-media">
-        <SocialMedia socialMedia={data.socialMedia} />
-    </div>
+	{#if data?.metadata?.data}
+		<h1 class="brand-title">
+			{data.metadata.data.title}
+		</h1>
+		<div class="brand-tagline">
+			{@html data.metadata.data.tagline}
+		</div>
+	{/if}
+	<div class="social-media">
+		<SocialMedia socialMedia={data.socialMedia} />
+	</div>
 </div>
 
 <div class="flex-container">
-    <div class="content">
-        {#each getPage(data.posts, page, pageSize) as post}
-            <BlogPost {post} />
-        {/each}
-        <div class="navigation">
-            <button 
-                onclick={() => page -= 1} 
-                disabled={page === 1}
-            >
-                Previous
-            </button>
-            <button
-                onclick={() => page += 1}
-                disabled={page === Math.ceil(data.posts.length / pageSize)}
-            >
-                Next
-            </button>
-        </div>
-    </div>
+	<div class="content">
+		{#each getPage(data.posts, page, pageSize) as post}
+			<BlogPost {post} />
+		{/each}
+		<div class="navigation">
+			<button onclick={() => (page -= 1)} disabled={page === 1}> Previous </button>
+			<button
+				onclick={() => (page += 1)}
+				disabled={page === Math.ceil(data.posts.length / pageSize)}
+			>
+				Next
+			</button>
+		</div>
+	</div>
 </div>
 
 <style>

@@ -55,22 +55,13 @@ export async function getBlogPost(id) {
 }
 
 export async function getBasicInfo() {
-	return get(
-		env.ACCESS_TOKEN,
-		env.BACKEND_URL + '/items/basic_info?fields=*.*'
-	);
+	return get(env.ACCESS_TOKEN, env.BACKEND_URL + '/items/basic_info?fields=*.*');
 }
 
 export async function getWorkExp() {
-	return get(
-		env.ACCESS_TOKEN,
-		env.BACKEND_URL + '/items/work_exp'
-	);
+	return get(env.ACCESS_TOKEN, env.BACKEND_URL + '/items/work_exp');
 }
 
 export async function getEducation() {
-	return get(
-		env.ACCESS_TOKEN,
-		env.BACKEND_URL + '/items/education'
-	);
+	return get(env.ACCESS_TOKEN, env.BACKEND_URL + '/items/education');
 }

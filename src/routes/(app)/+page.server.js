@@ -12,41 +12,43 @@ import {
 /** @type {import('./$types').PageServerLoad} */
 export async function load() {
 	try {
-		const [
-			socialMediaRes,
-			basicInfoRes,
-			workExpRes,
-			educationRes,
-			aboutMeRes,
-			projectsRes
-		] = await Promise.all([
-			getSocialMedia(),
-			getBasicInfo(),
-			getWorkExp(),
-			getEducation(),
-			getAboutMe(),
-			getProjectsForHome()
-		]);
+		const [socialMediaRes, basicInfoRes, workExpRes, educationRes, aboutMeRes, projectsRes] =
+			await Promise.all([
+				getSocialMedia(),
+				getBasicInfo(),
+				getWorkExp(),
+				getEducation(),
+				getAboutMe(),
+				getProjectsForHome()
+			]);
 
-		const socialMedia = socialMediaRes.data.map((/** @type {{ id: { toString: () => any; }; url: any; alt: any; image: string; }} */ social) => ({
-			id: social.id.toString(),
-			url: social.url,
-			alt: social.alt,
-			pictureUrl: getImageUrl(social.image)
-		}));
+		const socialMedia = socialMediaRes.data.map(
+			(
+				/** @type {{ id: { toString: () => any; }; url: any; alt: any; image: string; }} */ social
+			) => ({
+				id: social.id.toString(),
+				url: social.url,
+				alt: social.alt,
+				pictureUrl: getImageUrl(social.image)
+			})
+		);
 
 		const basicInfo = {
 			...basicInfoRes.data,
-			education: educationRes.data.map((/** @type {{ id: { toString: () => any; }; date: any; details: any; }} */ edu) => ({
-				id: edu.id.toString(),
-				date: edu.date,
-				details: edu.details
-			})),
-			work_exp: workExpRes.data.map((/** @type {{ id: { toString: () => any; }; date: any; details: any; }} */ work) => ({
-				id: work.id.toString(),
-				date: work.date,
-				details: work.details
-			}))
+			education: educationRes.data.map(
+				(/** @type {{ id: { toString: () => any; }; date: any; details: any; }} */ edu) => ({
+					id: edu.id.toString(),
+					date: edu.date,
+					details: edu.details
+				})
+			),
+			work_exp: workExpRes.data.map(
+				(/** @type {{ id: { toString: () => any; }; date: any; details: any; }} */ work) => ({
+					id: work.id.toString(),
+					date: work.date,
+					details: work.details
+				})
+			)
 		};
 
 		const aboutMe = {
@@ -54,13 +56,17 @@ export async function load() {
 			picture: getImageUrl(aboutMeRes.data.picture)
 		};
 
-		const projects = projectsRes.data.map((/** @type {{ id: { toString: () => any; }; title: any; description: any; url: any; picture: string; }} */ post) => ({
-			id: post.id.toString(),
-			title: post.title,
-			description: post.description,
-			url: post.url,
-			pictureUrl: post.picture ? getImageUrl(post.picture) : null
-		}));
+		const projects = projectsRes.data.map(
+			(
+				/** @type {{ id: { toString: () => any; }; title: any; description: any; url: any; picture: string; }} */ post
+			) => ({
+				id: post.id.toString(),
+				title: post.title,
+				description: post.description,
+				url: post.url,
+				pictureUrl: post.picture ? getImageUrl(post.picture) : null
+			})
+		);
 
 		return {
 			socialMedia,

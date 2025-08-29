@@ -1,5 +1,5 @@
 <script>
-    const { basicInfo } = $props();
+	const { basicInfo } = $props();
 </script>
 
 <div class="skills">

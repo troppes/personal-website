@@ -1,22 +1,23 @@
 <script>
-    const { post } = $props();
+	const { post } = $props();
 
-    /**
-     * Formats a date into a localized string
-     * @param {Date} date - The date to format
-     * @returns {string} The formatted date string
-     */
-    function datePosted(date) {
-        /** @type {Intl.DateTimeFormatOptions} */
-        const options = {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-        };
-        
-        return date.toLocaleDateString('de-DE', options);
-    }
+	/**
+	 * Formats a date into a localized string
+	 * @param {Date} date - The date to format
+	 * @returns {string} The formatted date string
+	 */
+	function datePosted(date) {
+		/** @type {Intl.DateTimeFormatOptions} */
+		const options = {
+			year: 'numeric',
+			month: 'long',
+			day: 'numeric'
+		};
+
+		return date.toLocaleDateString('de-DE', options);
+	}
 </script>
+
 <!-- A single blog post -->
 <div class={post.id % 2 === 0 ? 'blog-card alt' : 'blog-card'}>
 	<div class="meta">

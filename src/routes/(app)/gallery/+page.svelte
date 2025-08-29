@@ -38,37 +38,37 @@
 		}
 	}
 
-    function initLightGallery() {
-        if (lightGalleryElem) {
-            lgJS = LightGallery(lightGalleryElem, {
-                plugins: [lgThumbnail, lgZoom, lgFullScreen, lgShare],
-                speed: 500,
-                licenseKey
-            });
+	function initLightGallery() {
+		if (lightGalleryElem) {
+			lgJS = LightGallery(lightGalleryElem, {
+				plugins: [lgThumbnail, lgZoom, lgFullScreen, lgShare],
+				speed: 500,
+				licenseKey
+			});
 			lightGalleryElem.addEventListener('lgBeforeOpen', () => {
-				if(lgJS) {
+				if (lgJS) {
 					lgJS.refresh();
 				}
 			});
-        }
-    }
-    function onScroll() {
-        const bottomOfWindow = window.innerHeight + window.scrollY >= document.body.offsetHeight - 30;
-        if (bottomOfWindow && allPhotos.length > 0) {
-            photos = [...photos, ...allPhotos.splice(0, offset)];
-        }
-    }
+		}
+	}
+	function onScroll() {
+		const bottomOfWindow = window.innerHeight + window.scrollY >= document.body.offsetHeight - 30;
+		if (bottomOfWindow && allPhotos.length > 0) {
+			photos = [...photos, ...allPhotos.splice(0, offset)];
+		}
+	}
 
-    $effect(() => {
-        window.addEventListener('scroll', onScroll);
+	$effect(() => {
+		window.addEventListener('scroll', onScroll);
 		initLightGallery();
-        return () => {
+		return () => {
 			window.removeEventListener('scroll', onScroll);
 			if (lgJS) {
-                lgJS = null;
-            }
-		}
-    });
+				lgJS = null;
+			}
+		};
+	});
 
 	/**
 	 * @param {{ id: any; }} tag
@@ -102,7 +102,7 @@
 	{/each}
 
 	<div class="tag-box">
-		<button class="show-all tag" onclick={() =>  moreTagsClicked()}>{allTagsButton}</button>
+		<button class="show-all tag" onclick={() => moreTagsClicked()}>{allTagsButton}</button>
 	</div>
 	<div class="tag-box">
 		<button class="reset tag" onclick={() => resetTags()}>Reset</button>

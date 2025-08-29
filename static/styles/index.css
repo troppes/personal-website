@@ -1,74 +1,75 @@
 @import 'fonts.css';
 
 :root {
-    font-family: 'Source Code Pro', Courier, monospace;
-    font-weight: 500;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    --primary-color: #0E1630;
-    --secondary-color: #171f38;
+	font-family: 'Source Code Pro', Courier, monospace;
+	font-weight: 500;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	--primary-color: #0e1630;
+	--secondary-color: #171f38;
 
-    --tertiary-color: #ff0000;
-    --fourth-color: #355c7d;
+	--tertiary-color: #ff0000;
+	--fourth-color: #355c7d;
 
-    --headline-text-color: #EB4A4A;
-    --primary-text-color: #808DAD;
-    --secondary-text-color: #FFFFFF;
+	--headline-text-color: #eb4a4a;
+	--primary-text-color: #808dad;
+	--secondary-text-color: #ffffff;
 
-    --base-grid: 8px;
+	--base-grid: 8px;
 }
 
-body{
-    background: var(--primary-color);
-    color: var(--primary-text-color);
+body {
+	background: var(--primary-color);
+	color: var(--primary-text-color);
 }
 
-.blog .content a, pre {
-    white-space: pre-wrap;
-    word-break: break-all;
+.blog .content a,
+pre {
+	white-space: pre-wrap;
+	word-break: break-all;
 }
 
-h1, h2, h3{
-    color: var(--headline-text-color);
+h1,
+h2,
+h3 {
+	color: var(--headline-text-color);
 }
 
-a, a:visited {
-    color: var(--primary-text-color)
+a,
+a:visited {
+	color: var(--primary-text-color);
 }
 
 .flex-container {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-around;
-    padding: 1em;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+	padding: 1em;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
-
 @media (max-width: 569px) {
-    .hidden-sm {
-        display: none;
-    }
+	.hidden-sm {
+		display: none;
+	}
 }
 
 @media (max-width: 769px) {
-    .hidden-md {
-        display: none;
-    }
+	.hidden-md {
+		display: none;
+	}
 }
 
 @media (max-width: 1024px) {
-    .hidden-lg {
-        display: none;
-    }
+	.hidden-lg {
+		display: none;
+	}
 }
 
 @media (max-width: 1280px) {
-    .hidden-xl {
-        display: none;
-    }
+	.hidden-xl {
+		display: none;
+	}
 }
-
-

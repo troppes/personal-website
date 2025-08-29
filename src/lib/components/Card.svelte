@@ -89,7 +89,9 @@
 		clip-path: polygon(75% 0, 100% 50%, 75% 100%, 0 100%, 25% 50%, 0 0);
 		background-color: var(--secondary-color);
 		opacity: 0;
-		transition: opacity 0.5s ease-in, transform 0.3s ease-in-out 0ms;
+		transition:
+			opacity 0.5s ease-in,
+			transform 0.3s ease-in-out 0ms;
 	}
 
 	.articles__content {
@@ -111,7 +113,9 @@
 
 	.articles__content--rhs {
 		clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
-		transition: transform 0.5s ease-in-out, background-color 0.4s ease-in-out;
+		transition:
+			transform 0.5s ease-in-out,
+			background-color 0.4s ease-in-out;
 	}
 
 	.articles__title {
@@ -138,6 +142,8 @@
 	.articles__link:hover:after {
 		opacity: 1;
 		transform: translateX(calc(var(--base-grid) * 1.5));
-		transition: opacity 0.5s ease-in, transform 0.3s ease-in-out 0.25s;
+		transition:
+			opacity 0.5s ease-in,
+			transform 0.3s ease-in-out 0.25s;
 	}
 </style>

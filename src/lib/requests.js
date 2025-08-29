@@ -7,11 +7,11 @@ import { error as SvelteError } from '@sveltejs/kit';
  * @throws {HttpError} If response is not ok
  */
 async function handleResponse(response) {
-    const json = await response.json();
-    if (response.ok) {
-        return json;
-    }
-    throw SvelteError(response.status, json);
+	const json = await response.json();
+	if (response.ok) {
+		return json;
+	}
+	throw SvelteError(response.status, json);
 }
 
 /**
@@ -21,14 +21,14 @@ async function handleResponse(response) {
  * @returns {Promise<any>} Response data
  */
 export async function get(token, url) {
-    const response = await fetch(url, {
-        method: 'GET',
-        headers: {
-            'Content-type': 'application/json',
-            'Authorization': token
-        }
-    });
-    return handleResponse(response);
+	const response = await fetch(url, {
+		method: 'GET',
+		headers: {
+			'Content-type': 'application/json',
+			Authorization: token
+		}
+	});
+	return handleResponse(response);
 }
 
 /**
@@ -39,15 +39,15 @@ export async function get(token, url) {
  * @returns {Promise<any>} Response data
  */
 export async function post(token, data, url) {
-    const response = await fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-type': 'application/json',
-            'Authorization': token
-        },
-        body: JSON.stringify(data)
-    });
-    return handleResponse(response);
+	const response = await fetch(url, {
+		method: 'POST',
+		headers: {
+			'Content-type': 'application/json',
+			Authorization: token
+		},
+		body: JSON.stringify(data)
+	});
+	return handleResponse(response);
 }
 
 /**
@@ -58,14 +58,14 @@ export async function post(token, data, url) {
  * @returns {Promise<any>} Response data
  */
 export async function postFile(token, data, url) {
-    const response = await fetch(url, {
-        method: 'POST',
-        headers: {
-            'Authorization': token
-        },
-        body: data
-    });
-    return handleResponse(response);
+	const response = await fetch(url, {
+		method: 'POST',
+		headers: {
+			Authorization: token
+		},
+		body: data
+	});
+	return handleResponse(response);
 }
 
 /**
@@ -76,15 +76,15 @@ export async function postFile(token, data, url) {
  * @returns {Promise<any>} Response data
  */
 export async function put(token, data, url) {
-    const response = await fetch(url, {
-        method: 'PUT',
-        headers: {
-            'Content-type': 'application/json',
-            'Authorization': token
-        },
-        body: JSON.stringify(data)
-    });
-    return handleResponse(response);
+	const response = await fetch(url, {
+		method: 'PUT',
+		headers: {
+			'Content-type': 'application/json',
+			Authorization: token
+		},
+		body: JSON.stringify(data)
+	});
+	return handleResponse(response);
 }
 
 /**
@@ -95,13 +95,13 @@ export async function put(token, data, url) {
  * @returns {Promise<any>} Response data
  */
 export async function deleteReq(token, data, url) {
-    const response = await fetch(url, {
-        method: 'DELETE',
-        headers: {
-            'Content-type': 'application/json',
-            'Authorization': token
-        },
-        body: JSON.stringify(data)
-    });
-    return handleResponse(response);
+	const response = await fetch(url, {
+		method: 'DELETE',
+		headers: {
+			'Content-type': 'application/json',
+			Authorization: token
+		},
+		body: JSON.stringify(data)
+	});
+	return handleResponse(response);
 }

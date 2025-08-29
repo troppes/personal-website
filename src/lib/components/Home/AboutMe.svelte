@@ -41,9 +41,9 @@
 
 	$effect(() => {
 		if (!animatedText) return;
-		
+
 		typeInterval = setInterval(typewriter, 200);
-		
+
 		return () => {
 			if (typeInterval) {
 				clearInterval(typeInterval);

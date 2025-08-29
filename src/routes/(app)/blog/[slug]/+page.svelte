@@ -1,5 +1,5 @@
 <script>
-    const { data } = $props();
+	const { data } = $props();
 </script>
 
 <div class="content blog">
