@@ -77,6 +77,7 @@
 		padding: 0.5em;
 		border-radius: 5px 5px 5px 5px;
 		box-shadow: 1px 1px 1px 1px #000000;
+		cursor: pointer;
 	}
 
 	.navigation > button:disabled {
@@ -84,7 +85,7 @@
 		background-color: var(--primary-color);
 		padding: 0.5em;
 		border-radius: 5px 5px 5px 5px;
-
+		cursor: pointer;
 		border: 1px solid var(--secondary-color);
 	}
 
