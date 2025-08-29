@@ -28,11 +28,14 @@
 		<Card post={allprojects} />
 	</div>
 </div>
-<h1>Skills & Socials</h1>
-<div class="flex-container info">
+<h1>Skills</h1>
+<div class="info">
 	<div class="basic-info">
 		<Details basicInfo={data.basicInfo} />
 	</div>
+</div>
+<h1>Socials</h1>
+<div class="social">
 	<div>
 		<SocialMedia socialMedia={data.socialMedia} />
 	</div>
@@ -52,14 +55,6 @@
 		align-items: center; /* Centers items vertically */
 	}
 
-	.aboutme {
-		padding-top: 10vh;
-	}
-
-	.card:nth-child(4) {
-		display: none;
-	}
-
 	@media (min-width: 1500px) {
 		.card:nth-child(4) {
 			display: block;
@@ -67,16 +62,9 @@
 	}
 
 	@media (min-width: 1200px) {
-		.info {
-			gap: 10vh;
-		}
-
-		.basic-info {
-			max-width: 70%;
-		}
 		.cards {
-			margin-top: 40vh;
-			margin-bottom: 40vh;
+			margin-top: 20vh;
+			margin-bottom: 20vh;
 		}
 
 		.card:nth-child(1) {
@@ -88,15 +76,11 @@
 		}
 
 		.card:nth-child(3) {
-			transform: translate(-150px, 200px);
+			transform: translate(-125px, 200px);
 		}
 
 		.card:nth-child(4) {
 			transform: translate(-100px, -50px);
-		}
-
-		.card:nth-child(5) {
-			transform: translate(-50px, -150px);
 		}
 	}
 </style>

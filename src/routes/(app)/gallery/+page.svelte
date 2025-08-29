@@ -129,7 +129,6 @@
 
 <style>
 	.flex-container {
-		padding-top: 10vh;
 		margin: auto;
 		width: 60%;
 	}

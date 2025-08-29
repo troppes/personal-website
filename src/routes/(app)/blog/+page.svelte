@@ -22,21 +22,6 @@
 	}
 </script>
 
-<div class="sidebar">
-	{#if data?.metadata?.data}
-		<h1 class="brand-title">
-			{data.metadata.data.title}
-		</h1>
-		<div class="brand-tagline">
-			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-			{@html data.metadata.data.tagline}
-		</div>
-	{/if}
-	<div class="social-media">
-		<SocialMedia socialMedia={data.socialMedia} />
-	</div>
-</div>
-
 <div class="flex-container">
 	<div class="content">
 		{#each getPage(data.posts, page, pageSize) as post (post.id)}
@@ -52,23 +37,38 @@
 			</button>
 		</div>
 	</div>
+	<div class="social-media">
+		<h3 class="social-title">Connect</h3>
+		<SocialMedia socialMedia={data.socialMedia} />
+	</div>
 </div>
 
 <style>
-	.sidebar {
-		display: flex;
-		flex-flow: column wrap;
-		text-align: center;
-		justify-content: space-between;
-		align-items: center;
-	}
-
 	.navigation {
 		display: flex;
 		flex-flow: row wrap;
 		text-align: center;
 		justify-content: space-around;
 		align-items: center;
+	}
+
+	.social-title {
+		font-size: 0.875rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		color: rgba(255, 255, 255, 0.6);
+		margin-bottom: 16px;
+		padding: 0 16px;
+		font-family:
+			system-ui,
+			-apple-system,
+			sans-serif;
+	}
+
+	.social-media {
+		border-top: 1px solid rgba(255, 255, 255, 0.1);
+		margin-top: 5vh;
 	}
 
 	.navigation > button {
@@ -87,56 +87,5 @@
 		border-radius: 5px 5px 5px 5px;
 		cursor: pointer;
 		border: 1px solid var(--secondary-color);
-	}
-
-	.brand-title,
-	.brand-tagline {
-		margin: 0;
-	}
-
-	.content {
-		padding: 2em 1em 0;
-		margin-top: 2vh;
-	}
-
-	.brand-title {
-		display: block;
-		text-transform: uppercase;
-		font-size: 3em;
-		padding-top: 10vh;
-	}
-
-	@media (min-width: 1300px) {
-		.flex-container {
-			min-height: 90vh;
-		}
-
-		.content {
-			float: left;
-			padding: 2em 3em 0;
-			margin-left: 25%;
-		}
-
-		.social-media {
-			margin-left: 5vh;
-		}
-
-		.sidebar {
-			border-radius: 0px 5px 5px 0px;
-			box-shadow: 0px 1px 1px 1px #000000;
-			margin-top: 20vh;
-			align-items: normal;
-			padding: 10vh 2vh 10vh 2vh;
-			width: 400px; /* Set the width of the sidebar */
-			position: absolute; /* Fixed Sidebar (stay in place on scroll) */
-			z-index: 1; /* Stay on top */
-			top: 0; /* Stay at the top */
-			left: 0;
-			background-color: var(--secondary-color);
-		}
-
-		.brand-title {
-			padding-top: 0vh;
-		}
 	}
 </style>

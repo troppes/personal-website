@@ -14,9 +14,6 @@
 </div>
 
 <style>
-	.spacer {
-		padding-top: 15vh;
-	}
 	.grid-container {
 		display: grid;
 		row-gap: 20px;
