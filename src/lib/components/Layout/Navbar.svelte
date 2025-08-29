@@ -1,12 +1,20 @@
 <script>
 	import { page } from '$app/stores';
-	let path;
+	
+	/** @type {string} */
+	let path = $state('');
 
+	/**
+	 * Updates the current path
+	 * @param {string} currentPath - The current URL pathname
+	 */
 	function getPath(currentPath) {
 		path = currentPath;
 	}
 
-	$: getPath($page.url.pathname);
+	$effect(() => {
+		getPath($page.url.pathname);
+	});
 </script>
 
 <header class="header">
@@ -95,7 +103,6 @@
 
 	.header .menu-icon {
 		cursor: pointer;
-		display: inline-block;
 		float: right;
 		padding: 28px 20px;
 		position: relative;

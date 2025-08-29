@@ -47,6 +47,9 @@ export async function getBlogMetaData() {
 	return get(env.ACCESS_TOKEN, env.BACKEND_URL + '/items/blogmetadata');
 }
 
+/**
+ * @param {string} id
+ */
 export async function getBlogPost(id) {
 	return get(env.ACCESS_TOKEN, env.BACKEND_URL + '/items/blogposts/' + id + '?fields=*.*');
 }

@@ -1,29 +1,14 @@
 <script>
 	const { aboutMe } = $props();
 
-	let textArray = aboutMe.likes;
-	/**
-	 * @type {HTMLSpanElement}
-	 */
+	let textArray = $state(aboutMe.likes);
+	let stringIndex = $state(0);
+	let charIndex = $state(0);
+	let isTyping = $state(true);
+	/** @type {number | undefined} */
+	let typeInterval = $state(undefined);
+	/** @type {HTMLSpanElement} */
 	let animatedText;
-	let stringIndex = 0;
-	let charIndex = 0;
-	let isTyping = true;
-	/**
-	 * @type {number | null | undefined}
-	 */
-	let typeInterval = null;
-
-    $effect(() => {
-        typeInterval = setInterval(typewriter, 200);
-        
-        return () => {
-            if (typeInterval) {
-                clearInterval(typeInterval);
-                typeInterval = null;
-            }
-        };
-    });
 
 	function typewriter() {
 		if (stringIndex < textArray.length) {
@@ -31,30 +16,41 @@
 			currentString += '.';
 
 			if (isTyping) {
-				// Typing animation
 				if (charIndex < currentString.length) {
 					animatedText.innerHTML += currentString.charAt(charIndex);
 					charIndex++;
 				} else {
-					isTyping = false; // Switch to erasing mode
+					isTyping = false;
 				}
 			} else {
-				// Erasing animation
 				if (charIndex > 0) {
 					animatedText.innerHTML = currentString.substring(0, charIndex - 1);
 					charIndex--;
 				} else {
-					isTyping = true; // Switch back to typing mode
-					stringIndex++; // Move to the next string
+					isTyping = true;
+					stringIndex++;
 
 					if (stringIndex >= textArray.length) stringIndex = 0;
 
-					charIndex = 0; // Reset character index
-					animatedText.innerHTML = ''; // Clear the content for the new string
+					charIndex = 0;
+					animatedText.innerHTML = '';
 				}
 			}
 		}
 	}
+
+	$effect(() => {
+		if (!animatedText) return;
+		
+		typeInterval = setInterval(typewriter, 200);
+		
+		return () => {
+			if (typeInterval) {
+				clearInterval(typeInterval);
+				typeInterval = undefined;
+			}
+		};
+	});
 </script>
 
 <div class="flex-container">

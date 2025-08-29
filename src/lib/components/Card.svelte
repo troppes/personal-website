@@ -1,5 +1,5 @@
 <script>
-	export let post;
+	const { post } = $props();
 </script>
 
 <div class="pure-u-1-1 pure-u-md-1-2 pure-u-lg-1-3 pure-u-xl-1-4 card center">

@@ -1,10 +1,10 @@
 <script>
-	import Footer from '$lib/components/Layout/Footer.svelte';
-	import Navbar from '$lib/components/Layout/Navbar.svelte';
-
-	export let data;
+    import Footer from '$lib/components/Layout/Footer.svelte';
+    import Navbar from '$lib/components/Layout/Navbar.svelte';
+    
+    const { data, children } = $props();
 </script>
 
 <Navbar />
-<slot />
-<Footer footer={data['footer']} />
+{@render children()}
+<Footer footer={data.footer} />

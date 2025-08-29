@@ -1,5 +1,5 @@
 <script>
-	export let basicInfo;
+    const { basicInfo } = $props();
 </script>
 
 <div class="skills">

@@ -1,5 +1,5 @@
 <script>
-	export let footer;
+	const { footer } = $props();
 </script>
 
 <footer>
