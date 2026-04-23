@@ -8,7 +8,7 @@
 			<div
 				class="articles__content articles__content--lhs"
 				style={post.pictureUrl
-					? 'background-image:url(post.pictureUrl)'
+					? `background-image:url(${post.pictureUrl})`
 					: 'background-color: var(--secondary-color)'}
 			>
 				<h2 class="articles__title">
@@ -21,7 +21,7 @@
 			<div
 				class="articles__content articles__content--rhs"
 				style={post.pictureUrl
-					? 'background-image:url(post.pictureUrl)'
+					? `background-image:url(${post.pictureUrl})`
 					: 'background-color: var(--secondary-color)'}
 				aria-hidden="true"
 			>

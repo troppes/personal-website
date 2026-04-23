@@ -30,6 +30,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"lightgallery": "^2.9.0"
+		"lightgallery": "^2.9.0",
+		"sanitize-html": "^2.17.3"
 	}
 }

@@ -1,5 +1,6 @@
 import { error } from '@sveltejs/kit';
 import { getBlogPost } from '$lib/backend-requests.js';
+import { sanitizeBlogHtml } from '$lib/sanitize.js';
 
 /** @type {import('./$types').PageServerLoad} */
 export async function load({ params }) {
@@ -11,7 +12,7 @@ export async function load({ params }) {
 		}
 
 		return {
-			post: postRes.data
+			post: { ...postRes.data, text: sanitizeBlogHtml(postRes.data.text ?? '') }
 		};
 	} catch (e) {
 		console.error('Failed to load blog post:', e);
