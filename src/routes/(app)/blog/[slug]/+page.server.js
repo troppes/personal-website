@@ -1,11 +1,7 @@
 import { error } from '@sveltejs/kit';
 import { getBlogPost } from '$lib/backend-requests.js';
 
-/**
- * Load function for blog post page
- * @type {import('./$types').PageServerLoad}
- * @returns {Promise<import('./$types').PageData>}
- */
+/** @type {import('./$types').PageServerLoad} */
 export async function load({ params }) {
 	try {
 		const postRes = await getBlogPost(params.slug);
