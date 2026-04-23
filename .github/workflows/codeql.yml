@@ -38,11 +38,6 @@ jobs:
           languages: ${{ matrix.language }}
           queries: security-extended,security-and-quality
 
-      - name: Install dependencies and build
-        run: |
-          bun install --frozen-lockfile
-          bun run build
-
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
         with:
