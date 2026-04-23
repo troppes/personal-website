@@ -11,6 +11,8 @@ on:
 jobs:
   lint:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
 
     steps:
       - name: Checkout repository
@@ -19,15 +21,15 @@ jobs:
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
         with:
-          bun-version: latest
+          bun-version: '1'
 
       - name: Move .env.example to .env
         run: mv .env.example .env
 
-      - name: Install dependencies with Bun
-        run: bun install
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
 
-      - name: Rune svelte check
+      - name: Run svelte check
         run: bun run check
 
       - name: Run lint

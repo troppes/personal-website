@@ -23,6 +23,9 @@ export default [
 	{
 		files: ['**/*.svelte', '**/*.svelte.js'],
 		languageOptions: { parserOptions: { svelteConfig } },
-		rules: { 'svelte/no-at-html-tags': 'off' }
+		rules: {
+			'svelte/no-at-html-tags': 'off',
+			'svelte/no-navigation-without-resolve': 'off'
+		}
 	}
 ];

@@ -17,13 +17,21 @@
 	 * @type {any | null}
 	 */
 	let lgJS = $state(null);
-	let allTags = data.tags || [];
-	let allPhotos = [...(data.galleryPhotos || [])];
-	let licenseKey = data.licenseKey || undefined;
+	let allPhotos = $state(/** @type {any[]} */ ([]));
+	let allTags = $state(/** @type {any[]} */ ([]));
 	const offset = 20;
-	let tags = $state([...allTags].slice(0, 6));
-	let photos = $state([...allPhotos.splice(0, offset)]);
+	let tags = $state(/** @type {any[]} */ ([]));
+	let photos = $state(/** @type {any[]} */ ([]));
 	let allTagsButton = $state('More tags');
+
+	$effect.pre(() => {
+		const photosCopy = [...(data.galleryPhotos ?? [])];
+		const initialTags = data.tags ?? [];
+		allTags = initialTags;
+		tags = initialTags.slice(0, 6);
+		photos = photosCopy.splice(0, offset);
+		allPhotos = photosCopy;
+	});
 
 	function getPicSize() {
 		const randomNumber = Math.random();
@@ -43,7 +51,7 @@
 			lgJS = LightGallery(lightGalleryElem, {
 				plugins: [lgThumbnail, lgZoom, lgFullScreen, lgShare],
 				speed: 500,
-				licenseKey
+				licenseKey: data.licenseKey
 			});
 			lightGalleryElem.addEventListener('lgBeforeOpen', () => {
 				if (lgJS) {

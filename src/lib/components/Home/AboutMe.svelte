@@ -1,7 +1,7 @@
 <script>
 	const { aboutMe } = $props();
 
-	let textArray = $state(aboutMe.likes);
+	let textArray = $derived(aboutMe.likes);
 	let stringIndex = $state(0);
 	let charIndex = $state(0);
 	let isTyping = $state(true);
