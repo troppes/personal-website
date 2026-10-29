@@ -1,50 +1,47 @@
-import { get } from '$lib/requests.js';
-import { env } from '$env/dynamic/private';
+import { get } from '#lib/requests.js';
+import { ACCESS_TOKEN, BACKEND_URL } from '$app/env/private';
 
 export async function getFooter() {
-	return get(env.ACCESS_TOKEN, env.BACKEND_URL + '/items/footer');
+	return get(ACCESS_TOKEN, BACKEND_URL + '/items/footer');
 }
 
 export async function getSocialMedia() {
-	return get(env.ACCESS_TOKEN, env.BACKEND_URL + '/items/social_media');
+	return get(ACCESS_TOKEN, BACKEND_URL + '/items/social_media');
 }
 
 export async function getAboutMe() {
-	return get(env.ACCESS_TOKEN, env.BACKEND_URL + '/items/aboutme');
+	return get(ACCESS_TOKEN, BACKEND_URL + '/items/aboutme');
 }
 
 export async function getProjectsForHome() {
-	return get(env.ACCESS_TOKEN, env.BACKEND_URL + '/items/projects?limit=3&sort=sort,-date_created');
+	return get(ACCESS_TOKEN, BACKEND_URL + '/items/projects?limit=3&sort=sort,-date_created');
 }
 
 export async function getProjects() {
-	return get(env.ACCESS_TOKEN, env.BACKEND_URL + '/items/projects?sort=sort,-date_created');
+	return get(ACCESS_TOKEN, BACKEND_URL + '/items/projects?sort=sort,-date_created');
 }
 
 export async function getPhotos() {
 	return get(
-		env.ACCESS_TOKEN,
-		env.BACKEND_URL + '/items/gallery?sort=sort,-date_created&fields=*,tags.gallery_tags_id'
+		ACCESS_TOKEN,
+		BACKEND_URL + '/items/gallery?sort=sort,-date_created&fields=*,tags.gallery_tags_id'
 	);
 }
 
 export async function getTags() {
-	return get(env.ACCESS_TOKEN, env.BACKEND_URL + '/items/gallery_tags');
+	return get(ACCESS_TOKEN, BACKEND_URL + '/items/gallery_tags');
 }
 
 export async function getGalleryHeader() {
-	return get(env.ACCESS_TOKEN, env.BACKEND_URL + '/items/gallery_cover');
+	return get(ACCESS_TOKEN, BACKEND_URL + '/items/gallery_cover');
 }
 
 export async function getBlogPosts() {
-	return get(
-		env.ACCESS_TOKEN,
-		env.BACKEND_URL + '/items/blogposts?fields=*.*&sort=sort,-date_created'
-	);
+	return get(ACCESS_TOKEN, BACKEND_URL + '/items/blogposts?fields=*.*&sort=sort,-date_created');
 }
 
 export async function getBlogMetaData() {
-	return get(env.ACCESS_TOKEN, env.BACKEND_URL + '/items/blogmetadata');
+	return get(ACCESS_TOKEN, BACKEND_URL + '/items/blogmetadata');
 }
 
 /** Fetches a single blog post by ID
@@ -52,17 +49,17 @@ export async function getBlogMetaData() {
  * @returns {Promise<any>} the blog post data
  */
 export async function getBlogPost(id) {
-	return get(env.ACCESS_TOKEN, env.BACKEND_URL + '/items/blogposts/' + id + '?fields=*.*');
+	return get(ACCESS_TOKEN, BACKEND_URL + '/items/blogposts/' + id + '?fields=*.*');
 }
 
 export async function getBasicInfo() {
-	return get(env.ACCESS_TOKEN, env.BACKEND_URL + '/items/basic_info?fields=*.*');
+	return get(ACCESS_TOKEN, BACKEND_URL + '/items/basic_info?fields=*.*');
 }
 
 export async function getWorkExp() {
-	return get(env.ACCESS_TOKEN, env.BACKEND_URL + '/items/work_exp');
+	return get(ACCESS_TOKEN, BACKEND_URL + '/items/work_exp');
 }
 
 export async function getEducation() {
-	return get(env.ACCESS_TOKEN, env.BACKEND_URL + '/items/education');
+	return get(ACCESS_TOKEN, BACKEND_URL + '/items/education');
 }

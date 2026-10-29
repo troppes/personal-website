@@ -1,6 +1,6 @@
 import { error } from '@sveltejs/kit';
-import { env } from '$env/dynamic/private';
-import { getProjects } from '$lib/backend-requests.js';
+import { EXTERNAL_ASSETS_URL } from '$app/env/private';
+import { getProjects } from '#lib/backend-requests.js';
 
 /** @type {import('./$types').PageServerLoad} */
 export async function load() {
@@ -26,9 +26,7 @@ export async function load() {
 		return { projects };
 	} catch (e) {
 		console.error('Failed to load projects:', e);
-		throw error(500, {
-			message: 'Failed to load projects'
-		});
+		throw error(500, 'Failed to load projects');
 	}
 }
 
@@ -38,5 +36,5 @@ export async function load() {
  * @returns {string} The complete image URL
  */
 function getImageUrl(imageKey) {
-	return env.EXTERNAL_ASSETS_URL + imageKey;
+	return EXTERNAL_ASSETS_URL + imageKey;
 }

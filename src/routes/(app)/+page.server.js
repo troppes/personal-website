@@ -1,5 +1,5 @@
 import { error } from '@sveltejs/kit';
-import { env } from '$env/dynamic/private';
+import { EXTERNAL_ASSETS_URL } from '$app/env/private';
 import {
 	getSocialMedia,
 	getAboutMe,
@@ -76,9 +76,7 @@ export async function load() {
 		};
 	} catch (e) {
 		console.error('Failed to load page data:', e);
-		throw error(500, {
-			message: 'Failed to load page data'
-		});
+		throw error(500, 'Failed to load page data');
 	}
 }
 
@@ -88,5 +86,5 @@ export async function load() {
  * @returns {string} The complete image URL
  */
 function getImageUrl(imageKey) {
-	return env.EXTERNAL_ASSETS_URL + imageKey;
+	return EXTERNAL_ASSETS_URL + imageKey;
 }

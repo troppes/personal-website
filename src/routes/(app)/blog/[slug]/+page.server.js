@@ -1,6 +1,6 @@
 import { error } from '@sveltejs/kit';
-import { getBlogPost } from '$lib/backend-requests.js';
-import { sanitizeBlogHtml } from '$lib/sanitize.js';
+import { getBlogPost } from '#lib/backend-requests.js';
+import { sanitizeBlogHtml } from '#lib/sanitize.js';
 
 /** @type {import('./$types').PageServerLoad} */
 export async function load({ params }) {

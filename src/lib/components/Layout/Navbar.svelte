@@ -1,5 +1,5 @@
 <script>
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 
 	let currentPath = $state('');
 	let isMobileMenuOpen = $state(false);
@@ -12,7 +12,7 @@
 	];
 
 	$effect(() => {
-		currentPath = $page.url.pathname;
+		currentPath = page.url.pathname;
 		isMobileMenuOpen = false;
 	});
 

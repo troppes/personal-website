@@ -22,8 +22,6 @@ export async function load() {
 		};
 	} catch (e) {
 		console.error('Failed to load footer:', e);
-		throw error(500, {
-			message: 'Failed to load footer content'
-		});
+		throw error(500, 'Failed to load footer content');
 	}
 }

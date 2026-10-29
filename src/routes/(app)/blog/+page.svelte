@@ -1,6 +1,6 @@
 <script>
-	import BlogPost from '$lib/components/Blog/BlogPost.svelte';
-	import SocialMedia from '$lib/components/SocialMedia.svelte';
+	import BlogPost from '#lib/components/Blog/BlogPost.svelte';
+	import SocialMedia from '#lib/components/SocialMedia.svelte';
 
 	const { data } = $props();
 

@@ -1,6 +1,6 @@
 import { error } from '@sveltejs/kit';
-import { getBlogMetaData, getBlogPosts } from '$lib/backend-requests.js';
-import { env } from '$env/dynamic/private';
+import { getBlogMetaData, getBlogPosts } from '#lib/backend-requests.js';
+import { URL } from '$app/env/private';
 
 /** @typedef {{
  *   id: string,
@@ -44,17 +44,17 @@ export async function GET() {
 		const body = `<?xml version="1.0" encoding="UTF-8" ?>
         <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
             <channel>
-                <atom:link href="${env.URL}/rss" rel="self" type="application/rss+xml" />
+                <atom:link href="${URL}/rss" rel="self" type="application/rss+xml" />
                 <title>${metaDataResponse.data.title}</title>
-                <link>${env.URL}</link>
+                <link>${URL}</link>
                 <description>${metaDataResponse.data.tagline}</description>
                 ${posts
 									.map((post) =>
 										`
                     <item>
-                        <guid>${env.URL}/blog/${post.id}</guid>
+                        <guid>${URL}/blog/${post.id}</guid>
                         <title>${escapeXml(post.title)}</title>
-                        <link>${env.URL}/blog/${post.id}</link>
+                        <link>${URL}/blog/${post.id}</link>
                         <description>${escapeXml(post.shortDescription)}</description>
                         <pubDate>${post.dateCreated.toUTCString()}</pubDate>
                     </item>

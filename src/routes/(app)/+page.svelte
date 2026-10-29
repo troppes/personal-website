@@ -1,8 +1,8 @@
 <script>
-	import AboutMe from '$lib/components/Home/AboutMe.svelte';
-	import Card from '$lib/components/Card.svelte';
-	import SocialMedia from '$lib/components/SocialMedia.svelte';
-	import Details from '$lib/components/Home/Details.svelte';
+	import AboutMe from '#lib/components/Home/AboutMe.svelte';
+	import Card from '#lib/components/Card.svelte';
+	import SocialMedia from '#lib/components/SocialMedia.svelte';
+	import Details from '#lib/components/Home/Details.svelte';
 
 	const { data } = $props();
 

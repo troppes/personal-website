@@ -1,5 +1,5 @@
-import { env } from '$env/dynamic/private';
-import { getPhotos, getTags } from '$lib/backend-requests.js';
+import { LIGHTGALLERY_KEY, URL, EXTERNAL_ASSETS_URL } from '$app/env/private';
+import { getPhotos, getTags } from '#lib/backend-requests.js';
 
 export async function load() {
 	let photos = null;
@@ -41,8 +41,8 @@ export async function load() {
 	return {
 		galleryPhotos: photos,
 		tags,
-		licenseKey: env.LIGHTGALLERY_KEY,
-		url: env.URL
+		licenseKey: LIGHTGALLERY_KEY,
+		url: URL
 	};
 }
 
@@ -50,5 +50,5 @@ export async function load() {
  * @param {string} imageKey
  */
 function getImageUrl(imageKey) {
-	return env.EXTERNAL_ASSETS_URL + imageKey;
+	return EXTERNAL_ASSETS_URL + imageKey;
 }

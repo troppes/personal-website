@@ -1,6 +1,6 @@
 import { error } from '@sveltejs/kit';
-import { env } from '$env/dynamic/private';
-import { getBlogPosts, getSocialMedia, getFooter } from '$lib/backend-requests.js';
+import { EXTERNAL_ASSETS_URL } from '$app/env/private';
+import { getBlogPosts, getSocialMedia, getFooter } from '#lib/backend-requests.js';
 
 /** @typedef {import('./$types').PageServerLoad} Load */
 
@@ -47,9 +47,7 @@ export async function load() {
 		};
 	} catch (e) {
 		console.error('Failed to load blog page:', e);
-		throw error(500, {
-			message: 'Failed to load blog content'
-		});
+		throw error(500, 'Failed to load blog content');
 	}
 }
 
@@ -59,5 +57,5 @@ export async function load() {
  * @returns {string} The complete image URL
  */
 function getImageUrl(imageKey) {
-	return env.EXTERNAL_ASSETS_URL + imageKey;
+	return EXTERNAL_ASSETS_URL + imageKey;
 }
